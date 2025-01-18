@@ -1,0 +1,1948 @@
+{
+	"info": {
+		"_postman_id": "30874a64-1a8b-4882-b328-c1322b4ff540",
+		"name": "Recruitment API Collection-v2",
+		"description": "Postman collection for Recruitment API with token extraction and environment variable setup.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "33860754",
+		"_collection_link": "https://intership-8198.postman.co/workspace/intership-Workspace~aae241b0-c5c8-4ef9-bd0f-664f46665995/collection/33860754-30874a64-1a8b-4882-b328-c1322b4ff540?action=share&source=collection_link&creator=33860754"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Admin - Login (Get Token)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    const jsonData = pm.response.json();",
+									"    pm.collectionVariables.set(\"token\", jsonData.token);",
+									"    console.log(\"Token saved: \" + jsonData.token);",
+									"} else {",
+									"    console.error(\"Login failed\");",
+									"}",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"admin@example.com\",\n    \"password\": \"admin123\"\n}"
+						},
+						"url": "{{baseUrl}}/api/auth/login"
+					},
+					"response": []
+				},
+				{
+					"name": "User - Change  Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    const jsonData = pm.response.json();",
+									"    pm.collectionVariables.set(\"token\", jsonData.token);",
+									"    console.log(\"Token saved: \" + jsonData.token);",
+									"} else {",
+									"    console.error(\"Login failed\");",
+									"}",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"jamessmith@gmail.com\",\n    \"password\": \"admin123\"\n}"
+						},
+						"url": "{{baseUrl}}/api/auth/set-password"
+					},
+					"response": []
+				},
+				{
+					"name": "User  - Login (Get Token)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    const jsonData = pm.response.json();",
+									"    pm.collectionVariables.set(\"token\", jsonData.token);",
+									"    console.log(\"Token saved: \" + jsonData.token);",
+									"} else {",
+									"    console.error(\"Login failed\");",
+									"}",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"rohitsunilsharma2000@gmail.com\",\n    \"password\": \"password\"\n}"
+						},
+						"url": "{{baseUrl}}/api/auth/login"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Role",
+			"item": [
+				{
+					"name": "Create the Top-Level Role (Recruiter Admin)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Recruiter Admin\",\n    \"description\": \"Top-level admin overseeing all recruitment activities\",\n    \"reportsTo\": null,\n    \"shareDataWithPeers\": true\n}"
+						},
+						"url": "{{baseUrl}}/api/roles"
+					},
+					"response": []
+				},
+				{
+					"name": "Create the Second-Level Role (Recruiter)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Recruiter\",\n    \"description\": \"Manages recruitment processes\",\n    \"reportsTo\": {\n        \"id\": 1,\n        \"name\": \"Recruiter Admin\"\n    },\n    \"shareDataWithPeers\": true\n}"
+						},
+						"url": "{{baseUrl}}/api/roles"
+					},
+					"response": []
+				},
+				{
+					"name": "Create the Third-Level Role (Hiring Manager)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Hiring Manager\",\n    \"description\": \"Oversees hiring for specific roles\",\n    \"reportsTo\": {\n        \"id\": 2,\n        \"name\": \"Recruiter\"\n    },\n    \"shareDataWithPeers\": false\n}"
+						},
+						"url": "{{baseUrl}}/api/roles"
+					},
+					"response": []
+				},
+				{
+					"name": "Create the Bottom-Level Role (Employee)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Employee\",\n    \"description\": \"Employees providing referrals or involved in hiring feedback\",\n    \"reportsTo\": {\n        \"id\": 3,\n        \"name\": \"Hiring Manager\"\n    },\n    \"shareDataWithPeers\": false\n}"
+						},
+						"url": "{{baseUrl}}/api/roles"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Roles",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Employee\",\n    \"description\": \"Employees providing referrals or involved in hiring feedback\",\n    \"reportsTo\": {\n        \"id\": 3,\n        \"name\": \"Hiring Manager\"\n    },\n    \"shareDataWithPeers\": false\n}"
+						},
+						"url": "{{baseUrl}}/api/roles"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Role Hierarchy",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": "{{baseUrl}}/api/roles/hierarchy"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a Role",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Updated Standard Profile\",\n    \"description\": \"Updated permissions for a standard user\",\n    \"permissions\": \"{\\\"modulePermissions\\\":{\\\"view\\\":true,\\\"create\\\":true,\\\"edit\\\":true,\\\"delete\\\":true}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/api/roles/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "Create Profile for Administrator",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Administrator\",\n    \"description\": \"Full access to all entities and permissions\",\n    \"permissions\": {\n        \"modulePermissions\": [\n            {\n                \"entity\": \"Home\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Job Openings\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Applications\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Candidates\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Referrals\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Interviews\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Departments\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Analytics\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Metrics\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Dashboards\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Reports\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Campaigns\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Assessments\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"To-Dos\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Vendors\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Notes\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Recruiter Inbox\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"My Actions\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Emails\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Documents\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Submissions\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Offers\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            }\n        ],\n        \"socialPermissions\": {\n            \"socialAdmin\": true,\n            \"managePosts\": true,\n            \"viewAnalytics\": true\n        }\n    }\n}\n"
+						},
+						"url": "{{baseUrl}}/api/profiles"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Profile for Standard",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Standard Profile\",\n  \"description\": \"Standard permissions for a user\",\n  \"permissions\": \"{\\\"modulePermissions\\\":{\\\"view\\\":true,\\\"create\\\":true,\\\"edit\\\":false,\\\"delete\\\":false}}\"\n}"
+						},
+						"url": "{{baseUrl}}/api/profiles"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Profile for Hiring Manager",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Hiring Manager\",\n  \"description\": \"Hiring Manager permissions for a user\",\n    \"permissions\": {\n        \"modulePermissions\": [\n            {\n                \"entity\": \"Home\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Job Openings\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Applications\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Candidates\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Referrals\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Interviews\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Departments\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Analytics\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Metrics\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Dashboards\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Reports\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Campaigns\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Assessments\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"To-Dos\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Vendors\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Notes\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Recruiter Inbox\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"My Actions\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Emails\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Documents\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Submissions\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Offers\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            }\n        ],\n        \"socialPermissions\": {\n            \"socialAdmin\": true,\n            \"managePosts\": true,\n            \"viewAnalytics\": true\n        }\n    }\n}"
+						},
+						"url": "{{baseUrl}}/api/profiles"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Profile for Employee",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Employee \",\n  \"description\": \"Employee permissions for a user\",\n    \"permissions\": {\n        \"modulePermissions\": [\n            {\n                \"entity\": \"Home\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Job Openings\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Applications\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Candidates\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Referrals\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Interviews\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Departments\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Analytics\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Metrics\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Dashboards\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Reports\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Campaigns\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Assessments\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"To-Dos\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Vendors\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Notes\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Recruiter Inbox\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"My Actions\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Emails\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Documents\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Submissions\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Offers\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            }\n        ],\n        \"socialPermissions\": {\n            \"socialAdmin\": true,\n            \"managePosts\": true,\n            \"viewAnalytics\": true\n        }\n    }\n}"
+						},
+						"url": "{{baseUrl}}/api/profiles"
+					},
+					"response": []
+				},
+				{
+					"name": "Update  Profile for Employee",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Employee \",\n  \"description\": \"Employee permissions for a user\",\n    \"permissions\": {\n        \"modulePermissions\": [\n            {\n                \"entity\": \"Home\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Job Openings\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Applications\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Candidates\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Referrals\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Interviews\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Departments\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Analytics\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Metrics\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Dashboards\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Reports\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Campaigns\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Assessments\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"To-Dos\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Vendors\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Notes\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Recruiter Inbox\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"My Actions\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Emails\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Documents\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Submissions\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Offers\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            }\n        ],\n        \"socialPermissions\": {\n            \"socialAdmin\": true,\n            \"managePosts\": true,\n            \"viewAnalytics\": true\n        }\n    }\n}"
+						},
+						"url": "{{baseUrl}}/api/profiles"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Profile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Employee \",\n  \"description\": \"Employee permissions for a user\",\n    \"permissions\": {\n        \"modulePermissions\": [\n            {\n                \"entity\": \"Home\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Job Openings\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Applications\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Candidates\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Referrals\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Interviews\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Departments\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Analytics\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Metrics\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Dashboards\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Reports\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Campaigns\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Assessments\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"To-Dos\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Vendors\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Notes\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Recruiter Inbox\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"My Actions\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Emails\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Documents\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Submissions\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Offers\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            }\n        ],\n        \"socialPermissions\": {\n            \"socialAdmin\": true,\n            \"managePosts\": true,\n            \"viewAnalytics\": true\n        }\n    }\n}"
+						},
+						"url": "{{baseUrl}}/api/profiles"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a Profile",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Updated Standard Profile\",\n    \"description\": \"Updated permissions for a standard user\",\n    \"permissions\": \"{\\\"modulePermissions\\\":{\\\"view\\\":true,\\\"create\\\":true,\\\"edit\\\":true,\\\"delete\\\":true}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/api/profiles/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create",
+					"item": [
+						{
+							"name": "Create Admin",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"Sarah\",\n    \"lastName\": \"Taylor\",\n    \"email\": \"user1@example.com\",\n    \"password\": \"password\",\n    \"role\": {\n        \"id\": 2,\n        \"name\": \"Recruiter\"\n    },\n    \"profile\": {\n        \"id\": 4,\n        \"name\": \"Coordinator Profile\"\n    },\n    \"phone\": \"6285105230\",\n    \"address\": \"575 Main St\",\n    \"territory\": \"South\"\n}"
+								},
+								"url": "{{baseUrl}}/api/users"
+							},
+							"response": []
+						},
+						{
+							"name": "Create User-1",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"Sarah\",\n    \"lastName\": \"Taylor\",\n    \"email\": \"user1@example.com\",\n        \"password\": \"password\",\n\n    \"role\": {\n        \"id\": 2,\n        \"name\": \"Recruiter\"\n    },\n    \"profile\": {\n        \"id\": 4,\n        \"name\": \"Coordinator Profile\"\n    },\n    \"phone\": \"6285105230\",\n    \"address\": \"575 Main St\",\n    \"territory\": \"South\"\n}"
+								},
+								"url": "{{baseUrl}}/api/users"
+							},
+							"response": []
+						},
+						{
+							"name": "Create User-2",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"Emily\",\n    \"lastName\": \"Martin\",\n    \"email\": \"user2@example.com\",\n    \"password\": \"password\",\n    \"role\": {\n        \"id\": 2,\n        \"name\": \"Recruiter\"\n    },\n    \"profile\": {\n        \"id\": 3,\n        \"name\": \"Recruiter Profile\"\n    },\n    \"phone\": \"7342504060\",\n    \"address\": \"849 Main St\",\n    \"territory\": \"East\"\n}"
+								},
+								"url": "{{baseUrl}}/api/users"
+							},
+							"response": []
+						},
+						{
+							"name": "Create User-3",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"role\": {\n    \"id\": 1,\n    \"name\": \"Hiring Manager\"\n  },\n  \"profile\": {\n    \"id\": 1,\n    \"name\": \"Standard Profile\"\n  },\n  \"phone\": \"1234567890\",\n  \"address\": \"123 Main St\",\n  \"territory\": \"East\"\n}"
+								},
+								"url": "{{baseUrl}}/api/users"
+							},
+							"response": []
+						},
+						{
+							"name": "Create User-4",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"James\",\n    \"lastName\": \"Smith\",\n    \"email\": \"user4@example.com\",\n    \"password\": \"password\",\n    \"role\": {\n        \"id\": 4,\n        \"name\": \"Team Lead\"\n    },\n    \"profile\": {\n        \"id\": 3,\n        \"name\": \"Recruiter Profile\"\n    },\n    \"phone\": \"2987647708\",\n    \"address\": \"353 Main St\",\n    \"territory\": \"Central\"\n}"
+								},
+								"url": "{{baseUrl}}/api/users"
+							},
+							"response": []
+						},
+						{
+							"name": "Create User-5",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"user5@example.com\",\n    \"password\": \"password\",\n    \"role\": {\n        \"id\": 4,\n        \"name\": \"Coordinator\"\n    },\n    \"profile\": {\n        \"id\": 1,\n        \"name\": \"Standard Profile\"\n    },\n    \"phone\": \"9133447252\",\n    \"address\": \"971 Main St\",\n    \"territory\": \"North\"\n}"
+								},
+								"url": "{{baseUrl}}/api/users"
+							},
+							"response": []
+						},
+						{
+							"name": "Create User-6",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"Sarah\",\n    \"lastName\": \"Martin\",\n    \"email\": \"user6@example.com\",\n    \"password\": \"password\",\n    \"role\": {\n        \"id\": 2,\n        \"name\": \"Recruiter\"\n    },\n    \"profile\": {\n        \"id\": 1,\n        \"name\": \"Standard Profile\"\n    },\n    \"phone\": \"9475907538\",\n    \"address\": \"515 Main St\",\n    \"territory\": \"East\"\n}"
+								},
+								"url": "{{baseUrl}}/api/users"
+							},
+							"response": []
+						},
+						{
+							"name": "Create User-7",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"David\",\n    \"lastName\": \"Taylor\",\n    \"email\": \"user7@example.com\",\n    \"password\": \"password\",\n    \"role\": {\n        \"id\": 3,\n        \"name\": \"Administrator\"\n    },\n    \"profile\": {\n        \"id\": 5,\n        \"name\": \"Team Lead Profile\"\n    },\n    \"phone\": \"4937860263\",\n    \"address\": \"676 Main St\",\n    \"territory\": \"South\"\n}"
+								},
+								"url": "{{baseUrl}}/api/users"
+							},
+							"response": []
+						},
+						{
+							"name": "Create User-8",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"Emily\",\n    \"lastName\": \"White\",\n    \"email\": \"user8@example.com\",\n    \"password\": \"password\",\n    \"role\": {\n        \"id\": 2,\n        \"name\": \"Recruiter\"\n    },\n    \"profile\": {\n        \"id\": 1,\n        \"name\": \"Standard Profile\"\n    },\n    \"phone\": \"7188737487\",\n    \"address\": \"813 Main St\",\n    \"territory\": \"West\"\n}"
+								},
+								"url": "{{baseUrl}}/api/users"
+							},
+							"response": []
+						},
+						{
+							"name": "Create User-9",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"Sarah\",\n    \"lastName\": \"Brown\",\n    \"email\": \"user9@example.com\",\n    \"password\": \"password\",\n    \"role\": {\n        \"id\": 3,\n        \"name\": \"Administrator\"\n    },\n    \"profile\": {\n        \"id\": 5,\n        \"name\": \"Team Lead Profile\"\n    },\n    \"phone\": \"2462003587\",\n    \"address\": \"123 Main St\",\n    \"territory\": \"West\"\n}"
+								},
+								"url": "{{baseUrl}}/api/users"
+							},
+							"response": []
+						},
+						{
+							"name": "Create User-10",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"Emma\",\n    \"lastName\": \"Hall\",\n    \"email\": \"user10@example.com\",\n    \"password\": \"password\",\n    \"role\": {\n        \"id\": 3,\n        \"name\": \"Administrator\"\n    },\n    \"profile\": {\n        \"id\": 4,\n        \"name\": \"Coordinator Profile\"\n    },\n    \"phone\": \"1305234071\",\n    \"address\": \"623 Main St\",\n    \"territory\": \"Central\"\n}"
+								},
+								"url": "{{baseUrl}}/api/users"
+							},
+							"response": []
+						},
+						{
+							"name": "Create User-11",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"password\": \"password\",\n    \"role\": {\n        \"id\": 1,\n        \"name\": \"Hiring Manager\"\n    },\n    \"profile\": {\n        \"id\": 1,\n        \"name\": \"Standard Profile\"\n    },\n    \"phone\": \"9086754895\",\n    \"address\": \"Mahabodhi clinic, Gitanjali Metro Station, Sreeguru Sangha Ashram, Durga Prasanna Paramahansha Rd, Naktala, Garia, Kolkata, West Bengal 700047\",\n    \"territory\": \"East\"\n}"
+								},
+								"url": "{{baseUrl}}/api/users"
+							},
+							"response": []
+						},
+						{
+							"name": "Create User-12 with password",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"James\",\n    \"lastName\": \"Smith\",\n    \"email\": \"jamessmith@gmail.com\",\n    \"password\": \"admin123\",\n    \"role\": {\n        \"id\": 2,\n        \"name\": \"Manager\"\n    },\n    \"profile\": {\n        \"id\": 1,\n        \"name\": \"Executive Profile\"\n    },\n    \"phone\": \"9123456780\",\n    \"address\": \"120 Elm St\",\n    \"territory\": \"North\"\n}"
+								},
+								"url": "{{baseUrl}}/api/users"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": "{{baseUrl}}/api/users"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Updated Standard Profile\",\n    \"description\": \"Updated permissions for a standard user\",\n    \"permissions\": \"{\\\"modulePermissions\\\":{\\\"view\\\":true,\\\"create\\\":true,\\\"edit\\\":true,\\\"delete\\\":true}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/api/users/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Email",
+			"item": [
+				{
+					"name": "Send Email",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    // \"to\": \"dsdebnath4663@gmail.com\",\n    \"to\": \"meghnadsaha422@gmail.com\",\n    \"userName\": \"Debnath Saha\",\n    \"userId\": \"admin@example.com\",\n    \"password\": \"admin@123\",\n    \"loginUrl\": \"http://localhost:3000/authentication/card/sign-in\"\n}"
+						},
+						"url": "{{baseUrl}}/api/email/send"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PermissionController",
+			"item": [
+				{
+					"name": "Fetch Permissions for a Module",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/permissions/module/Job Openings?userId=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"permissions",
+								"module",
+								"Job Openings"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Social Permissions",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/permissions/social?userId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"permissions",
+								"social"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Department",
+			"item": [
+				{
+					"name": "Create",
+					"item": [
+						{
+							"name": "Create Engineering",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"departmentName\": \"Engineering\",\n  \"parentDepartmentId\": null,\n  \"departmentLeadId\": 1,\n  \"attachmentPath\": \"/attachments/sales.pdf\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/departments"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Human Resources",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"departmentName\": \"Engineering\",\n    \"parentDepartmentId\": null,\n    \"departmentLead\": {\n        \"id\": 1,\n        \"firstName\": \"Rohit\",\n        \"lastName\": \"Sharma\",\n        \"email\": \"rohitsunilsharma2000@gmail.com\"\n    },\n    \"attachmentPath\": \"/attachments/engineering.pdf\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/departments"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Marketing",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"departmentName\": \"Engineering\",\n    \"parentDepartmentId\": null,\n    \"departmentLead\": {\n        \"id\": 1,\n        \"firstName\": \"Rohit\",\n        \"lastName\": \"Sharma\",\n        \"email\": \"rohitsunilsharma2000@gmail.com\"\n    },\n    \"attachmentPath\": \"/attachments/engineering.pdf\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/departments"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Sales",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"departmentName\": \"Sales\",\n    \"parentDepartmentId\": null,\n    \"departmentLeadId\": 3,\n    \"attachmentPath\": \"/attachments/marketing.pdf\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/departments"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Finance",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"departmentName\": \"Engineering\",\n    \"parentDepartmentId\": null,\n    \"departmentLead\": {\n        \"id\": 1,\n        \"firstName\": \"Rohit\",\n        \"lastName\": \"Sharma\",\n        \"email\": \"rohitsunilsharma2000@gmail.com\"\n    },\n    \"attachmentPath\": \"/attachments/engineering.pdf\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/departments"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Product",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \"departmentName\": \"Product\",\n        \"parentDepartmentId\": {\n            \"id\": 1},\n        \"departmentLead\": {\n            \"id\": 6,\n            \"firstName\": \"Sarah\",\n            \"lastName\": \"Brown\",\n            \"email\": \"sarah_brown12@gmail.com\"\n        },\n        \"attachmentPath\": \"/attachments/product.pdf\"\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/departments"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Support",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"departmentName\": \"Engineering\",\n    \"parentDepartmentId\": null,\n    \"departmentLead\": {\n        \"id\": 1,\n        \"firstName\": \"Rohit\",\n        \"lastName\": \"Sharma\",\n        \"email\": \"rohitsunilsharma2000@gmail.com\"\n    },\n    \"attachmentPath\": \"/attachments/engineering.pdf\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/departments"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Legal",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"departmentName\": \"Legal\",\n    \"parentDepartmentId\": {\n        \"id\": 5\n    },\n    \"departmentLead\": {\n        \"id\": 8,\n        \"firstName\": \"Emma\",\n        \"lastName\": \"Hall\",\n        \"email\": \"emma_hall78@gmail.com\"\n    },\n    \"attachmentPath\": \"/attachments/legal.pdf\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/departments"
+							},
+							"response": []
+						},
+						{
+							"name": "Create IT",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"departmentName\": \"IT\",\n    \"parentDepartmentId\": {\n        \"id\": 1\n    },\n    \"departmentLead\": {\n        \"id\": 9,\n        \"firstName\": \"James\",\n        \"lastName\": \"Hall\",\n        \"email\": \"james_hall27@gmail.com\"\n    },\n    \"attachmentPath\": \"/attachments/it.pdf\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/departments"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Operations",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \"departmentName\": \"Legal\",\n        \"parentDepartmentId\": 5,\n        \"departmentLead\": {\n            \"id\": 8,\n            \"firstName\": \"Emma\",\n            \"lastName\": \"Hall\",\n            \"email\": \"emma_hall78@gmail.com\"\n        },\n        \"attachmentPath\": \"/attachments/legal.pdf\"\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/departments"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get All Departments",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "{{baseUrl}}/api/departments"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Department by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "{{baseUrl}}/api/departments/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Department",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"departmentName\": \"Engineering\",\n    \"parentDepartmentId\": null,\n    \"departmentLead\": {\n        \"id\": 1,\n        \"firstName\": \"Rohit\",\n        \"lastName\": \"Sharma\",\n        \"email\": \"rohitsunilsharma2000@gmail.com\"\n    },\n    \"attachmentPath\": \"/attachments/engineering.pdf\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/api/departments/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a Department",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "{{baseUrl}}/api/departments/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "JobOpening",
+			"item": [
+				{
+					"name": "Create",
+					"item": [
+						{
+							"name": "Create  Java Developer Job Opening",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"postingTitle\": \"Software Engineer\",\n    \"title\": \"Senior Software Engineer\",\n    \"assignedRecruiter\": {\n        \"id\": 2,\n        \"firstName\": \"Jane\",\n        \"lastName\": \"Smith\",\n        \"email\": \"jane.smith@example.com\"\n    },\n    \"targetDate\": \"2025-01-31\",\n    \"status\": \"IN_PROGRESS\",\n    \"industry\": \"Information Technology\",\n    \"salary\": \"10000\",\n    \"department\": {\n        \"id\": 1,\n        \"name\": \"Engineering\"\n    },\n    \"hiringManager\": {\n        \"id\": 3,\n        \"firstName\": \"Alex\",\n        \"lastName\": \"Johnson\",\n        \"email\": \"alex.johnson@example.com\"\n    },\n    \"dateOpened\": \"2025-01-01\",\n    \"jobType\": \"FULL_TIME\",\n    \"requiredSkills\": [\n        \"Java\",\n        \"Spring Boot\",\n        \"AWS\",\n        \"Docker\"\n    ],\n    \"addressInformation\": {\n        \"city\": \"San Francisco\",\n        \"province\": \"California\",\n        \"country\": \"USA\",\n        \"postalCode\": \"94103\"\n    },\n    \"descriptionInformation\": {\n        \"jobDescription\": \"Responsible for building scalable backend systems.\",\n        \"requirements\": \"5+ years experience in Java and related technologies.\",\n        \"benefits\": \"Health insurance, PTO, and remote-friendly.\"\n    },\n    \"attachments\": [\n        {\n            \"fileName\": \"job_summary.pdf\",\n            \"filePath\": \"/attachments/job_summary.pdf\",\n            \"attachmentType\": \"JOB_SUMMARY\"\n        }\n    ],\n    \"workExperience\": \"5_PLUS_YEARS\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/job-openings"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Software Engineer Job Opening",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"postingTitle\": \"Software Engineer\",\n    \"title\": \"Senior Software Engineer\",\n    \"assignedRecruiter\": {\n        \"id\": 2,\n        \"firstName\": \"Jane\",\n        \"lastName\": \"Smith\",\n        \"email\": \"jane.smith@example.com\"\n    },\n    \"targetDate\": \"2025-01-31\",\n    \"status\": \"IN_PROGRESS\",\n    \"industry\": \"Information Technology\",\n    \"salary\": \"10000\",\n    \"department\": {\n        \"id\": 1,\n        \"name\": \"Engineering\"\n    },\n    \"hiringManager\": {\n        \"id\": 3,\n        \"firstName\": \"Alex\",\n        \"lastName\": \"Johnson\",\n        \"email\": \"alex.johnson@example.com\"\n    },\n    \"dateOpened\": \"2025-01-01\",\n    \"jobType\": \"FULL_TIME\",\n    \"requiredSkills\": [\n        \"Java\",\n        \"Spring Boot\",\n        \"AWS\",\n        \"Docker\"\n    ],\n    \"addressInformation\": {\n        \"city\": \"San Francisco\",\n        \"province\": \"California\",\n        \"country\": \"USA\",\n        \"postalCode\": \"94103\"\n    },\n    \"descriptionInformation\": {\n        \"jobDescription\": \"Responsible for building scalable backend systems.\",\n        \"requirements\": \"5+ years experience in Java and related technologies.\",\n        \"benefits\": \"Health insurance, PTO, and remote-friendly.\"\n    },\n    \"attachments\": [\n        {\n            \"fileName\": \"job_summary.pdf\",\n            \"filePath\": \"/attachments/job_summary.pdf\",\n            \"attachmentType\": \"JOB_SUMMARY\"\n        }\n    ],\n    \"workExperience\": \"5_PLUS_YEARS\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/job-openings"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Marketing Manager Job Opening",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \"postingTitle\": \"Marketing Manager\",\n        \"title\": \"Digital Marketing Expert\",\n        \"assignedRecruiter\": {\n            \"id\": 2\n        },\n        \"targetDate\": \"2025-02-15\",\n        \"status\": \"WAITING_FOR_APPROVAL\",\n        \"industry\": \"Marketing\",\n        \"salary\": \"85000\",\n        \"department\": {\n            \"id\": 2\n        },\n        \"hiringManager\": {\n            \"id\": 5\n        },\n        \"dateOpened\": \"2024-12-10\",\n        \"jobType\": \"FULL_TIME\",\n        \"requiredSkills\": [\"SEO\", \"Social Media\", \"Analytics\"],\n        \"addressInformation\": {\n            \"isRemoteJob\": false,\n            \"city\": \"Los Angeles\",\n            \"province\": \"CA\",\n            \"country\": \"USA\",\n            \"postalCode\": \"90001\"\n        },\n        \"descriptionInformation\": {\n            \"jobDescription\": \"Drive digital marketing campaigns.\",\n            \"requirements\": \"3+ years of experience in digital marketing.\",\n            \"benefits\": \"Health benefits and performance bonuses.\"\n        },\n        \"attachments\": [],\n        \"workExperience\": \"FOUR_TO_FIVE_YEARS\"\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/job-openings"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Sales Executive Job Opening",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \"postingTitle\": \"Sales Executive\",\n        \"title\": \"Field Sales Representative\",\n        \"assignedRecruiter\": {\n            \"id\": 3\n        },\n        \"targetDate\": \"2025-03-01\",\n        \"status\": \"IN_PROGRESS\",\n        \"industry\": \"Sales\",\n        \"salary\": \"70000\",\n        \"department\": {\n            \"id\": 3\n        },\n        \"hiringManager\": {\n            \"id\": 6\n        },\n        \"dateOpened\": \"2024-11-20\",\n        \"jobType\": \"PERMANENT\",\n        \"requiredSkills\": [\"Sales\", \"Customer Interaction\", \"Negotiation\"],\n        \"addressInformation\": {\n            \"isRemoteJob\": false,\n            \"city\": \"San Francisco\",\n            \"province\": \"CA\",\n            \"country\": \"USA\",\n            \"postalCode\": \"94105\"\n        },\n        \"descriptionInformation\": {\n            \"jobDescription\": \"Increase company revenue by acquiring clients.\",\n            \"requirements\": \"1-3 years of sales experience.\",\n            \"benefits\": \"Travel allowance and sales incentives.\"\n        },\n        \"attachments\": [],\n        \"workExperience\": \"ONE_TO_THREE_YEARS\"\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/job-openings"
+							},
+							"response": []
+						},
+						{
+							"name": "Create HR Specialist Job Opening",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \"postingTitle\": \"HR Specialist\",\n        \"title\": \"Recruitment Coordinator\",\n        \"assignedRecruiter\": {\n            \"id\": 1\n        },\n        \"targetDate\": \"2025-02-28\",\n        \"status\": \"ON_HOLD\",\n        \"industry\": \"Human Resources\",\n        \"salary\": \"60000\",\n        \"department\": {\n            \"id\": 4\n        },\n        \"hiringManager\": {\n            \"id\": 7\n        },\n        \"dateOpened\": \"2025-01-08\",\n        \"jobType\": \"PART_TIME\",\n        \"requiredSkills\": [\"Recruitment\", \"Interviewing\", \"Onboarding\"],\n        \"addressInformation\": {\n            \"isRemoteJob\": true,\n            \"city\": \"Chicago\",\n            \"province\": \"IL\",\n            \"country\": \"USA\",\n            \"postalCode\": \"60601\"\n        },\n        \"descriptionInformation\": {\n            \"jobDescription\": \"Manage end-to-end recruitment processes.\",\n            \"requirements\": \"2+ years in HR recruitment.\",\n            \"benefits\": \"Flexible work hours and paid time off.\"\n        },\n        \"attachments\": [],\n        \"workExperience\": \"ONE_TO_THREE_YEARS\"\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/job-openings"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Finance Analyst Job Opening",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \"postingTitle\": \"Finance Analyst\",\n        \"title\": \"Financial Planner\",\n        \"assignedRecruiter\": {\n            \"id\": 5\n        },\n        \"targetDate\": \"2025-02-01\",\n        \"status\": \"FILLED\",\n        \"industry\": \"Finance\",\n        \"salary\": \"100000\",\n        \"department\": {\n            \"id\": 5\n        },\n        \"hiringManager\": {\n            \"id\": 8\n        },\n        \"dateOpened\": \"2025-01-01\",\n        \"jobType\": \"CONTRACT\",\n        \"requiredSkills\": [\"Financial Analysis\", \"Budgeting\", \"Forecasting\"],\n        \"addressInformation\": {\n            \"isRemoteJob\": false,\n            \"city\": \"Houston\",\n            \"province\": \"TX\",\n            \"country\": \"USA\",\n            \"postalCode\": \"77001\"\n        },\n        \"descriptionInformation\": {\n            \"jobDescription\": \"Analyze financial data to improve performance.\",\n            \"requirements\": \"3-5 years in financial planning.\",\n            \"benefits\": \"Contract bonuses and free training.\"\n        },\n        \"attachments\": [],\n        \"workExperience\": \"FIVE_PLUS_YEARS\"\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/job-openings"
+							},
+							"response": []
+						},
+						{
+							"name": "Create  Product Specialist Job Opening",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"postingTitle\": \"Product Manager\",\n    \"title\": \"Product Specialist\",\n    \"assignedRecruiter\": {\n        \"id\": 3\n    },\n    \"targetDate\": \"2025-02-20\",\n    \"status\": \"IN_PROGRESS\",\n    \"industry\": \"Product Development\",\n    \"salary\": \"95000\",\n    \"department\": {\n        \"id\": 3\n    },\n    \"hiringManager\": {\n        \"id\": 6\n    },\n    \"dateOpened\": \"2025-01-01\",\n    \"jobType\": \"FULL_TIME\",\n    \"requiredSkills\": [\"Product Management\", \"Agile\", \"Scrum\"],\n    \"addressInformation\": {\n        \"isRemoteJob\": true,\n        \"city\": \"San Francisco\",\n        \"province\": \"CA\",\n        \"country\": \"USA\",\n        \"postalCode\": \"94101\"\n    },\n    \"descriptionInformation\": {\n        \"jobDescription\": \"Lead product lifecycle from concept to launch.\",\n        \"requirements\": \"5+ years of experience in product management.\",\n        \"benefits\": \"Stock options and health benefits.\"\n    },\n    \"attachments\": [],\n    \"workExperience\": \"FIVE_PLUS_YEARS\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/job-openings"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Customer Support Specialist Job Opening",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"postingTitle\": \"Customer Support Specialist\",\n    \"title\": \"Support Representative\",\n    \"assignedRecruiter\": {\n        \"id\": 4\n    },\n    \"targetDate\": \"2025-02-25\",\n    \"status\": \"ON_HOLD\",\n    \"industry\": \"Customer Support\",\n    \"salary\": \"55000\",\n    \"department\": {\n        \"id\": 4\n    },\n    \"hiringManager\": {\n        \"id\": 7\n    },\n    \"dateOpened\": \"2025-01-01\",\n    \"jobType\": \"FULL_TIME\",\n    \"requiredSkills\": [\"Customer Service\", \"Problem Solving\", \"CRM\"],\n    \"addressInformation\": {\n        \"isRemoteJob\": false,\n        \"city\": \"Chicago\",\n        \"province\": \"IL\",\n        \"country\": \"USA\",\n        \"postalCode\": \"60601\"\n    },\n    \"descriptionInformation\": {\n        \"jobDescription\": \"Provide world-class customer support.\",\n        \"requirements\": \"2+ years of experience in customer service.\",\n        \"benefits\": \"Health insurance and flexible hours.\"\n    },\n    \"attachments\": [],\n    \"workExperience\": \"ONE_TO_THREE_YEARS\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/job-openings"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Corporate Lawyer Job Opening",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"postingTitle\": \"Legal Advisor\",\n    \"title\": \"Corporate Lawyer\",\n    \"assignedRecruiter\": {\n        \"id\": 5\n    },\n    \"targetDate\": \"2025-03-10\",\n    \"status\": \"WAITING_FOR_APPROVAL\",\n    \"industry\": \"Legal Services\",\n    \"salary\": \"120000\",\n    \"department\": {\n        \"id\": 5\n    },\n    \"hiringManager\": {\n        \"id\": 8\n    },\n    \"dateOpened\": \"2025-01-01\",\n    \"jobType\": \"FULL_TIME\",\n    \"requiredSkills\": [\"Corporate Law\", \"Compliance\", \"Negotiation\"],\n    \"addressInformation\": {\n        \"isRemoteJob\": false,\n        \"city\": \"Washington\",\n        \"province\": \"DC\",\n        \"country\": \"USA\",\n        \"postalCode\": \"20001\"\n    },\n    \"descriptionInformation\": {\n        \"jobDescription\": \"Advise on corporate legal matters.\",\n        \"requirements\": \"7+ years of experience in corporate law.\",\n        \"benefits\": \"High-profile clients and competitive salary.\"\n    },\n    \"attachments\": [],\n    \"workExperience\": \"FIVE_PLUS_YEARS\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/job-openings"
+							},
+							"response": []
+						},
+						{
+							"name": "issue description Create Network Engineer Job Opening",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"postingTitle\": \"Software Engineer\",\n    \"title\": \"Senior Software Engineer\",\n    \"assignedRecruiter\": {\n        \"id\": 2,\n        \"firstName\": \"Jane\",\n        \"lastName\": \"Smith\",\n        \"email\": \"jane.smith@example.com\"\n    },\n    \"targetDate\": \"2025-01-31\",\n    \"status\": \"IN_PROGRESS\",\n    \"industry\": \"Information Technology\",\n    \"salary\": \"10000\",\n    \"department\": {\n        \"id\": 1,\n        \"name\": \"Engineering\"\n    },\n    \"hiringManager\": {\n        \"id\": 3,\n        \"firstName\": \"Alex\",\n        \"lastName\": \"Johnson\",\n        \"email\": \"alex.johnson@example.com\"\n    },\n    \"dateOpened\": \"2025-01-01\",\n    \"jobType\": \"FULL_TIME\",\n    \"requiredSkills\": [\n        \"Java\",\n        \"Spring Boot\",\n        \"AWS\",\n        \"Docker\"\n    ],\n    \"addressInformation\": {\n        \"city\": \"San Francisco\",\n        \"province\": \"California\",\n        \"country\": \"USA\",\n        \"postalCode\": \"94103\"\n    },\n    \"descriptionInformation\": {\n        \"jobDescription\": \"Responsible for building scalable backend systems.\",\n        \"requirements\": \"5+ years experience in Java and related technologies.\",\n        \"benefits\": \"Health insurance, PTO, and remote-friendly.\"\n    },\n    \"attachments\": [\n        {\n            \"fileName\": \"job_summary.pdf\",\n            \"filePath\": \"/attachments/job_summary.pdf\",\n            \"attachmentType\": \"JOB_SUMMARY\"\n        }\n    ],\n    \"workExperience\": \"5_PLUS_YEARS\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/job-openings"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Business Operations Specialist Job Opening",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"postingTitle\": \"Operations Manager\",\n    \"title\": \"Business Operations Specialist\",\n    \"assignedRecruiter\": {\n        \"id\": 7\n    },\n    \"targetDate\": \"2025-03-15\",\n    \"status\": \"WAITING_FOR_APPROVAL\",\n    \"industry\": \"Operations\",\n    \"salary\": \"90000\",\n    \"department\": {\n        \"id\": 7\n    },\n    \"hiringManager\": {\n        \"id\": 10\n    },\n    \"dateOpened\": \"2025-01-01\",\n    \"jobType\": \"FULL_TIME\",\n    \"requiredSkills\": [\"Process Improvement\", \"Project Management\", \"Logistics\"],\n    \"addressInformation\": {\n        \"isRemoteJob\": false,\n        \"city\": \"Seattle\",\n        \"province\": \"WA\",\n        \"country\": \"USA\",\n        \"postalCode\": \"98101\"\n    },\n    \"descriptionInformation\": {\n        \"jobDescription\": \"Oversee daily operations and logistics.\",\n        \"requirements\": \"5+ years of experience in operations.\",\n        \"benefits\": \"Company vehicle and relocation support.\"\n    },\n    \"attachments\": [],\n    \"workExperience\": \"FIVE_PLUS_YEARS\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/job-openings"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get All Job Openings",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var template = `",
+									"<style type=\"text/css\">",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+									"    .tftable tr {background-color:#ffffff;}",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+									"    .tftable tr:hover {background-color:#e0ffff;}",
+									"</style>",
+									"",
+									"<table class=\"tftable\" border=\"1\">",
+									"    <tr>",
+									"        <th>ID</th>",
+									"        <th>Posting Title</th>",
+									"        <th>Title</th>",
+									"        <th>Target Date</th>",
+									"        <th>Status</th>",
+									"        <th>Industry</th>",
+									"        <th>Salary</th>",
+									"        <th>Department</th>",
+									"        <th>Hiring Manager</th>",
+									"        <th>Date Opened</th>",
+									"        <th>Job Type</th>",
+									"    </tr>",
+									"    ",
+									"    {{#each response}}",
+									"        <tr>",
+									"            <td>{{id}}</td>",
+									"            <td>{{postingTitle}}</td>",
+									"            <td>{{title}}</td>",
+									"            <td>{{targetDate}}</td>",
+									"            <td>{{status}}</td>",
+									"            <td>{{industry}}</td>",
+									"            <td>{{salary}}</td>",
+									"            <td>{{department.departmentName}}</td>",
+									"            <td>{{hiringManager.firstName}} {{hiringManager.lastName}}</td>",
+									"            <td>{{dateOpened}}</td>",
+									"            <td>{{jobType}}</td>",
+									"        </tr>",
+									"    {{/each}}",
+									"</table>",
+									"`;",
+									"",
+									"function constructVisualizerPayload() {",
+									"    return {response: pm.response.json()}",
+									"}",
+									"",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "{{baseUrl}}/api/job-openings"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Job Opening by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/job-openings/3",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"job-openings",
+								"3"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Job Opening",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"postingTitle\": \"Senior Developer\",\n    \"title\": \"Senior Java Developer\",\n    \"assignedRecruiter\": {\n        \"id\": 1\n    },\n    \"targetDate\": \"2025-01-30\",\n    \"status\": \"IN_PROGRESS\",\n    \"industry\": \"IT Services\",\n    \"salary\": \"120000\",\n    \"department\": {\n        \"id\": 1\n    },\n    \"hiringManager\": {\n        \"id\": 4\n    },\n    \"dateOpened\": \"2025-01-01\",\n    \"jobType\": \"FULL_TIME\",\n    \"requiredSkills\": [\"Java\", \"Spring Boot\", \"Microservices\"],\n    \"addressInformation\": {\n        \"isRemoteJob\": true,\n        \"city\": \"New York\",\n        \"province\": \"NY\",\n        \"country\": \"USA\",\n        \"postalCode\": \"10001\"\n    },\n    \"descriptionInformation\": {\n        \"jobDescription\": \"Develop and maintain Java-based applications.\",\n        \"requirements\": \"5+ years of experience in Java development.\",\n        \"benefits\": \"Health insurance, 401(k), and remote work flexibility.\"\n    },\n    \"attachments\": [],\n    \"workExperience\": \"FIVE_PLUS_YEARS\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/api/job-openings/3"
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Job Opening Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "{{baseUrl}}/api/job-openings/3"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Group-pending",
+			"item": [
+				{
+					"name": "Create Group",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Recruitment Team\",\n  \"description\": \"Team for managing recruitment process\",\n  \"members\": [\n    {\n      \"id\": 1,\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\"\n    }\n  ]\n}"
+						},
+						"url": "{{baseUrl}}/api/groups"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Users to a Group",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Updated Recruitment Team\",\n    \"description\": \"Updated description for the recruitment team\",\n    \"members\": [\n        {\n            \"id\": 1,\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\"\n        },\n        {\n            \"id\": 2,\n            \"firstName\": \"Jane\",\n            \"lastName\": \"Smith\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/api/groups/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Groups",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": "{{baseUrl}}/api/groups"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a Group",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Updated Standard Profile\",\n    \"description\": \"Updated permissions for a standard user\",\n    \"permissions\": \"{\\\"modulePermissions\\\":{\\\"view\\\":true,\\\"create\\\":true,\\\"edit\\\":true,\\\"delete\\\":true}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/groups/1?",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"groups",
+								"1"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Resume",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Job Types",
+			"item": [
+				{
+					"name": "Get All job-types",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Job Status",
+			"item": [
+				{
+					"name": "Get All job status",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsImlhdCI6MTczNzAyNzI5MiwiZXhwIjoxNzM3MDYzMjkyfQ.5_O5bll5r5cBc-z_0FoBrIBg6MPKASpcFjRjFbUdmsE"
+							},
+							{
+								"key": "Cookie",
+								"value": "JSESSIONID=A9DCE79B50F229B3B8188FD8703CC992"
+							}
+						],
+						"url": "http://localhost:8080/api/job-status"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
