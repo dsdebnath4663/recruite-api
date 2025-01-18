@@ -1,0 +1,17 @@
+{
+  "firstName": "admin",
+  "lastName": "admin",
+  "email": "admin@example.com",
+  "password": "admin@123",
+  "role": {
+    "id": 1,
+    "name": "Recruiter Admin"
+  },
+  "profile": {
+    "id": 1,
+    "name": "Admin Profile"
+  },
+  "phone": "9876543210",
+  "address": "575 Main Street, Mumbai",
+  "territory": "West"
+}

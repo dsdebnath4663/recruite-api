@@ -1,0 +1,17 @@
+{
+  "firstName": "Emma",
+  "lastName": "Hall",
+  "email": "emma_hall78@gmail.com",
+  "password": "password",
+  "role": {
+    "id": 3,
+    "name": "Administrator"
+  },
+  "profile": {
+    "id": 4,
+    "name": "Coordinator Profile"
+  },
+  "phone": "1305234071",
+  "address": "623 Main St",
+  "territory": "Central"
+}

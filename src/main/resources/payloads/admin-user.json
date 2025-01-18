@@ -1,0 +1,17 @@
+{
+  "firstName": "Rohit",
+  "lastName": "Sharma",
+  "email": "rohitsunilsharma2000@gmail.com",
+  "password": "password",
+  "role": {
+    "id": 1,
+    "name": "Recruiter Admin"
+  },
+  "profile": {
+    "id": 1,
+    "name": "Admin Profile"
+  },
+  "phone": "9876543210",
+  "address": "575 Main Street, Mumbai",
+  "territory": "West"
+}

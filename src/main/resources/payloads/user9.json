@@ -1,0 +1,17 @@
+{
+  "firstName": "Sarah",
+  "lastName": "Brown",
+  "email": "sarah_brown12@gmail.com",
+  "password": "password",
+  "role": {
+    "id": 3,
+    "name": "Administrator"
+  },
+  "profile": {
+    "id": 4,
+    "name": "Team Lead Profile"
+  },
+  "phone": "2462003587",
+  "address": "123 Main St",
+  "territory": "West"
+}

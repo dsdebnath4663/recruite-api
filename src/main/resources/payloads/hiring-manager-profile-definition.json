@@ -1,0 +1,189 @@
+{
+  "name": "Hiring Manager",
+  "description": "Can create jobs, review candidates submitted and add notes.",
+  "permissions": {
+    "modulePermissions": [
+      {
+        "entity": "Home",
+        "tabVisible": false,
+        "view": false,
+        "create": true,
+        "edit": true,
+        "delete": true
+      },
+      {
+        "entity": "Job Openings",
+        "tabVisible": true,
+        "view": false,
+        "create": true,
+        "edit": false,
+        "delete": true
+      },
+      {
+        "entity": "Applications",
+        "tabVisible": true,
+        "view": true,
+        "create": false,
+        "edit": false,
+        "delete": false
+      },
+      {
+        "entity": "Candidates",
+        "tabVisible": false,
+        "view": false,
+        "create": false,
+        "edit": true,
+        "delete": true
+      },
+      {
+        "entity": "Referrals",
+        "tabVisible": false,
+        "view": false,
+        "create": true,
+        "edit": true,
+        "delete": false
+      },
+      {
+        "entity": "Interviews",
+        "tabVisible": true,
+        "view": false,
+        "create": true,
+        "edit": false,
+        "delete": true
+      },
+      {
+        "entity": "Departments",
+        "tabVisible": true,
+        "view": true,
+        "create": true,
+        "edit": false,
+        "delete": false
+      },
+      {
+        "entity": "Analytics",
+        "tabVisible": true,
+        "view": true,
+        "create": true,
+        "edit": true,
+        "delete": true
+      },
+      {
+        "entity": "Metrics",
+        "tabVisible": true,
+        "view": false,
+        "create": true,
+        "edit": true,
+        "delete": false
+      },
+      {
+        "entity": "Dashboards",
+        "tabVisible": true,
+        "view": false,
+        "create": true,
+        "edit": false,
+        "delete": false
+      },
+      {
+        "entity": "Reports",
+        "tabVisible": false,
+        "view": true,
+        "create": true,
+        "edit": true,
+        "delete": true
+      },
+      {
+        "entity": "Campaigns",
+        "tabVisible": true,
+        "view": true,
+        "create": true,
+        "edit": false,
+        "delete": false
+      },
+      {
+        "entity": "Assessments",
+        "tabVisible": false,
+        "view": true,
+        "create": false,
+        "edit": true,
+        "delete": true
+      },
+      {
+        "entity": "To-Dos",
+        "tabVisible": false,
+        "view": false,
+        "create": false,
+        "edit": false,
+        "delete": true
+      },
+      {
+        "entity": "Vendors",
+        "tabVisible": true,
+        "view": true,
+        "create": true,
+        "edit": false,
+        "delete": true
+      },
+      {
+        "entity": "Notes",
+        "tabVisible": false,
+        "view": false,
+        "create": true,
+        "edit": true,
+        "delete": false
+      },
+      {
+        "entity": "Recruiter Inbox",
+        "tabVisible": true,
+        "view": false,
+        "create": true,
+        "edit": false,
+        "delete": false
+      },
+      {
+        "entity": "My Actions",
+        "tabVisible": true,
+        "view": false,
+        "create": false,
+        "edit": false,
+        "delete": true
+      },
+      {
+        "entity": "Emails",
+        "tabVisible": false,
+        "view": true,
+        "create": true,
+        "edit": true,
+        "delete": true
+      },
+      {
+        "entity": "Documents",
+        "tabVisible": false,
+        "view": true,
+        "create": false,
+        "edit": false,
+        "delete": false
+      },
+      {
+        "entity": "Submissions",
+        "tabVisible": false,
+        "view": true,
+        "create": false,
+        "edit": false,
+        "delete": true
+      },
+      {
+        "entity": "Offers",
+        "tabVisible": false,
+        "view": true,
+        "create": false,
+        "edit": true,
+        "delete": false
+      }
+    ],
+    "socialPermissions": {
+      "socialAdmin": true,
+      "managePosts": true,
+      "viewAnalytics": true
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "firstName": "Sarah",
+  "lastName": "Martin",
+  "email": "sarah_martin63@gmail.com",
+  "password": "password",
+  "role": {
+    "id": 2,
+    "name": "Recruiter"
+  },
+  "profile": {
+    "id": 1,
+    "name": "Standard Profile"
+  },
+  "phone": "9475907538",
+  "address": "515 Main St",
+  "territory": "East"
+}

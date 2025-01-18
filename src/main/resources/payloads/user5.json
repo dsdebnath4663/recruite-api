@@ -1,0 +1,17 @@
+{
+  "firstName": "Ravi",
+  "lastName": "Singh",
+  "email": "ravi_singh29@gmail.com",
+  "password": "password",
+  "role": {
+    "id": 4,
+    "name": "Coordinator"
+  },
+  "profile": {
+    "id": 1,
+    "name": "Standard Profile"
+  },
+  "phone": "9133447252",
+  "address": "971 Main St",
+  "territory": "North"
+}

@@ -1,0 +1,17 @@
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "john_doe34@gmail.com",
+  "password": "password",
+  "role": {
+    "id": 1,
+    "name": "Hiring Manager"
+  },
+  "profile": {
+    "id": 1,
+    "name": "Standard Profile"
+  },
+  "phone": "9086754895",
+  "address": "Mahabodhi clinic, Gitanjali Metro Station, Sreeguru Sangha Ashram, Durga Prasanna Paramahansha Rd, Naktala, Garia, Kolkata, West Bengal 700047",
+  "territory": "East"
+}

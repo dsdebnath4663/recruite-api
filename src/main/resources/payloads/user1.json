@@ -1,0 +1,18 @@
+{
+  "firstName": "Sarah",
+  "lastName": "Taylor",
+  "email": "sarah_taylor88@gmail.com",
+  "password": "password",
+
+  "role": {
+    "id": 2,
+    "name": "Recruiter"
+  },
+  "profile": {
+    "id": 4,
+    "name": "Coordinator Profile"
+  },
+  "phone": "6285105230",
+  "address": "575 Main St",
+  "territory": "South"
+}

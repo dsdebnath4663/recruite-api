@@ -1,0 +1,9 @@
+{
+  "name": "Recruiter",
+  "description": "Manages recruitment processes",
+  "reportsTo": {
+    "id": 1,
+    "name": "Recruiter Admin"
+  },
+  "shareDataWithPeers": true
+}

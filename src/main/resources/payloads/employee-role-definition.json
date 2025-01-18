@@ -1,0 +1,9 @@
+{
+  "name": "Employee",
+  "description": "Employees providing referrals or involved in hiring feedback",
+  "reportsTo": {
+    "id": 3,
+    "name": "Hiring Manager"
+  },
+  "shareDataWithPeers": false
+}

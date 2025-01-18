@@ -1,0 +1,17 @@
+{
+  "firstName": "David",
+  "lastName": "Taylor",
+  "email": "david_taylor47@gmail.com",
+  "password": "password",
+  "role": {
+    "id": 3,
+    "name": "Administrator"
+  },
+  "profile": {
+    "id": 4,
+    "name": "Team Lead Profile"
+  },
+  "phone": "4937860263",
+  "address": "676 Main St",
+  "territory": "South"
+}

@@ -1,0 +1,17 @@
+{
+  "firstName": "James",
+  "lastName": "Smith",
+  "email": "james_smith54@gmail.com",
+  "password": "password",
+  "role": {
+    "id": 4,
+    "name": "Team Lead"
+  },
+  "profile": {
+    "id": 3,
+    "name": "Recruiter Profile"
+  },
+  "phone": "2987647708",
+  "address": "353 Main St",
+  "territory": "Central"
+}

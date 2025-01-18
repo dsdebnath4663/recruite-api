@@ -1,0 +1,17 @@
+{
+  "firstName": "Emily",
+  "lastName": "Martin",
+  "email": "emily_martin42@gmail.com",
+  "password": "password",
+  "role": {
+    "id": 2,
+    "name": "Recruiter"
+  },
+  "profile": {
+    "id": 3,
+    "name": "Recruiter Profile"
+  },
+  "phone": "7342504060",
+  "address": "849 Main St",
+  "territory": "East"
+}

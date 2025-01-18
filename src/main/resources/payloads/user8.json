@@ -1,0 +1,17 @@
+{
+  "firstName": "Emily",
+  "lastName": "White",
+  "email": "emily_white36@gmail.com",
+  "password": "password",
+  "role": {
+    "id": 2,
+    "name": "Recruiter"
+  },
+  "profile": {
+    "id": 1,
+    "name": "Standard Profile"
+  },
+  "phone": "7188737487",
+  "address": "813 Main St",
+  "territory": "West"
+}

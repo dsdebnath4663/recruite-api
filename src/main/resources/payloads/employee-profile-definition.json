@@ -1,0 +1,189 @@
+{
+  "name": "Employee ",
+  "description": "Can create referrals and give interview feedback submitted to them.",
+  "permissions": {
+    "modulePermissions": [
+      {
+        "entity": "Home",
+        "tabVisible": true,
+        "view": true,
+        "create": true,
+        "edit": true,
+        "delete": true
+      },
+      {
+        "entity": "Job Openings",
+        "tabVisible": true,
+        "view": true,
+        "create": true,
+        "edit": true,
+        "delete": true
+      },
+      {
+        "entity": "Applications",
+        "tabVisible": true,
+        "view": true,
+        "create": true,
+        "edit": true,
+        "delete": true
+      },
+      {
+        "entity": "Candidates",
+        "tabVisible": true,
+        "view": true,
+        "create": true,
+        "edit": true,
+        "delete": true
+      },
+      {
+        "entity": "Referrals",
+        "tabVisible": true,
+        "view": true,
+        "create": true,
+        "edit": true,
+        "delete": true
+      },
+      {
+        "entity": "Interviews",
+        "tabVisible": true,
+        "view": true,
+        "create": true,
+        "edit": true,
+        "delete": true
+      },
+      {
+        "entity": "Departments",
+        "tabVisible": true,
+        "view": true,
+        "create": true,
+        "edit": true,
+        "delete": true
+      },
+      {
+        "entity": "Analytics",
+        "tabVisible": true,
+        "view": true,
+        "create": true,
+        "edit": true,
+        "delete": true
+      },
+      {
+        "entity": "Metrics",
+        "tabVisible": true,
+        "view": true,
+        "create": true,
+        "edit": true,
+        "delete": true
+      },
+      {
+        "entity": "Dashboards",
+        "tabVisible": true,
+        "view": true,
+        "create": true,
+        "edit": true,
+        "delete": true
+      },
+      {
+        "entity": "Reports",
+        "tabVisible": true,
+        "view": true,
+        "create": true,
+        "edit": true,
+        "delete": true
+      },
+      {
+        "entity": "Campaigns",
+        "tabVisible": true,
+        "view": true,
+        "create": true,
+        "edit": true,
+        "delete": true
+      },
+      {
+        "entity": "Assessments",
+        "tabVisible": true,
+        "view": true,
+        "create": true,
+        "edit": true,
+        "delete": true
+      },
+      {
+        "entity": "To-Dos",
+        "tabVisible": true,
+        "view": true,
+        "create": true,
+        "edit": true,
+        "delete": true
+      },
+      {
+        "entity": "Vendors",
+        "tabVisible": true,
+        "view": true,
+        "create": true,
+        "edit": true,
+        "delete": true
+      },
+      {
+        "entity": "Notes",
+        "tabVisible": true,
+        "view": true,
+        "create": true,
+        "edit": true,
+        "delete": true
+      },
+      {
+        "entity": "Recruiter Inbox",
+        "tabVisible": true,
+        "view": true,
+        "create": true,
+        "edit": true,
+        "delete": true
+      },
+      {
+        "entity": "My Actions",
+        "tabVisible": true,
+        "view": true,
+        "create": true,
+        "edit": true,
+        "delete": true
+      },
+      {
+        "entity": "Emails",
+        "tabVisible": true,
+        "view": true,
+        "create": true,
+        "edit": true,
+        "delete": true
+      },
+      {
+        "entity": "Documents",
+        "tabVisible": true,
+        "view": true,
+        "create": true,
+        "edit": true,
+        "delete": true
+      },
+      {
+        "entity": "Submissions",
+        "tabVisible": true,
+        "view": true,
+        "create": true,
+        "edit": true,
+        "delete": true
+      },
+      {
+        "entity": "Offers",
+        "tabVisible": true,
+        "view": true,
+        "create": true,
+        "edit": true,
+        "delete": true
+      }
+    ],
+    "socialPermissions": {
+      "socialAdmin": true,
+      "managePosts": true,
+      "viewAnalytics": true
+    }
+  }
+}

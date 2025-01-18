@@ -1,0 +1,9 @@
+{
+  "name": "Hiring Manager",
+  "description": "Oversees hiring for specific roles",
+  "reportsTo": {
+    "id": 2,
+    "name": "Recruiter"
+  },
+  "shareDataWithPeers": false
+}

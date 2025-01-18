@@ -1,0 +1,6 @@
+{
+  "departmentName": "Sales",
+  "parentDepartmentId": 3,
+  "departmentLeadId": 3,
+  "attachmentPath": "/attachments/marketing.pdf"
+}

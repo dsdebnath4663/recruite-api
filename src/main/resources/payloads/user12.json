@@ -1,0 +1,17 @@
+{
+  "firstName": "James",
+  "lastName": "Smith",
+  "email": "jamessmith6789@gmail.com",
+  "password": "password",
+  "role": {
+    "id": 2,
+    "name": "Manager"
+  },
+  "profile": {
+    "id": 1,
+    "name": "Executive Profile"
+  },
+  "phone": "9123456780",
+  "address": "120 Elm St",
+  "territory": "North"
+}
