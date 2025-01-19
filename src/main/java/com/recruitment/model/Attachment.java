@@ -13,19 +13,16 @@ public class Attachment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Attachment name is required")
-    @Column(nullable = false, unique = true)
-    private String departmentName; // Department name must be unique
 
-    @ManyToOne(fetch = FetchType.LAZY) // Lazy loading for department lead
-    @JoinColumn(name = "department_lead_id")
-    private User departmentLead; // Reference to the department lead (User table)
+    private String attachmentType; // Example: Resume, Cover Letter, Job Summary, Others
+    private String filePath;       // File path or URL to the attachment
 
-    @Column(nullable = true)
-    private String attachmentPath; // Store path for attachments
+    @ManyToOne
+    @JoinColumn(name = "candidate_id", nullable = true)
+    private Candidate candidate; // Nullable field for candidate-specific attachments
 
-    @ManyToOne(fetch = FetchType.LAZY) // Lazy loading for parent department
-    @JoinColumn(name = "parent_department_id")
-    private Department parentDepartment; // Reference to the parent department
+    @ManyToOne
+    @JoinColumn(name = "job_id", nullable = true)
+    private JobOpening jobOpening; // Nullable field for job-opening-specific attachments
 
 }

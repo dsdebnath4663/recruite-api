@@ -87,7 +87,7 @@ public class JobOpening {
 
     //For attachments, cascading ensures proper handling of child entities during updates.
     @OneToMany(mappedBy = "jobOpening", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<JobAttachment> attachments; // Attachment information
+    private List<Attachment> attachments; // Attachment information
 
     @NotNull(message = "Work experience is required")
     @Enumerated(EnumType.STRING)
