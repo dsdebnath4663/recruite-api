@@ -4,8 +4,8 @@
 		"name": "Recruitment API Collection-v2",
 		"description": "Postman collection for Recruitment API with token extraction and environment variable setup.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
-		"_exporter_id": "33860754",
-		"_collection_link": "https://intership-8198.postman.co/workspace/intership-Workspace~aae241b0-c5c8-4ef9-bd0f-664f46665995/collection/33860754-30874a64-1a8b-4882-b328-c1322b4ff540?action=share&source=collection_link&creator=33860754"
+		"_exporter_id": "37581217",
+		"_collection_link": "https://intership-8198.postman.co/workspace/intership-Workspace~aae241b0-c5c8-4ef9-bd0f-664f46665995/collection/33860754-30874a64-1a8b-4882-b328-c1322b4ff540?action=share&source=collection_link&creator=37581217"
 	},
 	"item": [
 		{
@@ -1750,6 +1750,531 @@
 							}
 						],
 						"url": "{{baseUrl}}/api/job-openings/3"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Candidate",
+			"item": [
+				{
+					"name": "Create",
+					"item": [
+						{
+							"name": "Create a New Candidate",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"secondaryEmail\": \"j.doe@secondary.com\",\n    \"phone\": \"1234567890\",\n    \"mobile\": \"9876543210\",\n    \"fax\": \"123-456-789\",\n    \"website\": \"https://johndoe.com\",\n    \"addressInformation\": {\n        \"city\": \"New York\",\n        \"province\": \"NY\",\n        \"country\": \"USA\",\n        \"postalCode\": \"10001\"\n    },\n    \"experienceInYears\": 5,\n    \"currentJobTitle\": \"Software Engineer\",\n    \"expectedSalary\": \"120000\",\n    \"currentSalary\": \"100000\",\n    \"currentEmployer\": \"Tech Corp\",\n    \"highestQualificationHeld\": \"Bachelor of Science in Computer Science\",\n    \"additionalInfo\": \"Looking for opportunities in full-stack development.\",\n    \"skypeId\": \"john.doe\",\n    \"skillSet\": [\n        \"Java\",\n        \"Spring Boot\",\n        \"ReactJS\"\n    ],\n    \"linkedIn\": \"https://linkedin.com/in/johndoe\",\n    \"twitter\": \"https://twitter.com/johndoe\",\n    \"facebook\": \"https://facebook.com/johndoe\",\n    \"candidateStatus\": \"Active\",\n    \"candidateOwnerId\": 1,\n    \"source\": \"Employee Referral\",\n    \"optOut\": false,\n    \"educationalDetails\": [\n        {\n            \"institute\": \"State University\",\n            \"major\": \"Computer Science\",\n            \"degree\": \"Bachelor\",\n            \"durationFrom\": \"2010-08\",\n            \"durationTo\": \"2014-05\",\n            \"currentlyPursuing\": false\n        }\n    ],\n    \"experienceDetails\": [\n        {\n            \"occupation\": \"Software Engineer\",\n            \"company\": \"Tech Corp\",\n            \"summary\": \"Developed RESTful APIs and microservices.\",\n            \"durationFrom\": \"2018-06\",\n            \"durationTo\": \"2023-01\",\n            \"currentlyWorkingHere\": false\n        }\n    ],\n    \"attachments\": [\n        {\n            \"attachmentType\": \"Resume\",\n            \"filePath\": \"/attachments/resume/john_doe.pdf\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/candidates"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Candidate: Software Engineer - 1",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"secondaryEmail\": \"j.doe@secondary.com\",\n    \"phone\": \"1234567890\",\n    \"mobile\": \"9876543210\",\n    \"fax\": \"123-456-789\",\n    \"website\": \"https://johndoe.com\",\n    \"addressInformation\": {\n        \"city\": \"New York\",\n        \"province\": \"NY\",\n        \"country\": \"USA\",\n        \"postalCode\": \"10001\"\n    },\n    \"experienceInYears\": 5,\n    \"currentJobTitle\": \"Software Engineer\",\n    \"expectedSalary\": \"120000\",\n    \"currentSalary\": \"100000\",\n    \"currentEmployer\": \"Tech Corp\",\n    \"highestQualificationHeld\": \"Bachelor of Science in Computer Science\",\n    \"additionalInfo\": \"Looking for opportunities in full-stack development.\",\n    \"skypeId\": \"john.doe\",\n    \"skillSet\": [\n        \"Java\",\n        \"Spring Boot\",\n        \"ReactJS\"\n    ],\n    \"linkedIn\": \"https://linkedin.com/in/johndoe\",\n    \"twitter\": \"https://twitter.com/johndoe\",\n    \"facebook\": \"https://facebook.com/johndoe\",\n    \"candidateStatus\": \"Active\",\n    \"candidateOwnerId\": 1,\n    \"source\": \"Employee Referral\",\n    \"optOut\": false,\n    \"educationalDetails\": [\n        {\n            \"institute\": \"State University\",\n            \"major\": \"Computer Science\",\n            \"degree\": \"Bachelor\",\n            \"durationFrom\": \"2010-08\",\n            \"durationTo\": \"2014-05\",\n            \"currentlyPursuing\": false\n        }\n    ],\n    \"experienceDetails\": [\n        {\n            \"occupation\": \"Software Engineer\",\n            \"company\": \"Tech Corp\",\n            \"summary\": \"Developed RESTful APIs and microservices.\",\n            \"durationFrom\": \"2018-06\",\n            \"durationTo\": \"2023-01\",\n            \"currentlyWorkingHere\": false\n        }\n    ],\n    \"attachments\": [\n        {\n            \"attachmentType\": \"Resume\",\n            \"filePath\": \"/attachments/resume/john_doe.pdf\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/candidates"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Candidate: Software Engineer -2",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"secondaryEmail\": \"j.doe@secondary.com\",\n    \"phone\": \"1234567890\",\n    \"mobile\": \"9876543210\",\n    \"fax\": \"123-456-789\",\n    \"website\": \"https://johndoe.com\",\n    \"addressInformation\": {\n        \"city\": \"New York\",\n        \"province\": \"NY\",\n        \"country\": \"USA\",\n        \"postalCode\": \"10001\"\n    },\n    \"experienceInYears\": 5,\n    \"currentJobTitle\": \"Software Engineer\",\n    \"expectedSalary\": \"120000\",\n    \"currentSalary\": \"100000\",\n    \"currentEmployer\": \"Tech Corp\",\n    \"highestQualificationHeld\": \"Bachelor of Science in Computer Science\",\n    \"additionalInfo\": \"Looking for opportunities in full-stack development.\",\n    \"skypeId\": \"john.doe\",\n    \"skillSet\": [\n        \"Java\",\n        \"Spring Boot\",\n        \"ReactJS\"\n    ],\n    \"linkedIn\": \"https://linkedin.com/in/johndoe\",\n    \"twitter\": \"https://twitter.com/johndoe\",\n    \"facebook\": \"https://facebook.com/johndoe\",\n    \"candidateStatus\": \"Active\",\n    \"candidateOwnerId\": 1,\n    \"source\": \"Employee Referral\",\n    \"optOut\": false,\n    \"educationalDetails\": [\n        {\n            \"institute\": \"State University\",\n            \"major\": \"Computer Science\",\n            \"degree\": \"Bachelor\",\n            \"durationFrom\": \"2010-08\",\n            \"durationTo\": \"2014-05\",\n            \"currentlyPursuing\": false\n        }\n    ],\n    \"experienceDetails\": [\n        {\n            \"occupation\": \"Software Engineer\",\n            \"company\": \"Tech Corp\",\n            \"summary\": \"Developed RESTful APIs and microservices.\",\n            \"durationFrom\": \"2018-06\",\n            \"durationTo\": \"2023-01\",\n            \"currentlyWorkingHere\": false\n        }\n    ],\n    \"attachments\": [\n        {\n            \"attachmentType\": \"Resume\",\n            \"filePath\": \"/attachments/resume/john_doe.pdf\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/candidates"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Candidate:  Marketing Manager",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"secondaryEmail\": \"j.doe@secondary.com\",\n    \"phone\": \"1234567890\",\n    \"mobile\": \"9876543210\",\n    \"fax\": \"123-456-789\",\n    \"website\": \"https://johndoe.com\",\n    \"addressInformation\": {\n        \"city\": \"New York\",\n        \"province\": \"NY\",\n        \"country\": \"USA\",\n        \"postalCode\": \"10001\"\n    },\n    \"experienceInYears\": 5,\n    \"currentJobTitle\": \"Software Engineer\",\n    \"expectedSalary\": \"120000\",\n    \"currentSalary\": \"100000\",\n    \"currentEmployer\": \"Tech Corp\",\n    \"highestQualificationHeld\": \"Bachelor of Science in Computer Science\",\n    \"additionalInfo\": \"Looking for opportunities in full-stack development.\",\n    \"skypeId\": \"john.doe\",\n    \"skillSet\": [\n        \"Java\",\n        \"Spring Boot\",\n        \"ReactJS\"\n    ],\n    \"linkedIn\": \"https://linkedin.com/in/johndoe\",\n    \"twitter\": \"https://twitter.com/johndoe\",\n    \"facebook\": \"https://facebook.com/johndoe\",\n    \"candidateStatus\": \"Active\",\n    \"candidateOwnerId\": 1,\n    \"source\": \"Employee Referral\",\n    \"optOut\": false,\n    \"educationalDetails\": [\n        {\n            \"institute\": \"State University\",\n            \"major\": \"Computer Science\",\n            \"degree\": \"Bachelor\",\n            \"durationFrom\": \"2010-08\",\n            \"durationTo\": \"2014-05\",\n            \"currentlyPursuing\": false\n        }\n    ],\n    \"experienceDetails\": [\n        {\n            \"occupation\": \"Software Engineer\",\n            \"company\": \"Tech Corp\",\n            \"summary\": \"Developed RESTful APIs and microservices.\",\n            \"durationFrom\": \"2018-06\",\n            \"durationTo\": \"2023-01\",\n            \"currentlyWorkingHere\": false\n        }\n    ],\n    \"attachments\": [\n        {\n            \"attachmentType\": \"Resume\",\n            \"filePath\": \"/attachments/resume/john_doe.pdf\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/candidates"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Candidate:  Sales Executive",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"secondaryEmail\": \"j.doe@secondary.com\",\n    \"phone\": \"1234567890\",\n    \"mobile\": \"9876543210\",\n    \"fax\": \"123-456-789\",\n    \"website\": \"https://johndoe.com\",\n    \"addressInformation\": {\n        \"city\": \"New York\",\n        \"province\": \"NY\",\n        \"country\": \"USA\",\n        \"postalCode\": \"10001\"\n    },\n    \"experienceInYears\": 5,\n    \"currentJobTitle\": \"Software Engineer\",\n    \"expectedSalary\": \"120000\",\n    \"currentSalary\": \"100000\",\n    \"currentEmployer\": \"Tech Corp\",\n    \"highestQualificationHeld\": \"Bachelor of Science in Computer Science\",\n    \"additionalInfo\": \"Looking for opportunities in full-stack development.\",\n    \"skypeId\": \"john.doe\",\n    \"skillSet\": [\n        \"Java\",\n        \"Spring Boot\",\n        \"ReactJS\"\n    ],\n    \"linkedIn\": \"https://linkedin.com/in/johndoe\",\n    \"twitter\": \"https://twitter.com/johndoe\",\n    \"facebook\": \"https://facebook.com/johndoe\",\n    \"candidateStatus\": \"Active\",\n    \"candidateOwnerId\": 1,\n    \"source\": \"Employee Referral\",\n    \"optOut\": false,\n    \"educationalDetails\": [\n        {\n            \"institute\": \"State University\",\n            \"major\": \"Computer Science\",\n            \"degree\": \"Bachelor\",\n            \"durationFrom\": \"2010-08\",\n            \"durationTo\": \"2014-05\",\n            \"currentlyPursuing\": false\n        }\n    ],\n    \"experienceDetails\": [\n        {\n            \"occupation\": \"Software Engineer\",\n            \"company\": \"Tech Corp\",\n            \"summary\": \"Developed RESTful APIs and microservices.\",\n            \"durationFrom\": \"2018-06\",\n            \"durationTo\": \"2023-01\",\n            \"currentlyWorkingHere\": false\n        }\n    ],\n    \"attachments\": [\n        {\n            \"attachmentType\": \"Resume\",\n            \"filePath\": \"/attachments/resume/john_doe.pdf\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/candidates"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Candidate:  HR Specialist",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"Priya\",\n    \"lastName\": \"Sharma\",\n    \"email\": \"priya.sharma@example.com\",\n    \"secondaryEmail\": \"priya.s.hr@example.com\",\n    \"phone\": \"9876543210\",\n    \"mobile\": \"8765432109\",\n    \"fax\": \"\",\n    \"website\": \"\",\n    \"addressInformation\": {\n        \"city\": \"Mumbai\",\n        \"province\": \"MH\",\n        \"country\": \"India\",\n        \"postalCode\": \"400001\"\n    },\n    \"experienceInYears\": 5,\n    \"currentJobTitle\": \"HR Specialist\",\n    \"expectedSalary\": \"850000\",\n    \"currentSalary\": \"700000\",\n    \"currentEmployer\": \"Tata Consultancy Services\",\n    \"highestQualificationHeld\": \"MBA in Human Resources\",\n    \"additionalInfo\": \"Expert in employee engagement, recruitment, and policy creation.\",\n    \"skypeId\": \"priya.sharma.hr\",\n    \"skillSet\": [\"Employee Engagement\", \"Recruitment\", \"Policy Creation\", \"HR Analytics\"],\n    \"linkedIn\": \"https://linkedin.com/in/priya-sharma\",\n    \"twitter\": \"\",\n    \"facebook\": \"\",\n    \"candidateStatus\": \"Active\",\n    \"candidateOwnerId\": 3,\n    \"source\": \"Employee Referral\",\n    \"optOut\": false,\n    \"educationalDetails\": [\n        {\n            \"institute\": \"IIM Ahmedabad\",\n            \"major\": \"Human Resources\",\n            \"degree\": \"MBA\",\n            \"durationFrom\": \"2015-07\",\n            \"durationTo\": \"2017-06\",\n            \"currentlyPursuing\": false\n        },\n        {\n            \"institute\": \"Mumbai University\",\n            \"major\": \"Commerce\",\n            \"degree\": \"Bachelor of Commerce\",\n            \"durationFrom\": \"2011-07\",\n            \"durationTo\": \"2014-06\",\n            \"currentlyPursuing\": false\n        }\n    ],\n    \"experienceDetails\": [\n        {\n            \"occupation\": \"HR Specialist\",\n            \"company\": \"Tata Consultancy Services\",\n            \"summary\": \"Led recruitment drives and implemented successful employee engagement programs.\",\n            \"durationFrom\": \"2018-09\",\n            \"durationTo\": \"2025-01\",\n            \"currentlyWorkingHere\": true\n        },\n        {\n            \"occupation\": \"HR Associate\",\n            \"company\": \"Infosys\",\n            \"summary\": \"Assisted in policy formulation and initial stages of recruitment.\",\n            \"durationFrom\": \"2017-07\",\n            \"durationTo\": \"2018-08\",\n            \"currentlyWorkingHere\": false\n        }\n    ],\n    \"attachments\": [\n        {\n            \"attachmentType\": \"Resume\",\n            \"filePath\": \"/attachments/resume/priya_sharma.pdf\"\n        },\n        {\n            \"attachmentType\": \"Cover Letter\",\n            \"filePath\": \"/attachments/cover_letter/priya_sharma.pdf\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/candidates"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Candidate:  Finance Analyst",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"Priya\",\n    \"lastName\": \"Sharma\",\n    \"email\": \"priya.sharma@example.com\",\n    \"secondaryEmail\": \"priya.s.hr@example.com\",\n    \"phone\": \"9876543210\",\n    \"mobile\": \"8765432109\",\n    \"fax\": \"\",\n    \"website\": \"\",\n    \"addressInformation\": {\n        \"city\": \"Mumbai\",\n        \"province\": \"MH\",\n        \"country\": \"India\",\n        \"postalCode\": \"400001\"\n    },\n    \"experienceInYears\": 5,\n    \"currentJobTitle\": \"HR Specialist\",\n    \"expectedSalary\": \"850000\",\n    \"currentSalary\": \"700000\",\n    \"currentEmployer\": \"Tata Consultancy Services\",\n    \"highestQualificationHeld\": \"MBA in Human Resources\",\n    \"additionalInfo\": \"Expert in employee engagement, recruitment, and policy creation.\",\n    \"skypeId\": \"priya.sharma.hr\",\n    \"skillSet\": [\"Employee Engagement\", \"Recruitment\", \"Policy Creation\", \"HR Analytics\"],\n    \"linkedIn\": \"https://linkedin.com/in/priya-sharma\",\n    \"twitter\": \"\",\n    \"facebook\": \"\",\n    \"candidateStatus\": \"Active\",\n    \"candidateOwnerId\": 3,\n    \"source\": \"Employee Referral\",\n    \"optOut\": false,\n    \"educationalDetails\": [\n        {\n            \"institute\": \"IIM Ahmedabad\",\n            \"major\": \"Human Resources\",\n            \"degree\": \"MBA\",\n            \"durationFrom\": \"2015-07\",\n            \"durationTo\": \"2017-06\",\n            \"currentlyPursuing\": false\n        },\n        {\n            \"institute\": \"Mumbai University\",\n            \"major\": \"Commerce\",\n            \"degree\": \"Bachelor of Commerce\",\n            \"durationFrom\": \"2011-07\",\n            \"durationTo\": \"2014-06\",\n            \"currentlyPursuing\": false\n        }\n    ],\n    \"experienceDetails\": [\n        {\n            \"occupation\": \"HR Specialist\",\n            \"company\": \"Tata Consultancy Services\",\n            \"summary\": \"Led recruitment drives and implemented successful employee engagement programs.\",\n            \"durationFrom\": \"2018-09\",\n            \"durationTo\": \"2025-01\",\n            \"currentlyWorkingHere\": true\n        },\n        {\n            \"occupation\": \"HR Associate\",\n            \"company\": \"Infosys\",\n            \"summary\": \"Assisted in policy formulation and initial stages of recruitment.\",\n            \"durationFrom\": \"2017-07\",\n            \"durationTo\": \"2018-08\",\n            \"currentlyWorkingHere\": false\n        }\n    ],\n    \"attachments\": [\n        {\n            \"attachmentType\": \"Resume\",\n            \"filePath\": \"/attachments/resume/priya_sharma.pdf\"\n        },\n        {\n            \"attachmentType\": \"Cover Letter\",\n            \"filePath\": \"/attachments/cover_letter/priya_sharma.pdf\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/candidates"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Candidate:   Product Specialist",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"Priya\",\n    \"lastName\": \"Sharma\",\n    \"email\": \"priya.sharma@example.com\",\n    \"secondaryEmail\": \"priya.s.hr@example.com\",\n    \"phone\": \"9876543210\",\n    \"mobile\": \"8765432109\",\n    \"fax\": \"\",\n    \"website\": \"\",\n    \"addressInformation\": {\n        \"city\": \"Mumbai\",\n        \"province\": \"MH\",\n        \"country\": \"India\",\n        \"postalCode\": \"400001\"\n    },\n    \"experienceInYears\": 5,\n    \"currentJobTitle\": \"HR Specialist\",\n    \"expectedSalary\": \"850000\",\n    \"currentSalary\": \"700000\",\n    \"currentEmployer\": \"Tata Consultancy Services\",\n    \"highestQualificationHeld\": \"MBA in Human Resources\",\n    \"additionalInfo\": \"Expert in employee engagement, recruitment, and policy creation.\",\n    \"skypeId\": \"priya.sharma.hr\",\n    \"skillSet\": [\"Employee Engagement\", \"Recruitment\", \"Policy Creation\", \"HR Analytics\"],\n    \"linkedIn\": \"https://linkedin.com/in/priya-sharma\",\n    \"twitter\": \"\",\n    \"facebook\": \"\",\n    \"candidateStatus\": \"Active\",\n    \"candidateOwnerId\": 3,\n    \"source\": \"Employee Referral\",\n    \"optOut\": false,\n    \"educationalDetails\": [\n        {\n            \"institute\": \"IIM Ahmedabad\",\n            \"major\": \"Human Resources\",\n            \"degree\": \"MBA\",\n            \"durationFrom\": \"2015-07\",\n            \"durationTo\": \"2017-06\",\n            \"currentlyPursuing\": false\n        },\n        {\n            \"institute\": \"Mumbai University\",\n            \"major\": \"Commerce\",\n            \"degree\": \"Bachelor of Commerce\",\n            \"durationFrom\": \"2011-07\",\n            \"durationTo\": \"2014-06\",\n            \"currentlyPursuing\": false\n        }\n    ],\n    \"experienceDetails\": [\n        {\n            \"occupation\": \"HR Specialist\",\n            \"company\": \"Tata Consultancy Services\",\n            \"summary\": \"Led recruitment drives and implemented successful employee engagement programs.\",\n            \"durationFrom\": \"2018-09\",\n            \"durationTo\": \"2025-01\",\n            \"currentlyWorkingHere\": true\n        },\n        {\n            \"occupation\": \"HR Associate\",\n            \"company\": \"Infosys\",\n            \"summary\": \"Assisted in policy formulation and initial stages of recruitment.\",\n            \"durationFrom\": \"2017-07\",\n            \"durationTo\": \"2018-08\",\n            \"currentlyWorkingHere\": false\n        }\n    ],\n    \"attachments\": [\n        {\n            \"attachmentType\": \"Resume\",\n            \"filePath\": \"/attachments/resume/priya_sharma.pdf\"\n        },\n        {\n            \"attachmentType\": \"Cover Letter\",\n            \"filePath\": \"/attachments/cover_letter/priya_sharma.pdf\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/candidates"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Candidate:    Customer Support Specialist",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"Priya\",\n    \"lastName\": \"Sharma\",\n    \"email\": \"priya.sharma@example.com\",\n    \"secondaryEmail\": \"priya.s.hr@example.com\",\n    \"phone\": \"9876543210\",\n    \"mobile\": \"8765432109\",\n    \"fax\": \"\",\n    \"website\": \"\",\n    \"addressInformation\": {\n        \"city\": \"Mumbai\",\n        \"province\": \"MH\",\n        \"country\": \"India\",\n        \"postalCode\": \"400001\"\n    },\n    \"experienceInYears\": 5,\n    \"currentJobTitle\": \"HR Specialist\",\n    \"expectedSalary\": \"850000\",\n    \"currentSalary\": \"700000\",\n    \"currentEmployer\": \"Tata Consultancy Services\",\n    \"highestQualificationHeld\": \"MBA in Human Resources\",\n    \"additionalInfo\": \"Expert in employee engagement, recruitment, and policy creation.\",\n    \"skypeId\": \"priya.sharma.hr\",\n    \"skillSet\": [\"Employee Engagement\", \"Recruitment\", \"Policy Creation\", \"HR Analytics\"],\n    \"linkedIn\": \"https://linkedin.com/in/priya-sharma\",\n    \"twitter\": \"\",\n    \"facebook\": \"\",\n    \"candidateStatus\": \"Active\",\n    \"candidateOwnerId\": 3,\n    \"source\": \"Employee Referral\",\n    \"optOut\": false,\n    \"educationalDetails\": [\n        {\n            \"institute\": \"IIM Ahmedabad\",\n            \"major\": \"Human Resources\",\n            \"degree\": \"MBA\",\n            \"durationFrom\": \"2015-07\",\n            \"durationTo\": \"2017-06\",\n            \"currentlyPursuing\": false\n        },\n        {\n            \"institute\": \"Mumbai University\",\n            \"major\": \"Commerce\",\n            \"degree\": \"Bachelor of Commerce\",\n            \"durationFrom\": \"2011-07\",\n            \"durationTo\": \"2014-06\",\n            \"currentlyPursuing\": false\n        }\n    ],\n    \"experienceDetails\": [\n        {\n            \"occupation\": \"HR Specialist\",\n            \"company\": \"Tata Consultancy Services\",\n            \"summary\": \"Led recruitment drives and implemented successful employee engagement programs.\",\n            \"durationFrom\": \"2018-09\",\n            \"durationTo\": \"2025-01\",\n            \"currentlyWorkingHere\": true\n        },\n        {\n            \"occupation\": \"HR Associate\",\n            \"company\": \"Infosys\",\n            \"summary\": \"Assisted in policy formulation and initial stages of recruitment.\",\n            \"durationFrom\": \"2017-07\",\n            \"durationTo\": \"2018-08\",\n            \"currentlyWorkingHere\": false\n        }\n    ],\n    \"attachments\": [\n        {\n            \"attachmentType\": \"Resume\",\n            \"filePath\": \"/attachments/resume/priya_sharma.pdf\"\n        },\n        {\n            \"attachmentType\": \"Cover Letter\",\n            \"filePath\": \"/attachments/cover_letter/priya_sharma.pdf\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/candidates"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Candidate:  Corporate Lawyer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"Priya\",\n    \"lastName\": \"Sharma\",\n    \"email\": \"priya.sharma@example.com\",\n    \"secondaryEmail\": \"priya.s.hr@example.com\",\n    \"phone\": \"9876543210\",\n    \"mobile\": \"8765432109\",\n    \"fax\": \"\",\n    \"website\": \"\",\n    \"addressInformation\": {\n        \"city\": \"Mumbai\",\n        \"province\": \"MH\",\n        \"country\": \"India\",\n        \"postalCode\": \"400001\"\n    },\n    \"experienceInYears\": 5,\n    \"currentJobTitle\": \"HR Specialist\",\n    \"expectedSalary\": \"850000\",\n    \"currentSalary\": \"700000\",\n    \"currentEmployer\": \"Tata Consultancy Services\",\n    \"highestQualificationHeld\": \"MBA in Human Resources\",\n    \"additionalInfo\": \"Expert in employee engagement, recruitment, and policy creation.\",\n    \"skypeId\": \"priya.sharma.hr\",\n    \"skillSet\": [\"Employee Engagement\", \"Recruitment\", \"Policy Creation\", \"HR Analytics\"],\n    \"linkedIn\": \"https://linkedin.com/in/priya-sharma\",\n    \"twitter\": \"\",\n    \"facebook\": \"\",\n    \"candidateStatus\": \"Active\",\n    \"candidateOwnerId\": 3,\n    \"source\": \"Employee Referral\",\n    \"optOut\": false,\n    \"educationalDetails\": [\n        {\n            \"institute\": \"IIM Ahmedabad\",\n            \"major\": \"Human Resources\",\n            \"degree\": \"MBA\",\n            \"durationFrom\": \"2015-07\",\n            \"durationTo\": \"2017-06\",\n            \"currentlyPursuing\": false\n        },\n        {\n            \"institute\": \"Mumbai University\",\n            \"major\": \"Commerce\",\n            \"degree\": \"Bachelor of Commerce\",\n            \"durationFrom\": \"2011-07\",\n            \"durationTo\": \"2014-06\",\n            \"currentlyPursuing\": false\n        }\n    ],\n    \"experienceDetails\": [\n        {\n            \"occupation\": \"HR Specialist\",\n            \"company\": \"Tata Consultancy Services\",\n            \"summary\": \"Led recruitment drives and implemented successful employee engagement programs.\",\n            \"durationFrom\": \"2018-09\",\n            \"durationTo\": \"2025-01\",\n            \"currentlyWorkingHere\": true\n        },\n        {\n            \"occupation\": \"HR Associate\",\n            \"company\": \"Infosys\",\n            \"summary\": \"Assisted in policy formulation and initial stages of recruitment.\",\n            \"durationFrom\": \"2017-07\",\n            \"durationTo\": \"2018-08\",\n            \"currentlyWorkingHere\": false\n        }\n    ],\n    \"attachments\": [\n        {\n            \"attachmentType\": \"Resume\",\n            \"filePath\": \"/attachments/resume/priya_sharma.pdf\"\n        },\n        {\n            \"attachmentType\": \"Cover Letter\",\n            \"filePath\": \"/attachments/cover_letter/priya_sharma.pdf\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/candidates"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Candidate:  Network Engineer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"firstName\": \"Ravi\",\n    \"lastName\": \"Sharma\",\n    \"email\": \"ravi.sharma@example.com\",\n    \"secondaryEmail\": \"ravi.networks@example.com\",\n    \"phone\": \"9988776655\",\n    \"mobile\": \"8877665544\",\n    \"fax\": \"\",\n    \"website\": \"https://ravisharmanetworks.com\",\n    \"addressInformation\": {\n        \"city\": \"Bangalore\",\n        \"province\": \"KA\",\n        \"country\": \"India\",\n        \"postalCode\": \"560001\"\n    },\n    \"experienceInYears\": 4,\n    \"currentJobTitle\": \"Network Engineer\",\n    \"expectedSalary\": \"900000\",\n    \"currentSalary\": \"750000\",\n    \"currentEmployer\": \"Cisco Systems\",\n    \"highestQualificationHeld\": \"Bachelor of Technology - Computer Networks\",\n    \"additionalInfo\": \"Specialist in network design, troubleshooting, and security.\",\n    \"skypeId\": \"ravi.sharma.network\",\n    \"skillSet\": [\"Networking\", \"Routing and Switching\", \"Firewall Configuration\", \"Network Security\", \"VPN\"],\n    \"linkedIn\": \"https://linkedin.com/in/ravi-sharma-networks\",\n    \"twitter\": \"\",\n    \"facebook\": \"\",\n    \"candidateStatus\": \"Active\",\n    \"candidateOwnerId\": 4,\n    \"source\": \"CALENDAR BOOKING\",\n    \"optOut\": false,\n    \"educationalDetails\": [\n        {\n            \"institute\": \"Indian Institute of Technology, Delhi\",\n            \"major\": \"Computer Networks\",\n            \"degree\": \"B.Tech\",\n            \"durationFrom\": \"2015-07\",\n            \"durationTo\": \"2019-06\",\n            \"currentlyPursuing\": false\n        }\n    ],\n    \"experienceDetails\": [\n        {\n            \"occupation\": \"Network Engineer\",\n            \"company\": \"Cisco Systems\",\n            \"summary\": \"Designed and maintained enterprise-level networks, ensured high availability, and implemented security protocols.\",\n            \"durationFrom\": \"2019-08\",\n            \"durationTo\": \"2025-01\",\n            \"currentlyWorkingHere\": true\n        },\n        {\n            \"occupation\": \"Network Analyst\",\n            \"company\": \"HCL Technologies\",\n            \"summary\": \"Monitored and optimized network performance and resolved connectivity issues.\",\n            \"durationFrom\": \"2017-06\",\n            \"durationTo\": \"2019-07\",\n            \"currentlyWorkingHere\": false\n        }\n    ],\n    \"attachments\": [\n        {\n            \"attachmentType\": \"Resume\",\n            \"filePath\": \"/attachments/resume/ravi_sharma.pdf\"\n        },\n        {\n            \"attachmentType\": \"Cover Letter\",\n            \"filePath\": \"/attachments/cover_letter/ravi_sharma.pdf\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/candidates"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Candidate:   Business Operations Specialist",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"firstName\": \"Ravi\",\n    \"lastName\": \"Sharma\",\n    \"email\": \"ravi.sharma@example.com\",\n    \"secondaryEmail\": \"ravi.networks@example.com\",\n    \"phone\": \"9988776655\",\n    \"mobile\": \"8877665544\",\n    \"fax\": \"\",\n    \"website\": \"https://ravisharmanetworks.com\",\n    \"addressInformation\": {\n        \"city\": \"Bangalore\",\n        \"province\": \"KA\",\n        \"country\": \"India\",\n        \"postalCode\": \"560001\"\n    },\n    \"experienceInYears\": 4,\n    \"currentJobTitle\": \"Network Engineer\",\n    \"expectedSalary\": \"900000\",\n    \"currentSalary\": \"750000\",\n    \"currentEmployer\": \"Cisco Systems\",\n    \"highestQualificationHeld\": \"Bachelor of Technology - Computer Networks\",\n    \"additionalInfo\": \"Specialist in network design, troubleshooting, and security.\",\n    \"skypeId\": \"ravi.sharma.network\",\n    \"skillSet\": [\"Networking\", \"Routing and Switching\", \"Firewall Configuration\", \"Network Security\", \"VPN\"],\n    \"linkedIn\": \"https://linkedin.com/in/ravi-sharma-networks\",\n    \"twitter\": \"\",\n    \"facebook\": \"\",\n    \"candidateStatus\": \"Active\",\n    \"candidateOwnerId\": 4,\n    \"source\": \"CALENDAR BOOKING\",\n    \"optOut\": false,\n    \"educationalDetails\": [\n        {\n            \"institute\": \"Indian Institute of Technology, Delhi\",\n            \"major\": \"Computer Networks\",\n            \"degree\": \"B.Tech\",\n            \"durationFrom\": \"2015-07\",\n            \"durationTo\": \"2019-06\",\n            \"currentlyPursuing\": false\n        }\n    ],\n    \"experienceDetails\": [\n        {\n            \"occupation\": \"Network Engineer\",\n            \"company\": \"Cisco Systems\",\n            \"summary\": \"Designed and maintained enterprise-level networks, ensured high availability, and implemented security protocols.\",\n            \"durationFrom\": \"2019-08\",\n            \"durationTo\": \"2025-01\",\n            \"currentlyWorkingHere\": true\n        },\n        {\n            \"occupation\": \"Network Analyst\",\n            \"company\": \"HCL Technologies\",\n            \"summary\": \"Monitored and optimized network performance and resolved connectivity issues.\",\n            \"durationFrom\": \"2017-06\",\n            \"durationTo\": \"2019-07\",\n            \"currentlyWorkingHere\": false\n        }\n    ],\n    \"attachments\": [\n        {\n            \"attachmentType\": \"Resume\",\n            \"filePath\": \"/attachments/resume/ravi_sharma.pdf\"\n        },\n        {\n            \"attachmentType\": \"Cover Letter\",\n            \"filePath\": \"/attachments/cover_letter/ravi_sharma.pdf\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/candidates"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get Candidate by ID",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Candidates",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Get Candidates by Source",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Sources for Dropdown",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": "{{baseUrl}}/api/candidates/sources"
+					},
+					"response": []
+				},
+				{
+					"name": "500 Get Candidate by Email",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Job Application",
+			"item": [
+				{
+					"name": "Create",
+					"item": [
+						{
+							"name": "Create a New Job Application",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var template = `",
+											"<style type=\"text/css\">",
+											"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+											"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+											"    .tftable tr {background-color:#ffffff;}",
+											"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+											"    .tftable tr:hover {background-color:#e0ffff;}",
+											"</style>",
+											"",
+											"<table class=\"tftable\" border=\"1\">",
+											"    <tr>",
+											"        <th>Path</th>",
+											"        <th>Message</th>",
+											"        <th>Error</th>",
+											"        <th>Timestamp</th>",
+											"        <th>Status</th>",
+											"    </tr>",
+											"    <tr>",
+											"        <td>{{response.path}}</td>",
+											"        <td>{{response.message}}</td>",
+											"        <td>{{response.error}}</td>",
+											"        <td>{{response.timestamp}}</td>",
+											"        <td>{{response.status}}</td>",
+											"    </tr>",
+											"</table>",
+											"`;",
+											"",
+											"function constructVisualizerPayload() {",
+											"    return { response: pm.response.json() }",
+											"}",
+											"",
+											"pm.visualizer.set(template, constructVisualizerPayload());"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"candidateId\": 1,\n    \"jobOpeningId\": 2,\n    \"status\": \"SCREENING\",\n    \"comments\": \"Candidate has been shortlisted for initial review.\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/job-applications"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get All Application Statuses",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "500 Get Applications by Job Opening",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": "{{baseUrl}}/api/job-applications/job/2"
+					},
+					"response": []
+				},
+				{
+					"name": "500 Get Applications by Candidate",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": "{{baseUrl}}/api/job-applications/job/2"
 					},
 					"response": []
 				}
