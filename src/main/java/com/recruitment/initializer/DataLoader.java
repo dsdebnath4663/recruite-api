@@ -25,6 +25,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import org.springframework.beans.factory.annotation.Value;
 
 @Service
 @RequiredArgsConstructor
@@ -48,6 +49,10 @@ public class DataLoader {
 
     private final DepartmentService departmentService;
     private String token;
+
+    // Inject the server port or any other property
+    @Value("${server.port}")
+    private int serverPort;
 
     public void setToken ( String token ) {
         this.token = token;
@@ -153,7 +158,7 @@ public class DataLoader {
     private void authenticate () {
         log.info("Authenticating admin user...");
 
-        String url = "http://localhost:8080/api/auth/login";
+        String url = "http://localhost:"+serverPort+"/api/auth/login";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
