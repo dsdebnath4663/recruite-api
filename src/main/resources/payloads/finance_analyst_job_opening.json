@@ -1,0 +1,34 @@
+{
+  "postingTitle": "Finance Analyst",
+  "title": "Financial Planner",
+  "assignedRecruiter": {
+    "id": 5
+  },
+  "targetDate": "2025-02-01",
+  "status": "FILLED",
+  "industry": "Finance",
+  "salary": "100000",
+  "department": {
+    "id": 5
+  },
+  "hiringManager": {
+    "id": 8
+  },
+  "dateOpened": "2025-01-01",
+  "jobType": "CONTRACT",
+  "requiredSkills": ["Financial Analysis", "Budgeting", "Forecasting"],
+  "addressInformation": {
+    "isRemoteJob": false,
+    "city": "Houston",
+    "province": "TX",
+    "country": "USA",
+    "postalCode": "77001"
+  },
+  "descriptionInformation": {
+    "jobDescription": "Analyze financial data to improve performance.",
+    "requirements": "3-5 years in financial planning.",
+    "benefits": "Contract bonuses and free training."
+  },
+  "attachments": [],
+  "workExperience": "FIVE_PLUS_YEARS"
+}

@@ -1,0 +1,34 @@
+{
+  "postingTitle": "Senior Developer",
+  "title": "Java Developer",
+  "assignedRecruiter": {
+    "id": 1
+  },
+  "targetDate": "2025-01-30",
+  "status": "IN_PROGRESS",
+  "industry": "IT Services",
+  "salary": "120000",
+  "department": {
+    "id": 1
+  },
+  "hiringManager": {
+    "id": 4
+  },
+  "dateOpened": "2025-01-01",
+  "jobType": "FULL_TIME",
+  "requiredSkills": ["Java", "Spring Boot", "Microservices"],
+  "addressInformation": {
+    "isRemoteJob": true,
+    "city": "New York",
+    "province": "NY",
+    "country": "USA",
+    "postalCode": "10001"
+  },
+  "descriptionInformation": {
+    "jobDescription": "Develop and maintain Java-based applications.",
+    "requirements": "5+ years of experience in Java development.",
+    "benefits": "Health insurance, 401(k), and remote work flexibility."
+  },
+  "attachments": [],
+  "workExperience": "FIVE_PLUS_YEARS"
+}

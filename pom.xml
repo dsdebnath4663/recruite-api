@@ -135,6 +135,16 @@
             <artifactId>mysql-connector-j</artifactId>
             <scope>runtime</scope>
         </dependency>
+        <!--  The jackson-datatype-jsr310 module enables Jackson to serialize and deserialize Java 8 date/time
+        types like LocalDate, LocalDateTime, and ZonedDateTime. Without it, Jackson cannot handle these
+        types, resulting in an InvalidDefinitionException..-->
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>2.15.0</version> <!-- Use a compatible version -->
+        </dependency>
+
     </dependencies>
 
     <build>

@@ -1,0 +1,34 @@
+{
+  "postingTitle": "IT Manager",
+  "title": "Network Engineer",
+  "assignedRecruiter": {
+    "id": 6
+  },
+  "targetDate": "2025-03-05",
+  "status": "IN_PROGRESS",
+  "industry": "Information Technology",
+  "salary": "100000",
+  "department": {
+    "id": 6
+  },
+  "hiringManager": {
+    "id": 9
+  },
+  "dateOpened": "2025-01-01",
+  "jobType": "FULL_TIME",
+  "requiredSkills": ["Networking", "System Administration", "Cybersecurity"],
+  "addressInformation": {
+    "isRemoteJob": true,
+    "city": "Austin",
+    "province": "TX",
+    "country": "USA",
+    "postalCode": "73301"
+  },
+  "descriptionInformation": {
+    "jobDescription": "Maintain IT infrastructure and ensure cybersecurity.",
+    "requirements": "5+ years of experience in IT management.",
+    "benefits": "Remote work and training opportunities."
+  },
+  "attachments": [],
+  "workExperience": "FOUR_TO_FIVE_YEARS"
+}

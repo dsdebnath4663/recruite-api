@@ -1,0 +1,34 @@
+{
+  "postingTitle": "Customer Support Specialist",
+  "title": "Support Representative",
+  "assignedRecruiter": {
+    "id": 4
+  },
+  "targetDate": "2025-02-25",
+  "status": "ON_HOLD",
+  "industry": "Customer Support",
+  "salary": "55000",
+  "department": {
+    "id": 4
+  },
+  "hiringManager": {
+    "id": 7
+  },
+  "dateOpened": "2025-01-01",
+  "jobType": "FULL_TIME",
+  "requiredSkills": ["Customer Service", "Problem Solving", "CRM"],
+  "addressInformation": {
+    "isRemoteJob": false,
+    "city": "Chicago",
+    "province": "IL",
+    "country": "USA",
+    "postalCode": "60601"
+  },
+  "descriptionInformation": {
+    "jobDescription": "Provide world-class customer support.",
+    "requirements": "2+ years of experience in customer service.",
+    "benefits": "Health insurance and flexible hours."
+  },
+  "attachments": [],
+  "workExperience": "ONE_TO_THREE_YEARS"
+}

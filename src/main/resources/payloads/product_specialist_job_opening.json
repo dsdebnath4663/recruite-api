@@ -1,0 +1,34 @@
+{
+  "postingTitle": "Product Manager",
+  "title": "Product Specialist",
+  "assignedRecruiter": {
+    "id": 3
+  },
+  "targetDate": "2025-02-20",
+  "status": "IN_PROGRESS",
+  "industry": "Product Development",
+  "salary": "95000",
+  "department": {
+    "id": 3
+  },
+  "hiringManager": {
+    "id": 6
+  },
+  "dateOpened": "2025-01-01",
+  "jobType": "FULL_TIME",
+  "requiredSkills": ["Product Management", "Agile", "Scrum"],
+  "addressInformation": {
+    "isRemoteJob": true,
+    "city": "San Francisco",
+    "province": "CA",
+    "country": "USA",
+    "postalCode": "94101"
+  },
+  "descriptionInformation": {
+    "jobDescription": "Lead product lifecycle from concept to launch.",
+    "requirements": "5+ years of experience in product management.",
+    "benefits": "Stock options and health benefits."
+  },
+  "attachments": [],
+  "workExperience": "FIVE_PLUS_YEARS"
+}
