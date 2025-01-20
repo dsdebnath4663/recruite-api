@@ -30,6 +30,12 @@ public class JobApplication {
     @Column(nullable = false)
     private ApplicationStatus status; // Application status
 
+    /**
+     * Ensure the @Lob-annotated fields are fetched eagerly when accessing the entity.
+     * This forces Hibernate to load the field immediately when the entity is retrieved.
+     */
     @Lob
+    @Basic(fetch = FetchType.EAGER)
     private String comments; // Optional comments for the application
+
 }
