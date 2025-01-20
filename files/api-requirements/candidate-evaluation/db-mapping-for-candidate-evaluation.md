@@ -2,6 +2,9 @@ Here’s an updated explanation with **layman-friendly examples** using your `Jo
 
 ---
 
+<img src="https://github.com/rohitsunilsharma2000/recruite-api/blob/feature/user-group-management/files/images/candidate-evaluation/candidate-evaluation-db-mapping.png?raw=true"
+alt="candidate-evaluation-db-mapping.png"/>
+
 ### 1. **Entity Annotation (@Entity)**
 
 **Explanation:**  
