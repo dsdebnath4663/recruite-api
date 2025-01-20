@@ -1,0 +1,34 @@
+{
+  "postingTitle": "Sales Executive",
+  "title": "Field Sales Representative",
+  "assignedRecruiter": {
+    "id": 3
+  },
+  "targetDate": "2025-03-01",
+  "status": "IN_PROGRESS",
+  "industry": "Sales",
+  "salary": "70000",
+  "department": {
+    "id": 3
+  },
+  "hiringManager": {
+    "id": 6
+  },
+  "dateOpened": "2024-11-20",
+  "jobType": "PERMANENT",
+  "requiredSkills": ["Sales", "Customer Interaction", "Negotiation"],
+  "addressInformation": {
+    "isRemoteJob": false,
+    "city": "San Francisco",
+    "province": "CA",
+    "country": "USA",
+    "postalCode": "94105"
+  },
+  "descriptionInformation": {
+    "jobDescription": "Increase company revenue by acquiring clients.",
+    "requirements": "1-3 years of sales experience.",
+    "benefits": "Travel allowance and sales incentives."
+  },
+  "attachments": [],
+  "workExperience": "ONE_TO_THREE_YEARS"
+}

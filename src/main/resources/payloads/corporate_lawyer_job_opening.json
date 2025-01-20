@@ -1,0 +1,34 @@
+{
+  "postingTitle": "Legal Advisor",
+  "title": "Corporate Lawyer",
+  "assignedRecruiter": {
+    "id": 5
+  },
+  "targetDate": "2025-03-10",
+  "status": "WAITING_FOR_APPROVAL",
+  "industry": "Legal Services",
+  "salary": "120000",
+  "department": {
+    "id": 5
+  },
+  "hiringManager": {
+    "id": 8
+  },
+  "dateOpened": "2025-01-01",
+  "jobType": "FULL_TIME",
+  "requiredSkills": ["Corporate Law", "Compliance", "Negotiation"],
+  "addressInformation": {
+    "isRemoteJob": false,
+    "city": "Washington",
+    "province": "DC",
+    "country": "USA",
+    "postalCode": "20001"
+  },
+  "descriptionInformation": {
+    "jobDescription": "Advise on corporate legal matters.",
+    "requirements": "7+ years of experience in corporate law.",
+    "benefits": "High-profile clients and competitive salary."
+  },
+  "attachments": [],
+  "workExperience": "FIVE_PLUS_YEARS"
+}

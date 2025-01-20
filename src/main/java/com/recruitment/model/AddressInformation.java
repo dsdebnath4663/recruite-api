@@ -1,5 +1,6 @@
 package com.recruitment.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Embeddable;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
@@ -8,6 +9,7 @@ import lombok.Data;
 @Embeddable
 public class AddressInformation {
 
+    @JsonProperty("isRemoteJob")
     private boolean isRemoteJob; // Checkbox to indicate if the job is remote
 
     @NotBlank(message = "City is required")

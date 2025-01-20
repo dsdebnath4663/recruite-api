@@ -1,0 +1,34 @@
+{
+  "postingTitle": "HR Specialist",
+  "title": "Recruitment Coordinator",
+  "assignedRecruiter": {
+    "id": 1
+  },
+  "targetDate": "2025-02-28",
+  "status": "ON_HOLD",
+  "industry": "Human Resources",
+  "salary": "60000",
+  "department": {
+    "id": 4
+  },
+  "hiringManager": {
+    "id": 7
+  },
+  "dateOpened": "2025-01-08",
+  "jobType": "PART_TIME",
+  "requiredSkills": ["Recruitment", "Interviewing", "Onboarding"],
+  "addressInformation": {
+    "isRemoteJob": true,
+    "city": "Chicago",
+    "province": "IL",
+    "country": "USA",
+    "postalCode": "60601"
+  },
+  "descriptionInformation": {
+    "jobDescription": "Manage end-to-end recruitment processes.",
+    "requirements": "2+ years in HR recruitment.",
+    "benefits": "Flexible work hours and paid time off."
+  },
+  "attachments": [],
+  "workExperience": "ONE_TO_THREE_YEARS"
+}

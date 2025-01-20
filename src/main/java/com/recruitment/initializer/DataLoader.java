@@ -1,19 +1,17 @@
 package com.recruitment.initializer;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.recruitment.dto.CandidateEvaluationDTO;
 import com.recruitment.dto.DepartmentDTO;
 import com.recruitment.dto.UserResponseDTO;
-import com.recruitment.model.Department;
-import com.recruitment.model.User;
-import com.recruitment.model.UserProfile;
-import com.recruitment.model.UserRole;
+import com.recruitment.model.*;
 import com.recruitment.repository.ProfileRepository;
 import com.recruitment.repository.RoleRepository;
 import com.recruitment.repository.UserRepository;
-import com.recruitment.service.DepartmentService;
-import com.recruitment.service.FileService;
-import com.recruitment.service.RoleService;
-import com.recruitment.service.UserService;
+import com.recruitment.service.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +21,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import org.springframework.beans.factory.annotation.Value;
@@ -48,6 +47,9 @@ public class DataLoader {
     private final UserService userService;
 
     private final DepartmentService departmentService;
+
+    private final JobOpeningService jobOpeningService;
+
     private String token;
 
     // Inject the server port or any other property
@@ -69,6 +71,7 @@ public class DataLoader {
 //        createUsersUsingRestTemplate();
         createUsers();
         createDepartment();
+        createJobOpening();
 
         log.info("\n" +
                          "  ____        _        _         _                                      \n" +
@@ -471,6 +474,72 @@ public class DataLoader {
 
         log.info("Finished processing all department files.");
     }
+    private void createJobOpening() throws Exception {
+        log.info("Starting creation of job openings...");
 
+        String[] jobOpeningFiles = {
+                "java_developer_job_opening.json",
+                "software_engineer_job_opening.json", "marketing_manager_job_opening.json",  "sales_executive_job_opening.json",
+                "hr_specialist_job_opening.json",  "finance_analyst_job_opening.json",  "product_specialist_job_opening.json", "customer_support_specialist_job_opening.json",
+                "corporate_lawyer_job_opening.json",  "network_engineer_job_opening.json", "business_operations_specialist_job_opening.json"
+        };
+
+        for (String jobOpeningFile : jobOpeningFiles) {
+            log.info("Starting processing for job opening file: {}", jobOpeningFile);
+
+            try {
+                // Load and parse the file content
+                log.debug("Attempting to retrieve content for file: {}", jobOpeningFile);
+                String fileContent = fileService.getFileContent(jobOpeningFile);
+
+                if (fileContent == null || fileContent.isBlank()) {
+                    log.warn("File {} is empty or null. Skipping processing.", jobOpeningFile);
+                    continue;
+                }
+
+                log.debug("Successfully retrieved content for file: {}. Content length: {} characters.",
+                          jobOpeningFile, fileContent.length());
+
+                // Deserialize JSON into JobOpening object
+                log.debug("Deserializing content of file: {}", jobOpeningFile);
+                ObjectMapper objectMapper = new ObjectMapper();
+                objectMapper.registerModule(new JavaTimeModule());
+
+
+                // Optional: Configure the ObjectMapper for ISO-8601 formatting
+                objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+
+                JobOpening jobOpeningPayload = objectMapper.readValue(fileContent, JobOpening.class);
+
+                // Validate the parsed object
+                log.debug("Deserialized JobOpening object for file {}: {}", jobOpeningFile, jobOpeningPayload);
+
+                // Create the job opening
+                log.info("Creating job opening from file: {}", jobOpeningFile);
+                JobOpening jobOpeningResponse = jobOpeningService.createJobOpening(jobOpeningPayload);
+
+                log.info("Successfully created job opening with ID: {} from file: {}",
+                         jobOpeningResponse.getId(), jobOpeningFile);
+
+            } catch (JsonProcessingException e) {
+                log.error("JSON parsing error while processing file {}: {}", jobOpeningFile, e.getMessage(), e);
+            } catch (IOException e) {
+                log.error("I/O error while processing file {}: {}", jobOpeningFile, e.getMessage(), e);
+            } catch (Exception e) {
+                log.error("Unexpected error occurred while processing file {}: {}", jobOpeningFile, e.getMessage(), e);
+            }
+
+            // Add a 2-second delay between processing files
+//            try {
+//                log.debug("Adding delay before processing the next file...");
+//                TimeUnit.SECONDS.sleep(2);
+//            } catch (InterruptedException e) {
+//                log.warn("Thread interrupted during delay: {}", e.getMessage(), e);
+//                Thread.currentThread().interrupt();
+//            }
+        }
+
+        log.info("Finished processing all job opening files.");
+    }
 
 }
