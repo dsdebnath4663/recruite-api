@@ -2,7 +2,6 @@ package com.recruitment.controller;
 
 
 import com.recruitment.dto.CandidateEvaluationDTO;
-import com.recruitment.model.CandidateEvaluation;
 import com.recruitment.service.CandidateEvaluationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -42,18 +41,16 @@ public class CandidateEvaluationController {
         CandidateEvaluationDTO evaluation = candidateEvaluationService.evaluateCandidate(candidateId, evaluationDTO);
         return ResponseEntity.ok(evaluation);
     }
-
+//    getEvaluationsByCandidate
     /**
      * Get evaluation for a specific candidate.
      */
     @GetMapping("/{candidateId}")
-    @Operation(
-            summary = "Get candidate evaluation",
-            description = "Fetches the evaluation details of a specific candidate."
-    )
+    @Operation(summary = "Get candidate evaluations",
+            description = "Fetches all evaluations for a specific candidate.")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Evaluation fetched successfully"),
-            @ApiResponse(responseCode = "404", description = "Evaluation or candidate not found")
+            @ApiResponse(responseCode = "200", description = "Evaluations fetched successfully"),
+            @ApiResponse(responseCode = "404", description = "No evaluations found for the candidate")
     })
     public ResponseEntity<List<CandidateEvaluationDTO>> getEvaluationByCandidate(@PathVariable Long candidateId) {
         List<CandidateEvaluationDTO> evaluation = candidateEvaluationService.getEvaluationByCandidate(candidateId);

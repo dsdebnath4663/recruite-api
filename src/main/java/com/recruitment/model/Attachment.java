@@ -2,7 +2,6 @@ package com.recruitment.model;
 
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data
@@ -25,4 +24,8 @@ public class Attachment {
     @JoinColumn(name = "job_id", nullable = true)
     private JobOpening jobOpening; // Nullable field for job-opening-specific attachments
 
+    @ManyToOne
+    @JoinColumn(name = "interview_id")
+    private Interview interview;
+ //kk
 }

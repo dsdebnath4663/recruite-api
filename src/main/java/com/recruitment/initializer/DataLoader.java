@@ -114,7 +114,7 @@ public class DataLoader {
                                                            profile.setDescription(
                                                                    "This profile will have all the permissions");
                                                            profile.setPermissions(
-                                                                   permissionsBuilder.buildAdministratorPermissions());
+                                                                   PermissionsBuilder.buildAdministratorPermissions());
                                                            profile.setPermissionsJson(
                                                                    "{\"modulePermissions\":[{\"entity\":\"Home\",\"tabVisible\":true,\"view\":true,\"create\":true,\"edit\":true,\"delete\":true}],\"socialPermissions\":{\"socialAdmin\":true,\"managePosts\":true,\"viewAnalytics\":true}}");
                                                            UserProfile savedProfile = profileRepository.save(profile);
@@ -126,7 +126,7 @@ public class DataLoader {
 
             // Delay before creating the admin user
             log.info("Waiting for 2 seconds before creating the admin user...");
-            //TimeUnit.SECONDS.sleep(2);
+            
 
             // 3. Check if admin user exists, and create if necessary
             log.info("Checking for admin user...");
@@ -261,7 +261,7 @@ public class DataLoader {
             }
 
             log.info("Delaying for 2 seconds before processing the next file...");
-            //TimeUnit.SECONDS.sleep(2);
+            
         }
 
         log.info("Finished processing all role files.");
@@ -297,9 +297,8 @@ public class DataLoader {
                 log.error("Error occurred while creating profile from file {}: {}" , fileName , e.getMessage() , e);
             }
 
-            // Add a 2-second delay between processing files
+            
             log.info("Adding a delay of 2 seconds before processing the next file...");
-//            Thread.sleep(2000);
         }
 
         log.info("Completed processing all files for profiles.");
@@ -336,7 +335,7 @@ public class DataLoader {
             }
 
             log.info("Delaying for 2 seconds before processing the next file...");
-            //TimeUnit.SECONDS.sleep(2);
+            
         }
 
         log.info("Finished processing all profile files.");
@@ -372,7 +371,7 @@ public class DataLoader {
             }
 
             log.info("Delaying for 2 seconds before processing the next file...");
-            //TimeUnit.SECONDS.sleep(2);
+            
         }
 
         log.info("Finished processing all user files.");
@@ -410,9 +409,7 @@ public class DataLoader {
                 log.error("Error occurred while creating user from file {}: {}" , fileName , e.getMessage() , e);
             }
 
-            // Add a 2-second delay between processing files
             log.info("Delaying for 2 seconds before processing the next file...");
-            //TimeUnit.SECONDS.sleep(2);
         }
 
         log.info("Finished processing all user files.");
@@ -467,9 +464,8 @@ public class DataLoader {
                           departmentFile, e.getMessage(), e);
             }
 
-            // Add a 2-second delay between processing files
+            
             log.info("Delaying for 2 seconds before processing the next file...");
-//            TimeUnit.SECONDS.sleep(2);
         }
 
         log.info("Finished processing all department files.");
@@ -481,7 +477,8 @@ public class DataLoader {
                 "java_developer_job_opening.json",
                 "software_engineer_job_opening.json", "marketing_manager_job_opening.json",  "sales_executive_job_opening.json",
                 "hr_specialist_job_opening.json",  "finance_analyst_job_opening.json",  "product_specialist_job_opening.json", "customer_support_specialist_job_opening.json",
-                "corporate_lawyer_job_opening.json",  "network_engineer_job_opening.json", "business_operations_specialist_job_opening.json"
+                "corporate_lawyer_job_opening.json",  "network_engineer_job_opening.json"
+//                , "business_operations_specialist_job_opening.json"
         };
 
         for (String jobOpeningFile : jobOpeningFiles) {
@@ -528,15 +525,6 @@ public class DataLoader {
             } catch (Exception e) {
                 log.error("Unexpected error occurred while processing file {}: {}", jobOpeningFile, e.getMessage(), e);
             }
-
-            // Add a 2-second delay between processing files
-//            try {
-//                log.debug("Adding delay before processing the next file...");
-//                TimeUnit.SECONDS.sleep(2);
-//            } catch (InterruptedException e) {
-//                log.warn("Thread interrupted during delay: {}", e.getMessage(), e);
-//                Thread.currentThread().interrupt();
-//            }
         }
 
         log.info("Finished processing all job opening files.");
