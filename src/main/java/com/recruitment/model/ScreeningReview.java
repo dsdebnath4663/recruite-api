@@ -1,15 +1,16 @@
 package com.recruitment.model;
 
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.List;
-
 @Entity
 @Data
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ScreeningReview {
 
     @Id
@@ -18,18 +19,15 @@ public class ScreeningReview {
 
     @ManyToOne
     @JoinColumn(name = "evaluation_id", nullable = false)
-//    @JsonBackReference // Prevents infinite recursion
-    @JsonIgnoreProperties("screeningReviews") // Ignore "screeningReviews" in CandidateEvaluation
+    @JsonBackReference
     private CandidateEvaluation candidateEvaluation;
 
-    private String reviewType; // e.g., Pre-Screening, Behavioral, etc.
-
-    @OneToMany(mappedBy = "screeningReview", cascade = CascadeType.ALL, orphanRemoval = true)
-//    @JsonManagedReference // Manages the relationship to QuestionReview
-    @JsonIgnoreProperties("screeningReview") // Ignore "screeningReview" in QuestionReview
-    private List<QuestionReview> questionReviews;
-
+    private String reviewType;
     private int overallRating;
     private String status;
     private String overallComments;
+
+    @OneToMany(mappedBy = "screeningReview", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
+    private List<QuestionReview> questionReviews;
 }

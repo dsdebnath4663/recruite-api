@@ -1,76 +1,171 @@
 package com.recruitment.controller;
 
-
-import com.recruitment.dto.CandidateEvaluationDTO;
+import com.recruitment.model.Candidate;
+import com.recruitment.model.CandidateEvaluation;
+import com.recruitment.model.GeneralReview;
+import com.recruitment.model.QuestionBankTemplate;
+import com.recruitment.model.QuestionReview;
+import com.recruitment.model.ScreeningReview;
+import com.recruitment.repository.CandidateEvaluationRepository;
+import com.recruitment.repository.CandidateRepository;
+import com.recruitment.repository.QuestionBankTemplateRepository;
 import com.recruitment.service.CandidateEvaluationService;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/candidate-evaluations")
 public class CandidateEvaluationController {
 
-    private final CandidateEvaluationService candidateEvaluationService;
-
-    public CandidateEvaluationController(CandidateEvaluationService candidateEvaluationService) {
+    private final CandidateRepository candidateRepository;
+    private final CandidateEvaluationRepository candidateEvaluationRepository;
+    private final QuestionBankTemplateRepository questionBankTemplateRepository;
+    private  final CandidateEvaluationService candidateEvaluationService;
+    public CandidateEvaluationController( CandidateRepository candidateRepository,
+                                          CandidateEvaluationRepository candidateEvaluationRepository,
+                                          QuestionBankTemplateRepository questionBankTemplateRepository , CandidateEvaluationService candidateEvaluationService ) {
+        this.candidateRepository = candidateRepository;
+        this.candidateEvaluationRepository = candidateEvaluationRepository;
+        this.questionBankTemplateRepository = questionBankTemplateRepository;
         this.candidateEvaluationService = candidateEvaluationService;
     }
 
-    /**
-     * Create or update a candidate evaluation.
-     */
     @PostMapping("/{candidateId}")
-    @Operation(
-            summary = "Create or update candidate evaluation",
-            description = "Creates or updates an evaluation for a specific candidate based on the provided details."
-    )
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Evaluation created/updated successfully"),
-            @ApiResponse(responseCode = "404", description = "Candidate not found"),
-            @ApiResponse(responseCode = "400", description = "Invalid input data")
-    })
-    public ResponseEntity<CandidateEvaluationDTO> evaluateCandidate(
+    @Transactional
+    public ResponseEntity<CandidateEvaluation> evaluateCandidate(
             @PathVariable Long candidateId,
-            @RequestBody CandidateEvaluationDTO evaluationDTO
+            @RequestBody Map<String, Object> payload
     ) {
-        CandidateEvaluationDTO evaluation = candidateEvaluationService.evaluateCandidate(candidateId, evaluationDTO);
-        return ResponseEntity.ok(evaluation);
+        // 1) Fetch Candidate
+        Candidate candidate = candidateRepository.findById(candidateId)
+                                                 .orElseThrow(() -> new IllegalArgumentException("Candidate not found with ID: " + candidateId));
+
+        // 2) Create a new CandidateEvaluation entity
+        CandidateEvaluation evaluation = new CandidateEvaluation();
+        evaluation.setCandidate(candidate);
+
+        // 3) Parse the generalReview section
+        Map<String, Object> generalReviewMap = (Map<String, Object>) payload.get("generalReview");
+        if (generalReviewMap != null) {
+            GeneralReview gr = new GeneralReview();
+            gr.setRating( ((Number) generalReviewMap.getOrDefault("rating", 0)).intValue() );
+            gr.setCandidateStatus( (String) generalReviewMap.getOrDefault("candidateStatus", ""));
+            gr.setOverallComments( (String) generalReviewMap.getOrDefault("overallComments", ""));
+            evaluation.setGeneralReview(gr);
+        }
+
+        // 4) Parse the screeningReviews section
+        Map<String, Object> screeningReviewsMap = (Map<String, Object>) payload.get("screeningReviews");
+        List<ScreeningReview> finalScreeningList = new ArrayList<>();
+        if (screeningReviewsMap != null) {
+            // optional overallRating / status
+            Number srOverallRating = (Number) screeningReviewsMap.getOrDefault("overallRating", 0);
+            String srStatus = (String) screeningReviewsMap.getOrDefault("status", "");
+            String srOverallComments = (String) screeningReviewsMap.getOrDefault("overallComments", "");
+
+            // 4a) CandidateGeneralAssessment array
+            List<Map<String, Object>> candidateGeneralAssessment = (List<Map<String, Object>>) screeningReviewsMap.get("CandidateGeneralAssessment");
+            if (candidateGeneralAssessment != null) {
+                for (Map<String, Object> assessment : candidateGeneralAssessment) {
+                    ScreeningReview sr = new ScreeningReview();
+                    // combine the top-level overallRating, status, overallComments w/ each sub-block if needed
+                    sr.setOverallRating(srOverallRating.intValue());
+                    sr.setStatus(srStatus);
+                    sr.setOverallComments(srOverallComments);
+                    sr.setCandidateEvaluation(evaluation);
+
+                    // e.g. competencyType = Pre-Screening / Behavioral
+                    String competencyType = (String) assessment.getOrDefault("competencyType", "");
+                    sr.setReviewType(competencyType);
+
+                    // questionReviews
+                    List<Map<String, Object>> questionReviews = (List<Map<String, Object>>) assessment.get("questionReviews");
+                    if (questionReviews != null) {
+                        List<QuestionReview> questionReviewEntities = questionReviews.stream()
+                                                                                     .map(qrMap -> {
+                                                                                         QuestionReview qr = new QuestionReview();
+                                                                                         qr.setScreeningReview(sr);
+
+                                                                                         // rating
+                                                                                         Number ratingVal = (Number) qrMap.getOrDefault("rating", 0);
+                                                                                         qr.setRating(ratingVal.intValue());
+
+                                                                                         // comments
+                                                                                         String comments = (String) qrMap.getOrDefault("comments", "");
+                                                                                         qr.setComments(comments);
+
+                                                                                         // questionBankTemplateId
+                                                                                         Number templateId = (Number) qrMap.get("questionBankTemplateId");
+                                                                                         if (templateId == null) {
+                                                                                             throw new IllegalArgumentException("questionBankTemplateId is required and cannot be null.");
+                                                                                         }
+                                                                                         // fetch from DB
+                                                                                         QuestionBankTemplate qbt = questionBankTemplateRepository.findById(templateId.longValue())
+                                                                                                                                                  .orElseThrow(() -> new IllegalArgumentException("QuestionBankTemplate not found: " + templateId));
+                                                                                         qr.setQuestionBankTemplate(qbt);
+
+                                                                                         return qr;
+                                                                                     }).collect(Collectors.toList());
+                        sr.setQuestionReviews(questionReviewEntities);
+                    }
+
+                    finalScreeningList.add(sr);
+                }
+            }
+        }
+
+        evaluation.setScreeningReviews(finalScreeningList);
+
+        // 5) Save the evaluation
+        CandidateEvaluation saved = candidateEvaluationRepository.save(evaluation);
+        return ResponseEntity.ok(saved);
     }
-//    getEvaluationsByCandidate
     /**
-     * Get evaluation for a specific candidate.
+     * 2) Get all evaluations
      */
-    @GetMapping("/{candidateId}")
-    @Operation(summary = "Get candidate evaluations",
-            description = "Fetches all evaluations for a specific candidate.")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Evaluations fetched successfully"),
-            @ApiResponse(responseCode = "404", description = "No evaluations found for the candidate")
-    })
-    public ResponseEntity<List<CandidateEvaluationDTO>> getEvaluationByCandidate(@PathVariable Long candidateId) {
-        List<CandidateEvaluationDTO> evaluation = candidateEvaluationService.getEvaluationByCandidate(candidateId);
+    @GetMapping
+    public ResponseEntity<List<CandidateEvaluation>> getAllEvaluations() {
+        log.info("Fetching all candidate evaluations...");
+        List<CandidateEvaluation> evaluations = candidateEvaluationService.getAllEvaluations();
+        log.info("Found {} evaluations.", evaluations.size());
+        return ResponseEntity.ok(evaluations);
+    }
+
+    /**
+     * 3) Get a single evaluation by its ID
+     */
+    @GetMapping("/by-id/{evaluationId}")
+    public ResponseEntity<CandidateEvaluation> getEvaluationById(@PathVariable Long evaluationId) {
+        log.info("Fetching evaluation ID: {}", evaluationId);
+        CandidateEvaluation evaluation = candidateEvaluationService.getEvaluationById(evaluationId);
         return ResponseEntity.ok(evaluation);
     }
 
     /**
-     * Delete a candidate evaluation.
+     * 4) Get an evaluation by candidate
+     */
+    @GetMapping("/candidate/{candidateId}")
+    public ResponseEntity<CandidateEvaluation> getEvaluationByCandidate(@PathVariable Long candidateId) {
+        log.info("Fetching evaluation for candidate ID: {}", candidateId);
+        CandidateEvaluation evaluation = candidateEvaluationService.getEvaluationByCandidate(candidateId);
+        return ResponseEntity.ok(evaluation);
+    }
+
+    /**
+     * 5) Delete an evaluation by ID
      */
     @DeleteMapping("/{evaluationId}")
-    @Operation(
-            summary = "Delete candidate evaluation",
-            description = "Deletes an evaluation for a specific candidate."
-    )
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Evaluation deleted successfully"),
-            @ApiResponse(responseCode = "404", description = "Evaluation not found")
-    })
     public ResponseEntity<String> deleteEvaluation(@PathVariable Long evaluationId) {
+        log.info("Deleting evaluation ID: {}", evaluationId);
         candidateEvaluationService.deleteEvaluation(evaluationId);
-        return ResponseEntity.ok("Candidate evaluation deleted successfully.");
+        return ResponseEntity.ok("Evaluation deleted successfully.");
     }
 }

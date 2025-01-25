@@ -1298,6 +1298,35 @@
 							"response": []
 						},
 						{
+							"name": "test",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"postingTitle\": \"1\",\n    \"title\": \"Product Manager\",\n    \"assignedRecruiter\": {\n        \"id\": 4\n    },\n    \"targetDate\": \"2025-01-04\",\n    \"status\": \"NONE\",\n    \"industry\": \"None\",\n    \"salary\": \"1\",\n    \"department\": {\n        \"id\": \"1\"\n    },\n    \"hiringManager\": {\n        \"id\": 9\n    },\n    \"dateOpened\": \"2025-01-16\",\n    \"jobType\": \"NONE\",\n    \"requiredSkills\": [\n        \"java\"\n    ],\n    \"addressInformation\": {\n        \"isRemoteJob\": true,\n        \"city\": \"1\",\n        \"province\": \"1\",\n        \"country\": \"Albania\",\n        \"postalCode\": \"1\"\n    },\n    \"descriptionInformation\": {\n        \"jobDescription\": \"1\",\n        \"requirements\": \"1\",\n        \"benefits\": \"1\"\n    },\n    \"attachments\": [],\n    \"workExperience\": \"1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/job-openings"
+							},
+							"response": []
+						},
+						{
 							"name": "Create Software Engineer Job Opening",
 							"request": {
 								"method": "POST",
@@ -1791,6 +1820,35 @@
 							"response": []
 						},
 						{
+							"name": "test",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"secondaryEmail\": \"j.doe@secondary.com\",\n    \"phone\": \"1234567890\",\n    \"mobile\": \"9876543210\",\n    \"fax\": \"123-456-789\",\n    \"website\": \"https://johndoe.com\",\n    \"addressInformation\": {\n        \"city\": \"New York\",\n        \"province\": \"NY\",\n        \"country\": \"USA\",\n        \"postalCode\": \"10001\"\n    },\n    \"experienceInYears\": 5,\n    \"currentJobTitle\": \"Software Engineer\",\n    \"expectedSalary\": \"120000\",\n    \"currentSalary\": \"100000\",\n    \"currentEmployer\": \"Tech Corp\",\n    \"highestQualificationHeld\": \"Bachelor of Science in Computer Science\",\n    \"additionalInfo\": \"Looking for opportunities in full-stack development.\",\n    \"skypeId\": \"john.doe\",\n    \"skillSet\": [\n        \"Java\",\n        \"Spring Boot\",\n        \"ReactJS\"\n    ],\n    \"linkedIn\": \"https://linkedin.com/in/johndoe\",\n    \"twitter\": \"https://twitter.com/johndoe\",\n    \"facebook\": \"https://facebook.com/johndoe\",\n    \"candidateStatus\": \"Active\",\n    \"candidateOwnerId\": 1,\n    \"source\": \"Employee Referral\",\n    \"optOut\": false,\n    \"educationalDetails\": [\n        {\n            \"institute\": \"State University\",\n            \"major\": \"Computer Science\",\n            \"degree\": \"Bachelor\",\n            \"durationFrom\": \"2010-08\",\n            \"durationTo\": \"2014-05\",\n            \"currentlyPursuing\": false\n        }\n    ],\n    \"experienceDetails\": [\n        {\n            \"occupation\": \"Software Engineer\",\n            \"company\": \"Tech Corp\",\n            \"summary\": \"Developed RESTful APIs and microservices.\",\n            \"durationFrom\": \"2018-06\",\n            \"durationTo\": \"2023-01\",\n            \"currentlyWorkingHere\": false\n        }\n    ],\n    \"attachments\": [\n        {\n            \"attachmentType\": \"Resume\",\n            \"filePath\": \"/attachments/resume/john_doe.pdf\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/candidates"
+							},
+							"response": []
+						},
+						{
 							"name": "Create Candidate: Software Engineer - 1",
 							"request": {
 								"method": "POST",
@@ -2123,7 +2181,14 @@
 					"name": "Get All Candidates",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": "{{baseUrl}}/api/candidates"
 					},
 					"response": []
 				},
@@ -2131,7 +2196,14 @@
 					"name": "Get Candidates by Source",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": "{{baseUrl}}/api/candidates/source/ADVERTISEMENT"
 					},
 					"response": []
 				},
@@ -2151,10 +2223,35 @@
 					"response": []
 				},
 				{
-					"name": "500 Get Candidate by Email",
+					"name": "Get Candidate by Email",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/candidates/email/john.doe@example.com",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"candidates",
+								"email",
+								"john.doe@example.com"
+							],
+							"query": [
+								{
+									"key": null,
+									"value": "Bearer {{token}}",
+									"disabled": true
+								}
+							]
+						}
 					},
 					"response": []
 				}
@@ -2227,7 +2324,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"candidateId\": 1,\n    \"jobOpeningId\": 2,\n    \"status\": \"SCREENING\",\n    \"comments\": \"Candidate has been shortlisted for initial review.\"\n}",
+									"raw": "{\n    \"candidateId\": 1,\n    \"jobOpeningId\": 1,\n    \"status\": \"SCREENING\",\n    \"comments\": \"Candidate has been shortlisted for initial review.\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2249,7 +2346,22 @@
 					"response": []
 				},
 				{
-					"name": "500 Get Applications by Job Opening",
+					"name": "Get Applications by Job Opening",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": "{{baseUrl}}/api/job-applications/job/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Applications by Candidate",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2262,9 +2374,103 @@
 						"url": "{{baseUrl}}/api/job-applications/job/2"
 					},
 					"response": []
+				}
+			]
+		},
+		{
+			"name": "Create Questions",
+			"item": [
+				{
+					"name": "Bulk",
+					"item": [
+						{
+							"name": "Create  Bulk Questions",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n    {\n        \"question\": \"How do you handle conflict?\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"General\"\n    },\n    {\n        \"question\": \"What is your approach to problem-solving?\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"General\"\n    },\n    {\n        \"question\": \"How do you prioritize tasks?\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"General\"\n    },\n    {\n        \"question\": \"What are your strengths and weaknesses?\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"General\"\n    },\n    {\n        \"question\": \"Why should we hire you?\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"General\"\n    },\n    {\n        \"question\": \"Describe a challenging situation and how you handled it.\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"General\"\n    },\n    {\n        \"question\": \"What motivates you in your work?\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"General\"\n    },\n    {\n        \"question\": \"How do you approach team collaboration?\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"General\"\n    },\n    {\n        \"question\": \"What are your career goals?\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"General\"\n    },\n    {\n        \"question\": \"How do you handle tight deadlines?\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"General\"\n    },\n    {\n        \"question\": \"Tell us about a time you faced a challenge during a project.\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"Pre-Screening\"\n    },\n    {\n        \"question\": \"How do you manage conflicting priorities?\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"Pre-Screening\"\n    },\n    {\n        \"question\": \"Have you ever worked with a difficult team member? How did you handle it?\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"Pre-Screening\"\n    },\n    {\n        \"question\": \"How do you handle feedback?\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"Pre-Screening\"\n    },\n    {\n        \"question\": \"Can you describe a situation where you improved a process?\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"Pre-Screening\"\n    },\n    {\n        \"question\": \"Tell us about a time you worked under pressure.\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"Pre-Screening\"\n    },\n    {\n        \"question\": \"What strategies do you use to stay organized?\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"Pre-Screening\"\n    },\n    {\n        \"question\": \"How do you approach learning new skills?\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"Pre-Screening\"\n    },\n    {\n        \"question\": \"How do you manage multiple projects at the same time?\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"Pre-Screening\"\n    },\n    {\n        \"question\": \"How do you ensure accuracy and attention to detail in your work?\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"Pre-Screening\"\n    },\n    {\n        \"question\": \"Tell us about a difficult behavioral situation you've encountered in the workplace.\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"Behavioral Screening\"\n    },\n    {\n        \"question\": \"What is your approach to managing conflicts in a team?\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"Behavioral Screening\"\n    },\n    {\n        \"question\": \"How do you handle high-pressure situations?\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"Behavioral Screening\"\n    },\n    {\n        \"question\": \"Describe a time when you had to work with a difficult colleague.\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"Behavioral Screening\"\n    },\n    {\n        \"question\": \"How do you handle negative feedback from supervisors?\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"Behavioral Screening\"\n    },\n    {\n        \"question\": \"Tell us about a time when you were under stress and how you managed it.\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"Behavioral Screening\"\n    },\n    {\n        \"question\": \"How do you manage competing priorities at work?\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"Behavioral Screening\"\n    },\n    {\n        \"question\": \"Describe a situation when you had to adapt to a change in your workplace.\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"Behavioral Screening\"\n    },\n    {\n        \"question\": \"How do you ensure that team members are on the same page?\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"Behavioral Screening\"\n    },\n    {\n        \"question\": \"Tell us about a time when you exceeded expectations in a project.\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"Behavioral Screening\"\n    },\n    {\n        \"question\": \"How do you verify background checks during hiring?\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"Background Screening\"\n    },\n    {\n        \"question\": \"Describe your experience with handling confidential information.\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"Background Screening\"\n    },\n    {\n        \"question\": \"What is your approach to handling background screening results?\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"Background Screening\"\n    },\n    {\n        \"question\": \"Tell us about a time you had to assess a background check.\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"Background Screening\"\n    },\n    {\n        \"question\": \"How do you ensure accuracy when verifying personal data?\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"Background Screening\"\n    },\n    {\n        \"question\": \"What steps do you take to confirm employment history during background checks?\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"Background Screening\"\n    },\n    {\n        \"question\": \"How do you handle discrepancies in background checks?\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"Background Screening\"\n    },\n    {\n        \"question\": \"What methods do you use to ensure background checks are up-to-date?\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"Background Screening\"\n    },\n    {\n        \"question\": \"Describe a time when you had to escalate a background check issue.\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"Background Screening\"\n    },\n    {\n        \"question\": \"How do you ensure compliance with local laws during background screenings?\",\n        \"rating\": 0,\n        \"comments\": \"\",\n        \"competencyType\": \"Background Screening\"\n    }\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/question-reviews/bulk",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"question-reviews",
+										"bulk"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				},
 				{
-					"name": "500 Get Applications by Candidate",
+					"name": "Create Questions",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"question\": \"How do you handle conflict?\",\n    \"rating\": 4,\n    \"comments\": \"Provided a detailed and effective resolution approach.\",\n    \"competencyType\": \"Conflict Management\",\n    \"candidateEvaluationId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/question-reviews",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"question-reviews"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Question By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2274,7 +2480,652 @@
 								"type": "text"
 							}
 						],
-						"url": "{{baseUrl}}/api/job-applications/job/2"
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"generalReview\": {\n        \"rating\": 4,\n        \"candidateStatus\": \"Qualified\",\n        \"overallComments\": \"Strong technical and communication skills.\"\n    },\n    \"screeningReviews\": [\n        {\n            \"reviewType\": \"Behavioral\",\n            \"overallRating\": 5,\n            \"status\": \"Passed\",\n            \"overallComments\": \"Excellent problem-solving abilities.\",\n            \"questionReviews\": [\n                {\n                    \"question\": \"How do you handle conflict?\",\n                    \"rating\": 4,\n                    \"comments\": \"Provided a detailed and effective resolution approach.\"\n                }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/candidate-evaluations",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"candidate-evaluations"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Candidate Evaluation",
+			"item": [
+				{
+					"name": "Create a new Candidate Evaluation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"generalReview\": {\n    \"rating\": 4,\n    \"candidateStatus\": \"Qualified\",\n    \"overallComments\": \"Strong technical background.\"\n  },\n  \"screeningReviews\": [\n    {\n      \"reviewType\": \"Pre-Screening\",\n      \"overallRating\": 5,\n      \"status\": \"Passed\",\n      \"overallComments\": \"Solid communication skills.\",\n      \"questionReviews\": [\n        {\n          \"questionBankTemplateId\": 3,\n          \"rating\": 4,\n          \"comments\": \"Candidate provided a concise approach.\"\n        },\n        {\n          \"questionBankTemplateId\": 5,\n          \"rating\": 4,\n          \"comments\": \"Answered well with relevant experience.\"\n        }\n      ]\n    },\n    {\n      \"reviewType\": \"Behavioral Screening\",\n      \"overallRating\": 4,\n      \"status\": \"In Progress\",\n      \"overallComments\": \"Needs more examples for conflict resolution.\",\n      \"questionReviews\": [\n        {\n          \"questionBankTemplateId\": 21,\n          \"rating\": 3,\n          \"comments\": \"Candidate was slightly unclear at first but clarified.\"\n        },\n        {\n          \"questionBankTemplateId\": 24,\n          \"rating\": 4,\n          \"comments\": \"Demonstrated a good approach to pressure management.\"\n        }\n      ]\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/candidate-evaluations",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"candidate-evaluations"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Evaluation by ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"generalReview\": {\n        \"rating\": 4,\n        \"candidateStatus\": \"Qualified\",\n        \"overallComments\": \"Strong technical and communication skills.\"\n    },\n    \"screeningReviews\": [\n        {\n            \"reviewType\": \"Behavioral\",\n            \"overallRating\": 5,\n            \"status\": \"Passed\",\n            \"overallComments\": \"Excellent problem-solving abilities.\",\n            \"questionReviews\": [\n                {\n                    \"question\": \"How do you handle conflict?\",\n                    \"rating\": 4,\n                    \"comments\": \"Provided a detailed and effective resolution approach.\"\n                }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/candidate-evaluations/by-id/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"candidate-evaluations",
+								"by-id",
+								"1"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Evaluation by Candidate",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/candidate-evaluations/candidate/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"candidate-evaluations",
+								"candidate",
+								"1"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Evaluations",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"generalReview\": {\n        \"rating\": 4,\n        \"candidateStatus\": \"Qualified\",\n        \"overallComments\": \"Strong technical and communication skills.\"\n    },\n    \"screeningReviews\": [\n        {\n            \"reviewType\": \"Behavioral\",\n            \"overallRating\": 5,\n            \"status\": \"Passed\",\n            \"overallComments\": \"Excellent problem-solving abilities.\",\n            \"questionReviews\": [\n                {\n                    \"question\": \"How do you handle conflict?\",\n                    \"rating\": 4,\n                    \"comments\": \"Provided a detailed and effective resolution approach.\"\n                }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/candidate-evaluations/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"candidate-evaluations",
+								"1"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Evaluation",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/candidate-evaluations/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"candidate-evaluations",
+								"1"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Interview",
+			"item": [
+				{
+					"name": "Create",
+					"item": [
+						{
+							"name": "Create Internal Interview",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"generalReview\": {\n        \"rating\": 4,\n        \"candidateStatus\": \"Qualified\",\n        \"overallComments\": \"Strong technical and communication skills.\"\n    },\n    \"screeningReviews\": [\n        {\n            \"reviewType\": \"Behavioral\",\n            \"overallRating\": 5,\n            \"status\": \"Passed\",\n            \"overallComments\": \"Excellent problem-solving abilities.\",\n            \"questionReviews\": [\n                {\n                    \"question\": \"How do you handle conflict?\",\n                    \"rating\": 4,\n                    \"comments\": \"Provided a detailed and effective resolution approach.\"\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/interviews",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"interviews"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Level 1 Technical Interview",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"generalReview\": {\n        \"rating\": 4,\n        \"candidateStatus\": \"Qualified\",\n        \"overallComments\": \"Strong technical and communication skills.\"\n    },\n    \"screeningReviews\": [\n        {\n            \"reviewType\": \"Behavioral\",\n            \"overallRating\": 5,\n            \"status\": \"Passed\",\n            \"overallComments\": \"Excellent problem-solving abilities.\",\n            \"questionReviews\": [\n                {\n                    \"question\": \"How do you handle conflict?\",\n                    \"rating\": 4,\n                    \"comments\": \"Provided a detailed and effective resolution approach.\"\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/interviews",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"interviews"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Phone Interview",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"generalReview\": {\n        \"rating\": 4,\n        \"candidateStatus\": \"Qualified\",\n        \"overallComments\": \"Strong technical and communication skills.\"\n    },\n    \"screeningReviews\": [\n        {\n            \"reviewType\": \"Behavioral\",\n            \"overallRating\": 5,\n            \"status\": \"Passed\",\n            \"overallComments\": \"Excellent problem-solving abilities.\",\n            \"questionReviews\": [\n                {\n                    \"question\": \"How do you handle conflict?\",\n                    \"rating\": 4,\n                    \"comments\": \"Provided a detailed and effective resolution approach.\"\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/interviews",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"interviews"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Online Interview",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"generalReview\": {\n        \"rating\": 4,\n        \"candidateStatus\": \"Qualified\",\n        \"overallComments\": \"Strong technical and communication skills.\"\n    },\n    \"screeningReviews\": [\n        {\n            \"reviewType\": \"Behavioral\",\n            \"overallRating\": 5,\n            \"status\": \"Passed\",\n            \"overallComments\": \"Excellent problem-solving abilities.\",\n            \"questionReviews\": [\n                {\n                    \"question\": \"How do you handle conflict?\",\n                    \"rating\": 4,\n                    \"comments\": \"Provided a detailed and effective resolution approach.\"\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/interviews",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"interviews"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Recorded Interview",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"generalReview\": {\n        \"rating\": 4,\n        \"candidateStatus\": \"Qualified\",\n        \"overallComments\": \"Strong technical and communication skills.\"\n    },\n    \"screeningReviews\": [\n        {\n            \"reviewType\": \"Behavioral\",\n            \"overallRating\": 5,\n            \"status\": \"Passed\",\n            \"overallComments\": \"Excellent problem-solving abilities.\",\n            \"questionReviews\": [\n                {\n                    \"question\": \"How do you handle conflict?\",\n                    \"rating\": 4,\n                    \"comments\": \"Provided a detailed and effective resolution approach.\"\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/interviews",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"interviews"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Live Video Interview",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"generalReview\": {\n        \"rating\": 4,\n        \"candidateStatus\": \"Qualified\",\n        \"overallComments\": \"Strong technical and communication skills.\"\n    },\n    \"screeningReviews\": [\n        {\n            \"reviewType\": \"Behavioral\",\n            \"overallRating\": 5,\n            \"status\": \"Passed\",\n            \"overallComments\": \"Excellent problem-solving abilities.\",\n            \"questionReviews\": [\n                {\n                    \"question\": \"How do you handle conflict?\",\n                    \"rating\": 4,\n                    \"comments\": \"Provided a detailed and effective resolution approach.\"\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/interviews",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"interviews"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Update",
+					"item": [
+						{
+							"name": "Update an Interview",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"interviewName\": \"Technical Interview Level 1 - Updated\",\n    \"departmentName\": \"Engineering\",\n    \"fromDateTime\": \"2025-01-25T10:30:00\",\n    \"toDateTime\": \"2025-01-25T11:30:00\",\n    \"location\": \"Conference Room 2\",\n    \"postingTitle\": \"Software Engineer\",\n    \"interviewOwnerId\": 2,\n    \"candidateId\": 1,\n    \"interviewerIds\": [3, 4],\n    \"scheduleComments\": \"Updated technical interview details.\",\n    \"assessmentName\": \"Updated Algorithm Assessment\",\n    \"reminder\": \"2 hours before\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/interviews/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"interviews",
+										"1"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"item": [
+						{
+							"name": "Delete an Interview",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"generalReview\": {\n        \"rating\": 4,\n        \"candidateStatus\": \"Qualified\",\n        \"overallComments\": \"Strong technical and communication skills.\"\n    },\n    \"screeningReviews\": [\n        {\n            \"reviewType\": \"Behavioral\",\n            \"overallRating\": 5,\n            \"status\": \"Passed\",\n            \"overallComments\": \"Excellent problem-solving abilities.\",\n            \"questionReviews\": [\n                {\n                    \"question\": \"How do you handle conflict?\",\n                    \"rating\": 4,\n                    \"comments\": \"Provided a detailed and effective resolution approach.\"\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/interviews/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"interviews",
+										"1"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get All Interviews",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"generalReview\": {\n        \"rating\": 4,\n        \"candidateStatus\": \"Qualified\",\n        \"overallComments\": \"Strong technical and communication skills.\"\n    },\n    \"screeningReviews\": [\n        {\n            \"reviewType\": \"Behavioral\",\n            \"overallRating\": 5,\n            \"status\": \"Passed\",\n            \"overallComments\": \"Excellent problem-solving abilities.\",\n            \"questionReviews\": [\n                {\n                    \"question\": \"How do you handle conflict?\",\n                    \"rating\": 4,\n                    \"comments\": \"Provided a detailed and effective resolution approach.\"\n                }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/candidate-evaluations/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"candidate-evaluations",
+								"1"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Interview by ID",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"generalReview\": {\n        \"rating\": 4,\n        \"candidateStatus\": \"Qualified\",\n        \"overallComments\": \"Strong technical and communication skills.\"\n    },\n    \"screeningReviews\": [\n        {\n            \"reviewType\": \"Behavioral\",\n            \"overallRating\": 5,\n            \"status\": \"Passed\",\n            \"overallComments\": \"Excellent problem-solving abilities.\",\n            \"questionReviews\": [\n                {\n                    \"question\": \"How do you handle conflict?\",\n                    \"rating\": 4,\n                    \"comments\": \"Provided a detailed and effective resolution approach.\"\n                }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/candidate-evaluations/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"candidate-evaluations",
+								"1"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
 					},
 					"response": []
 				}
@@ -2409,6 +3260,21 @@
 						"header": []
 					},
 					"response": []
+				},
+				{
+					"name": "Get All work-experience",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": "{{baseUrl}}/api/work-experience"
+					},
+					"response": []
 				}
 			]
 		},
@@ -2422,14 +3288,30 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsImlhdCI6MTczNzAyNzI5MiwiZXhwIjoxNzM3MDYzMjkyfQ.5_O5bll5r5cBc-z_0FoBrIBg6MPKASpcFjRjFbUdmsE"
-							},
-							{
-								"key": "Cookie",
-								"value": "JSESSIONID=A9DCE79B50F229B3B8188FD8703CC992"
+								"value": "Bearer {{token}}",
+								"type": "text"
 							}
 						],
-						"url": "http://localhost:8080/api/job-status"
+						"url": "http://localhost:8080/api/job-applications/statuses"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "All Job Reference Sources",
+			"item": [
+				{
+					"name": "Get All Job Reference Sources",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": "{{baseUrl}}/api/all-job-references"
 					},
 					"response": []
 				}
