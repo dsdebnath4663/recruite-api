@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.recruitment.dto.CandidateEvaluationDTO;
 import com.recruitment.dto.DepartmentDTO;
 import com.recruitment.dto.UserResponseDTO;
 import com.recruitment.model.*;
@@ -23,7 +22,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
+
 import org.springframework.beans.factory.annotation.Value;
 
 @Service

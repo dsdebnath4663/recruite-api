@@ -1,123 +1,155 @@
 package com.recruitment.service;
 
-import com.recruitment.dto.CandidateEvaluationDTO;
-import com.recruitment.mapper.CandidateEvaluationMapper;
 import com.recruitment.model.*;
 import com.recruitment.repository.CandidateEvaluationRepository;
 import com.recruitment.repository.CandidateRepository;
+import com.recruitment.repository.QuestionBankTemplateRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Service
+@Transactional
 public class CandidateEvaluationService {
 
-    private final CandidateEvaluationRepository candidateEvaluationRepository;
-    private final CandidateRepository candidateRepository;
-    private final CandidateEvaluationMapper candidateEvaluationMapper;
 
-    public CandidateEvaluationService(CandidateEvaluationRepository candidateEvaluationRepository,
-                                      CandidateRepository candidateRepository,
-                                      CandidateEvaluationMapper candidateEvaluationMapper) {
-        this.candidateEvaluationRepository = candidateEvaluationRepository;
+
+    private final CandidateRepository candidateRepository;
+    private final CandidateEvaluationRepository candidateEvaluationRepository;
+    private final QuestionBankTemplateRepository questionBankTemplateRepository;
+
+    public CandidateEvaluationService(CandidateRepository candidateRepository,
+                                      CandidateEvaluationRepository candidateEvaluationRepository,
+                                      QuestionBankTemplateRepository questionBankTemplateRepository) {
         this.candidateRepository = candidateRepository;
-        this.candidateEvaluationMapper = candidateEvaluationMapper;
+        this.candidateEvaluationRepository = candidateEvaluationRepository;
+        this.questionBankTemplateRepository = questionBankTemplateRepository;
     }
 
     /**
-     * Create or update candidate evaluation.
+     * Creates or updates a CandidateEvaluation by parsing a raw JSON payload.
      *
-     * @param candidateId  ID of the candidate being evaluated.
-     * @param evaluationDTO DTO containing evaluation details.
-     * @return Saved CandidateEvaluation entity.
+     * @param candidateId ID of the Candidate
+     * @param payload     Raw JSON as a map
+     * @return The saved CandidateEvaluation
      */
-    @Transactional
-    public CandidateEvaluationDTO evaluateCandidate(Long candidateId, CandidateEvaluationDTO evaluationDTO) {
-        // Fetch candidate
-        Candidate candidate = candidateRepository.findById(candidateId)
-                                                 .orElseThrow(() -> new IllegalArgumentException("Candidate not found"));
+    public CandidateEvaluation evaluateCandidate( Long candidateId, Map<String, Object> payload) {
+        log.info("Evaluating candidate ID: {}", candidateId);
 
-        // Convert DTO to Entity
+        Candidate candidate = candidateRepository.findById(candidateId)
+                                                 .orElseThrow(() -> new IllegalArgumentException("Candidate not found with ID " + candidateId));
+
         CandidateEvaluation evaluation = new CandidateEvaluation();
         evaluation.setCandidate(candidate);
 
-        // Map General Review
-        GeneralReview generalReview = new GeneralReview();
-        generalReview.setRating(evaluationDTO.getGeneralReview().getRating());
-        generalReview.setCandidateStatus(evaluationDTO.getGeneralReview().getCandidateStatus());
-        generalReview.setOverallComments(evaluationDTO.getGeneralReview().getOverallComments());
-        evaluation.setGeneralReview(generalReview);
-
-        // Map Screening Reviews
-        List<ScreeningReview> screeningReviews = evaluationDTO.getScreeningReviews().stream().map(reviewDTO -> {
-            ScreeningReview screeningReview = new ScreeningReview();
-            screeningReview.setReviewType(reviewDTO.getReviewType());
-            screeningReview.setOverallRating(reviewDTO.getOverallRating());
-            screeningReview.setStatus(reviewDTO.getStatus());
-            screeningReview.setOverallComments(reviewDTO.getOverallComments());
-
-            // Map Question Reviews
-            List<QuestionReview> questionReviews = reviewDTO.getQuestionReviews().stream().map(questionDTO -> {
-                QuestionReview questionReview = new QuestionReview();
-                questionReview.setQuestion(questionDTO.getQuestion());
-                questionReview.setRating(questionDTO.getRating());
-                questionReview.setComments(questionDTO.getComments());
-                questionReview.setScreeningReview(screeningReview);
-                return questionReview;
-            }).collect(Collectors.toList());
-
-            screeningReview.setQuestionReviews(questionReviews);
-            screeningReview.setCandidateEvaluation(evaluation);
-
-            return screeningReview;
-        }).collect(Collectors.toList());
-
-        evaluation.setScreeningReviews(screeningReviews);
-
-        // Save evaluation and return as DTO
-        CandidateEvaluation savedEvaluation = candidateEvaluationRepository.save(evaluation);
-        return candidateEvaluationMapper.toDTO(savedEvaluation);
-    }
-
-    /**
-     * Get candidate evaluation by candidate ID.
-     *
-     * @param candidateId Candidate ID.
-     * @return CandidateEvaluationDTO entity.
-     */
-//    @Transactional(readOnly = true)
-//    public CandidateEvaluationDTO getEvaluationByCandidate(Long candidateId) {
-//        CandidateEvaluation evaluation = candidateEvaluationRepository.findByCandidateId(candidateId)
-//                                                                      .orElseThrow(() -> new IllegalArgumentException("Evaluation not found for the candidate"));
-//
-//        // Convert Entity to DTO
-//        return candidateEvaluationMapper.toDTO(evaluation);
-//    }
-    @Transactional(readOnly = true)
-    public List<CandidateEvaluationDTO> getEvaluationByCandidate(Long candidateId) {
-        List<CandidateEvaluation> evaluations = candidateEvaluationRepository.findByCandidateId(candidateId);
-        if (evaluations.isEmpty()) {
-            throw new IllegalArgumentException("No evaluations found for the candidate");
+        // parse "generalReview"
+        Map<String, Object> generalReviewMap = (Map<String, Object>) payload.get("generalReview");
+        if (generalReviewMap != null) {
+            GeneralReview gr = new GeneralReview();
+            gr.setRating(((Number) generalReviewMap.getOrDefault("rating", 0)).intValue());
+            gr.setCandidateStatus((String) generalReviewMap.getOrDefault("candidateStatus", ""));
+            gr.setOverallComments((String) generalReviewMap.getOrDefault("overallComments", ""));
+            evaluation.setGeneralReview(gr);
         }
-        // Convert each evaluation to DTO
-        return evaluations.stream()
-                          .map(candidateEvaluationMapper::toDTO)
-                          .collect(Collectors.toList());
+
+        // parse "screeningReviews"
+        Map<String, Object> screeningReviewsMap = (Map<String, Object>) payload.get("screeningReviews");
+        if (screeningReviewsMap != null) {
+            // optional overallRating, status, overallComments
+            int overallRating = ((Number) screeningReviewsMap.getOrDefault("overallRating", 0)).intValue();
+            String status = (String) screeningReviewsMap.getOrDefault("status", "");
+            String overallComments = (String) screeningReviewsMap.getOrDefault("overallComments", "");
+
+            List<Map<String, Object>> candidateGeneralAssessment =
+                    (List<Map<String, Object>>) screeningReviewsMap.get("CandidateGeneralAssessment");
+
+            if (candidateGeneralAssessment != null) {
+                List<ScreeningReview> screeningList = new ArrayList<>();
+                for (Map<String, Object> assessment : candidateGeneralAssessment) {
+                    ScreeningReview sr = new ScreeningReview();
+                    sr.setCandidateEvaluation(evaluation);
+                    sr.setOverallRating(overallRating);
+                    sr.setStatus(status);
+                    sr.setOverallComments(overallComments);
+
+                    String competencyType = (String) assessment.getOrDefault("competencyType", "");
+                    sr.setReviewType(competencyType);
+
+                    // parse questionReviews
+                    List<Map<String, Object>> questionReviews =
+                            (List<Map<String, Object>>) assessment.get("questionReviews");
+                    if (questionReviews != null) {
+                        List<QuestionReview> questionReviewEntities = questionReviews.stream()
+                                                                                     .map(qrMap -> mapToQuestionReview(sr, qrMap))
+                                                                                     .collect(Collectors.toList());
+
+                        sr.setQuestionReviews(questionReviewEntities);
+                    }
+
+                    screeningList.add(sr);
+                }
+                evaluation.setScreeningReviews(screeningList);
+            }
+        }
+
+        CandidateEvaluation saved = candidateEvaluationRepository.save(evaluation);
+        log.info("Saved CandidateEvaluation with ID: {}", saved.getId());
+        return saved;
     }
 
+    private QuestionReview mapToQuestionReview(ScreeningReview screeningReview, Map<String, Object> qrMap) {
+        QuestionReview qr = new QuestionReview();
+        qr.setScreeningReview(screeningReview);
 
-    /**
-     * Delete evaluation for a candidate.
-     *
-     * @param evaluationId Evaluation ID.
-     */
+        // rating, comments
+        qr.setRating(((Number) qrMap.getOrDefault("rating", 0)).intValue());
+        qr.setComments((String) qrMap.getOrDefault("comments", ""));
+
+        // questionBankTemplateId
+        Number templateId = (Number) qrMap.get("questionBankTemplateId");
+        if (templateId == null) {
+            throw new IllegalArgumentException("questionBankTemplateId is required and cannot be null.");
+        }
+        QuestionBankTemplate qbt = questionBankTemplateRepository.findById(templateId.longValue())
+                                                                 .orElseThrow(() -> new IllegalArgumentException("QuestionBankTemplate not found: " + templateId));
+        qr.setQuestionBankTemplate(qbt);
+
+        return qr;
+    }
+
+    // Additional CRUD methods
+
+    @Transactional(readOnly = true)
+    public List<CandidateEvaluation> getAllEvaluations() {
+        log.debug("Fetching all candidate evaluations...");
+        return candidateEvaluationRepository.findAll();
+    }
+
+    @Transactional(readOnly = true)
+    public CandidateEvaluation getEvaluationById(Long evaluationId) {
+        log.debug("Fetching evaluation by ID: {}", evaluationId);
+        return candidateEvaluationRepository.findById(evaluationId)
+                                            .orElseThrow(() -> new IllegalArgumentException("Evaluation not found with ID: " + evaluationId));
+    }
+
+    @Transactional(readOnly = true)
+    public CandidateEvaluation getEvaluationByCandidate(Long candidateId) {
+        log.debug("Fetching evaluation for candidate ID: {}", candidateId);
+        return candidateEvaluationRepository.findByCandidateId(candidateId)
+                                            .orElseThrow(() -> new IllegalArgumentException("No evaluation found for candidate: " + candidateId));
+    }
+
     @Transactional
     public void deleteEvaluation(Long evaluationId) {
-        CandidateEvaluation evaluation = candidateEvaluationRepository.findById(evaluationId)
-                                                                      .orElseThrow(() -> new IllegalArgumentException("Evaluation not found"));
+        log.debug("Deleting evaluation ID: {}", evaluationId);
+        CandidateEvaluation evaluation = getEvaluationById(evaluationId);
         candidateEvaluationRepository.delete(evaluation);
+        log.info("Evaluation ID: {} deleted successfully.", evaluationId);
     }
 }
