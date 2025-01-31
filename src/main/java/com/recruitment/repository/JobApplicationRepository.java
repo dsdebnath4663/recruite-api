@@ -3,8 +3,10 @@ package com.recruitment.repository;
 
 import com.recruitment.model.JobApplication;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -19,7 +21,14 @@ public interface JobApplicationRepository extends JpaRepository<JobApplication, 
      * @param jobOpeningId ID of the Job Opening.
      * @return List of Job Applications with eagerly loaded details.
      */
-    @Query("SELECT ja FROM JobApplication ja JOIN FETCH ja.jobOpening WHERE ja.jobOpening.id = :jobOpeningId")
+//    @Query("SELECT ja FROM JobApplication ja JOIN FETCH ja.jobOpening WHERE ja.jobOpening.id = :jobOpeningId")
+//    List<JobApplication> findByJobOpeningIdWithDetails(@Param("jobOpeningId") Long jobOpeningId);
+
+    /**
+     * ✅ Fetch applications with full details to prevent LOB stream issues.
+     */
+    @Transactional(readOnly = true)
+    @Query("SELECT ja FROM JobApplication ja JOIN FETCH ja.candidate JOIN FETCH ja.jobOpening WHERE ja.jobOpening.id = :jobOpeningId")
     List<JobApplication> findByJobOpeningIdWithDetails(@Param("jobOpeningId") Long jobOpeningId);
 
     /**
@@ -42,5 +51,14 @@ public interface JobApplicationRepository extends JpaRepository<JobApplication, 
      */
     @Query("SELECT ja FROM JobApplication ja JOIN FETCH ja.candidate c JOIN FETCH ja.jobOpening jo")
     List<JobApplication> getApplicationsWithLOB();
+
+    List<JobApplication> findByJobOpeningId ( Long jobOpeningId );
+
+    boolean existsById(Long id);
+
+    @Modifying
+    @Transactional
+    @Query("DELETE FROM JobApplication")
+    void deleteAllApplications();
 }
 

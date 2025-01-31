@@ -9,6 +9,7 @@ import com.recruitment.model.JobOpening;
 import com.recruitment.repository.CandidateRepository;
 import com.recruitment.repository.JobApplicationRepository;
 import com.recruitment.repository.JobOpeningRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,7 +18,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.List;
-
+import java.util.Set;
+import java.util.stream.Collectors;
+@Slf4j
 @Service
 public class JobApplicationService {
 
@@ -34,27 +37,43 @@ public class JobApplicationService {
     }
 
     /**
-     * Creates a new Job Application.
-     *
-     * @param applicationDTO Data transfer object containing application details.
-     * @return Created JobApplication entity.
+     * Prevents duplicate applications – If a candidate has already applied for the job, they won't be added again.
+     * ✅ Returns an error if all candidates have already applied – This avoids unnecessary database writes.
+     * ✅ Improves efficiency – We batch process only new applications, reducing DB load.
      */
-    public JobApplication createApplication(ApplicationDTO applicationDTO) {
-        Candidate candidate = candidateRepository.findById(applicationDTO.getCandidateId())
-                                                 .orElseThrow(() -> new IllegalArgumentException("Candidate not found"));
-
+    @Transactional
+    public List<JobApplication> createApplications(ApplicationDTO applicationDTO) {
         JobOpening jobOpening = jobOpeningRepository.findById(applicationDTO.getJobOpeningId())
                                                     .orElseThrow(() -> new IllegalArgumentException("Job Opening not found"));
 
-        JobApplication application = JobApplication.builder()
-                                                   .candidate(candidate)
-                                                   .jobOpening(jobOpening)
-                                                   .status(ApplicationStatus.fromValue(applicationDTO.getStatus()))
-                                                   .comments(applicationDTO.getComments())
-                                                   .build();
+        List<JobApplication> existingApplications = applicationRepository.findByJobOpeningId(applicationDTO.getJobOpeningId());
 
-        return applicationRepository.save(application);
+        Set<Long> existingCandidateIds = existingApplications.stream()
+                                                             .map(app -> app.getCandidate().getId())
+                                                             .collect(Collectors.toSet());
+
+        List<JobApplication> newApplications = applicationDTO.getCandidateIds().stream()
+                                                             .filter(candidateId -> !existingCandidateIds.contains(candidateId)) // Skip existing applications
+                                                             .map(candidateId -> {
+                                                                 Candidate candidate = candidateRepository.findById(candidateId)
+                                                                                                          .orElseThrow(() -> new IllegalArgumentException("Candidate not found with ID: " + candidateId));
+
+                                                                 return JobApplication.builder()
+                                                                                      .candidate(candidate)
+                                                                                      .jobOpening(jobOpening)
+                                                                                      .status(ApplicationStatus.fromValue(applicationDTO.getStatus()))
+                                                                                      .comments(applicationDTO.getComments())
+                                                                                      .build();
+                                                             })
+                                                             .collect(Collectors.toList());
+
+        if (newApplications.isEmpty()) {
+            throw new IllegalArgumentException("All candidates have already applied for this job.");
+        }
+
+        return applicationRepository.saveAll(newApplications);
     }
+
 
     /**
      * Fetches job applications for a specific job opening.
@@ -64,7 +83,7 @@ public class JobApplicationService {
      * @param jobOpeningId ID of the Job Opening.
      * @return List of Job Applications for the specified job opening.
      */
-    @Transactional
+    @Transactional(readOnly = true)
     public List<JobApplication> getApplicationsByJob(Long jobOpeningId) {
         return applicationRepository.findByJobOpeningIdWithDetails(jobOpeningId);
     }
@@ -126,4 +145,25 @@ public class JobApplicationService {
     }
 
 
+
+    @Transactional(readOnly = true)
+    public List<JobApplication> getAllJobApplications() {
+        return applicationRepository.findAll();
+    }
+
+
+    @Transactional
+    public void deleteApplicationById(Long id) {
+        if (!applicationRepository.existsById(id)) {
+            throw new IllegalArgumentException("Job application not found with ID: " + id);
+        }
+        log.info("Deleting job application with ID: {}", id);
+        applicationRepository.deleteById(id);
+    }
+
+    @Transactional
+    public void deleteAllApplications() {
+        log.info("Deleting all job applications.");
+        applicationRepository.deleteAll();
+    }
 }

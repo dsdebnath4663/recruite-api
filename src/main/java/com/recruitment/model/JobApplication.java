@@ -34,8 +34,12 @@ public class JobApplication {
      * Ensure the @Lob-annotated fields are fetched eagerly when accessing the entity.
      * This forces Hibernate to load the field immediately when the entity is retrieved.
      */
-    @Lob
-    @Basic(fetch = FetchType.EAGER)
+//    @Lob
+//    @Basic(fetch = FetchType.EAGER)
+    /**
+     * ✅ Fix: Use columnDefinition="TEXT" instead of @Lob
+     */
+    @Column(columnDefinition = "TEXT")
     private String comments; // Optional comments for the application
 
 }

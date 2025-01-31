@@ -12,6 +12,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+@Slf4j
 @RestController
 @RequestMapping("/api/job-applications")
 public class JobApplicationController {
@@ -41,8 +43,9 @@ public class JobApplicationController {
             @ApiResponse(responseCode = "200", description = "Job application created successfully"),
             @ApiResponse(responseCode = "400", description = "Invalid application details provided")
     })
-    public ResponseEntity<JobApplication> createApplication(@RequestBody ApplicationDTO applicationDTO) {
-        return ResponseEntity.ok(applicationService.createApplication(applicationDTO));
+    public ResponseEntity<List<JobApplication>> createApplications(@RequestBody ApplicationDTO applicationDTO) {
+        List<JobApplication> applications = applicationService.createApplications(applicationDTO);
+        return ResponseEntity.ok(applications);
     }
 
     @GetMapping("/job/{jobOpeningId}")
@@ -56,6 +59,11 @@ public class JobApplicationController {
     })
     public ResponseEntity<List<JobApplication>> getApplicationsByJob(@PathVariable Long jobOpeningId) {
         return ResponseEntity.ok(applicationService.getApplicationsByJob(jobOpeningId));
+    }
+
+    @GetMapping("/job")
+    public ResponseEntity<List<JobApplication>> getApplications() {
+        return ResponseEntity.ok(applicationService.getAllJobApplications());
     }
 
     @GetMapping("/candidate/{candidateId}")
@@ -173,6 +181,37 @@ public class JobApplicationController {
         }
     }
 
+    @DeleteMapping("/{id}")
+    @Operation(
+            summary = "Delete a job application by ID",
+            description = "Removes a specific job application identified by its ID.",
+            tags = {"Job Application Management"}
+    )
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Job application deleted successfully"),
+            @ApiResponse(responseCode = "404", description = "Job application not found")
+    })
+    public ResponseEntity<String> deleteApplicationById(@PathVariable Long id) {
+        log.info("Request received to delete job application with ID: {}", id);
+        applicationService.deleteApplicationById(id);
+        log.info("Successfully deleted job application with ID: {}", id);
+        return ResponseEntity.ok("Job application deleted successfully.");
+    }
 
+    @DeleteMapping("/all")
+    @Operation(
+            summary = "Delete all job applications",
+            description = "Removes all job applications from the system.",
+            tags = {"Job Application Management"}
+    )
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "All job applications deleted successfully")
+    })
+    public ResponseEntity<String> deleteAllApplications() {
+        log.info("Request received to delete all job applications.");
+        applicationService.deleteAllApplications();
+        log.info("Successfully deleted all job applications.");
+        return ResponseEntity.ok("All job applications deleted successfully.");
+    }
 
 }
