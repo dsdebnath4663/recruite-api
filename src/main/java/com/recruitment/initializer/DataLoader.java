@@ -70,7 +70,7 @@ public class DataLoader {
 //        createUsersUsingRestTemplate();
         createUsers();
         createDepartment();
-        createJobOpening();
+//        createJobOpening();
 
         log.info("\n" +
                          "  ____        _        _         _                                      \n" +

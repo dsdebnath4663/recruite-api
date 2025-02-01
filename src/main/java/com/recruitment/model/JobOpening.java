@@ -1,5 +1,6 @@
 package com.recruitment.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.recruitment.enums.JobStatus;
 import com.recruitment.enums.JobType;
 import com.recruitment.enums.WorkExperience;
@@ -19,7 +20,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})  // Ignore lazy-loading proxies
 public class JobOpening {
 
     @Id
@@ -93,5 +94,7 @@ public class JobOpening {
     @Enumerated(EnumType.STRING)
     private WorkExperience workExperience; // Enum for work experience
 
-
+    // Add the cascade delete mapping for Job Applications
+    @OneToMany(mappedBy = "jobOpening", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<JobApplication> jobApplications;
 }

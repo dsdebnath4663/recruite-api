@@ -1,5 +1,6 @@
 package com.recruitment.controller;
 
+import com.recruitment.dto.JobOpeningDTO;
 import com.recruitment.model.JobOpening;
 import com.recruitment.service.JobOpeningService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -8,11 +9,12 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@Slf4j
 @Tag(name = "Job Openings Management", description = "APIs for managing job openings")
 @RestController
 @RequestMapping("/api/job-openings")
@@ -38,7 +40,7 @@ public class JobOpeningController {
     @Operation(summary = "Get all job openings", description = "Retrieve a list of all job openings.")
     @ApiResponse(responseCode = "200", description = "List of job openings retrieved successfully")
     @GetMapping
-    public ResponseEntity<List<JobOpening>> getAllJobOpenings() {
+    public ResponseEntity<List<JobOpeningDTO>> getAllJobOpenings() {
         return ResponseEntity.ok(jobOpeningService.getAllJobOpenings());
     }
 
@@ -48,7 +50,7 @@ public class JobOpeningController {
             @ApiResponse(responseCode = "404", description = "Job opening not found")
     })
     @GetMapping("/{id}")
-    public ResponseEntity<JobOpening> getJobOpeningById(
+    public ResponseEntity<JobOpeningDTO> getJobOpeningById(
             @Parameter(description = "ID of the job opening to retrieve") @PathVariable Long id) {
         return ResponseEntity.ok(jobOpeningService.getJobOpeningById(id));
     }
@@ -76,5 +78,21 @@ public class JobOpeningController {
             @Parameter(description = "ID of the job opening to delete") @PathVariable Long id) {
         jobOpeningService.deleteJobOpening(id);
         return ResponseEntity.ok("Job Opening with ID " + id + " deleted successfully.");
+    }
+
+    @DeleteMapping("/all")
+    @Operation(
+            summary = "Delete all job Openings",
+            description = "Removes all job Openings from the system.",
+            tags = {"Job Openings Management"}
+    )
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "All job Openings deleted successfully")
+    })
+    public ResponseEntity<String> deleteAllJobOpening() {
+        log.info("Request received to delete all job Openings.");
+        jobOpeningService.deleteAllJobOpenings();
+        log.info("Successfully deleted all job Openings.");
+        return ResponseEntity.ok("All job Openings deleted successfully.");
     }
 }

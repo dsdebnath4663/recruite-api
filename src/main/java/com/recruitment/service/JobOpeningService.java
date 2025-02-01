@@ -1,10 +1,14 @@
 package com.recruitment.service;
 
+import com.recruitment.dto.JobOpeningDTO;
 import com.recruitment.model.JobOpening;
 import com.recruitment.repository.JobOpeningRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class JobOpeningService {
@@ -21,15 +25,51 @@ public class JobOpeningService {
     }
 
     // Get all job openings
-    public List<JobOpening> getAllJobOpenings() {
-        return jobOpeningRepository.findAll();
+    public List<JobOpeningDTO> getAllJobOpenings() {
+        List<JobOpening> jobOpenings = jobOpeningRepository.findAll();
+        return jobOpenings.stream()
+                          .map(this::toJobOpeningDTO) // Convert each entity to DTO
+                          .collect(Collectors.toList());
     }
 
+
+
     // Get a job opening by ID
-    public JobOpening getJobOpeningById(Long id) {
-        return jobOpeningRepository.findById(id)
-                                   .orElseThrow(() -> new IllegalArgumentException("Job Opening not found with ID: " + id));
+    public JobOpeningDTO getJobOpeningById(Long id) {
+        JobOpening jobOpening = jobOpeningRepository.findById(id)
+                                                    .orElseThrow(() -> new IllegalArgumentException("Job Opening not found with ID: " + id));
+
+        return toJobOpeningDTO(jobOpening);
     }
+
+    private JobOpeningDTO toJobOpeningDTO(JobOpening job) {
+        JobOpeningDTO dto = new JobOpeningDTO();
+        dto.setId(job.getId());
+        dto.setPostingTitle(job.getPostingTitle());
+        dto.setAssignedRecruiter(job.getAssignedRecruiter() != null ? job.getAssignedRecruiter().getFirstName() : "N/A");
+        dto.setTargetDate(job.getTargetDate());
+        dto.setJobOpeningStatus(job.getStatus().name()); // Convert Enum to String
+        dto.setIndustry(job.getIndustry());
+        dto.setSalary(job.getSalary());
+        dto.setCreatedBy(job.getAssignedRecruiter() != null ? job.getAssignedRecruiter().getFirstName() : "N/A");
+        dto.setCreatedOn(job.getDateOpened());
+        dto.setDepartmentName(job.getDepartment() != null ? job.getDepartment().getDepartmentName() : "N/A");
+        dto.setHiringManager(job.getHiringManager() != null ? job.getHiringManager().getFirstName() : "N/A");
+        dto.setNumberOfPositions(1); // Update this if you have actual data for positions
+        dto.setDateOpened(job.getDateOpened());
+        dto.setJobType(job.getJobType().name()); // Convert Enum to String
+        dto.setWorkExperience(job.getWorkExperience().name()); // Convert Enum to String
+        dto.setRequiredSkills(job.getRequiredSkills());
+        dto.setModifiedBy("N/A"); // Update with actual modified by user
+        dto.setModifiedOn(LocalDate.now()); // Replace with actual modified date
+        dto.setCity(job.getAddressInformation() != null ? job.getAddressInformation().getCity() : "N/A");
+        dto.setStateProvince(job.getAddressInformation() != null ? job.getAddressInformation().getProvince() : "N/A");
+        dto.setCountry(job.getAddressInformation() != null ? job.getAddressInformation().getCountry() : "N/A");
+        dto.setZipPostalCode(job.getAddressInformation() != null ? job.getAddressInformation().getPostalCode() : "N/A");
+        dto.setJobDescription(job.getDescriptionInformation() != null ? job.getDescriptionInformation().getJobDescription() : "N/A");
+        return dto;
+    }
+
 
     // Update an existing job opening
 //    public JobOpening updateJobOpening(Long id, JobOpening jobOpeningDetails) {
@@ -88,8 +128,16 @@ public class JobOpeningService {
 
 
     // Delete a job opening
+    @Transactional
     public void deleteJobOpening(Long id) {
-        JobOpening jobOpening = getJobOpeningById(id);
+        JobOpening jobOpening = jobOpeningRepository.findById(id)
+                                                    .orElseThrow(() -> new IllegalArgumentException("Job Opening not found with ID: " + id));
+
         jobOpeningRepository.delete(jobOpening);
+    }
+
+
+    public void deleteAllJobOpenings () {
+        jobOpeningRepository.deleteAllJobOpenings();
     }
 }
