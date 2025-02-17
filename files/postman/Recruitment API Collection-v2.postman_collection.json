@@ -1,11 +1,11 @@
 {
 	"info": {
-		"_postman_id": "30874a64-1a8b-4882-b328-c1322b4ff540",
+		"_postman_id": "81a66956-0775-4053-a404-eb634dce1453",
 		"name": "Recruitment API Collection-v2",
 		"description": "Postman collection for Recruitment API with token extraction and environment variable setup.",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
-		"_exporter_id": "37581217",
-		"_collection_link": "https://intership-8198.postman.co/workspace/intership-Workspace~aae241b0-c5c8-4ef9-bd0f-664f46665995/collection/33860754-30874a64-1a8b-4882-b328-c1322b4ff540?action=share&source=collection_link&creator=37581217"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33860754",
+		"_collection_link": "https://intership-8198.postman.co/workspace/intership-Workspace~aae241b0-c5c8-4ef9-bd0f-664f46665995/collection/37581217-81a66956-0775-4053-a404-eb634dce1453?action=share&source=collection_link&creator=33860754"
 	},
 	"item": [
 		{
@@ -44,7 +44,17 @@
 							"mode": "raw",
 							"raw": "{\n    \"username\": \"admin@example.com\",\n    \"password\": \"admin123\"\n}"
 						},
-						"url": "{{baseUrl}}/api/auth/login"
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
 					},
 					"response": []
 				},
@@ -81,7 +91,17 @@
 							"mode": "raw",
 							"raw": "{\n    \"username\": \"jamessmith@gmail.com\",\n    \"password\": \"admin123\"\n}"
 						},
-						"url": "{{baseUrl}}/api/auth/set-password"
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/set-password",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"set-password"
+							]
+						}
 					},
 					"response": []
 				},
@@ -118,7 +138,17 @@
 							"mode": "raw",
 							"raw": "{\n    \"username\": \"rohitsunilsharma2000@gmail.com\",\n    \"password\": \"password\"\n}"
 						},
-						"url": "{{baseUrl}}/api/auth/login"
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
 					},
 					"response": []
 				}
@@ -145,7 +175,16 @@
 							"mode": "raw",
 							"raw": "{\n    \"name\": \"Recruiter Admin\",\n    \"description\": \"Top-level admin overseeing all recruitment activities\",\n    \"reportsTo\": null,\n    \"shareDataWithPeers\": true\n}"
 						},
-						"url": "{{baseUrl}}/api/roles"
+						"url": {
+							"raw": "{{baseUrl}}/api/roles",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"roles"
+							]
+						}
 					},
 					"response": []
 				},
@@ -167,7 +206,16 @@
 							"mode": "raw",
 							"raw": "{\n    \"name\": \"Recruiter\",\n    \"description\": \"Manages recruitment processes\",\n    \"reportsTo\": {\n        \"id\": 1,\n        \"name\": \"Recruiter Admin\"\n    },\n    \"shareDataWithPeers\": true\n}"
 						},
-						"url": "{{baseUrl}}/api/roles"
+						"url": {
+							"raw": "{{baseUrl}}/api/roles",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"roles"
+							]
+						}
 					},
 					"response": []
 				},
@@ -189,7 +237,16 @@
 							"mode": "raw",
 							"raw": "{\n    \"name\": \"Hiring Manager\",\n    \"description\": \"Oversees hiring for specific roles\",\n    \"reportsTo\": {\n        \"id\": 2,\n        \"name\": \"Recruiter\"\n    },\n    \"shareDataWithPeers\": false\n}"
 						},
-						"url": "{{baseUrl}}/api/roles"
+						"url": {
+							"raw": "{{baseUrl}}/api/roles",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"roles"
+							]
+						}
 					},
 					"response": []
 				},
@@ -211,7 +268,16 @@
 							"mode": "raw",
 							"raw": "{\n    \"name\": \"Employee\",\n    \"description\": \"Employees providing referrals or involved in hiring feedback\",\n    \"reportsTo\": {\n        \"id\": 3,\n        \"name\": \"Hiring Manager\"\n    },\n    \"shareDataWithPeers\": false\n}"
 						},
-						"url": "{{baseUrl}}/api/roles"
+						"url": {
+							"raw": "{{baseUrl}}/api/roles",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"roles"
+							]
+						}
 					},
 					"response": []
 				},
@@ -236,7 +302,16 @@
 							"mode": "raw",
 							"raw": "{\n    \"name\": \"Employee\",\n    \"description\": \"Employees providing referrals or involved in hiring feedback\",\n    \"reportsTo\": {\n        \"id\": 3,\n        \"name\": \"Hiring Manager\"\n    },\n    \"shareDataWithPeers\": false\n}"
 						},
-						"url": "{{baseUrl}}/api/roles"
+						"url": {
+							"raw": "{{baseUrl}}/api/roles",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"roles"
+							]
+						}
 					},
 					"response": []
 				},
@@ -254,7 +329,17 @@
 								"value": "application/json"
 							}
 						],
-						"url": "{{baseUrl}}/api/roles/hierarchy"
+						"url": {
+							"raw": "{{baseUrl}}/api/roles/hierarchy",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"roles",
+								"hierarchy"
+							]
+						}
 					},
 					"response": []
 				},
@@ -272,7 +357,17 @@
 								}
 							}
 						},
-						"url": "{{baseUrl}}/api/roles/1"
+						"url": {
+							"raw": "{{baseUrl}}/api/roles/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"roles",
+								"1"
+							]
+						}
 					},
 					"response": []
 				}
@@ -299,7 +394,16 @@
 							"mode": "raw",
 							"raw": "{\n    \"name\": \"Administrator\",\n    \"description\": \"Full access to all entities and permissions\",\n    \"permissions\": {\n        \"modulePermissions\": [\n            {\n                \"entity\": \"Home\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Job Openings\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Applications\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Candidates\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Referrals\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Interviews\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Departments\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Analytics\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Metrics\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Dashboards\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Reports\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Campaigns\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Assessments\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"To-Dos\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Vendors\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Notes\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Recruiter Inbox\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"My Actions\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Emails\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Documents\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Submissions\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Offers\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            }\n        ],\n        \"socialPermissions\": {\n            \"socialAdmin\": true,\n            \"managePosts\": true,\n            \"viewAnalytics\": true\n        }\n    }\n}\n"
 						},
-						"url": "{{baseUrl}}/api/profiles"
+						"url": {
+							"raw": "{{baseUrl}}/api/profiles",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"profiles"
+							]
+						}
 					},
 					"response": []
 				},
@@ -321,7 +425,16 @@
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"Standard Profile\",\n  \"description\": \"Standard permissions for a user\",\n  \"permissions\": \"{\\\"modulePermissions\\\":{\\\"view\\\":true,\\\"create\\\":true,\\\"edit\\\":false,\\\"delete\\\":false}}\"\n}"
 						},
-						"url": "{{baseUrl}}/api/profiles"
+						"url": {
+							"raw": "{{baseUrl}}/api/profiles",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"profiles"
+							]
+						}
 					},
 					"response": []
 				},
@@ -343,7 +456,16 @@
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"Hiring Manager\",\n  \"description\": \"Hiring Manager permissions for a user\",\n    \"permissions\": {\n        \"modulePermissions\": [\n            {\n                \"entity\": \"Home\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Job Openings\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Applications\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Candidates\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Referrals\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Interviews\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Departments\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Analytics\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Metrics\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Dashboards\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Reports\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Campaigns\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Assessments\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"To-Dos\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Vendors\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Notes\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Recruiter Inbox\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"My Actions\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Emails\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Documents\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Submissions\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Offers\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            }\n        ],\n        \"socialPermissions\": {\n            \"socialAdmin\": true,\n            \"managePosts\": true,\n            \"viewAnalytics\": true\n        }\n    }\n}"
 						},
-						"url": "{{baseUrl}}/api/profiles"
+						"url": {
+							"raw": "{{baseUrl}}/api/profiles",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"profiles"
+							]
+						}
 					},
 					"response": []
 				},
@@ -365,7 +487,16 @@
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"Employee \",\n  \"description\": \"Employee permissions for a user\",\n    \"permissions\": {\n        \"modulePermissions\": [\n            {\n                \"entity\": \"Home\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Job Openings\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Applications\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Candidates\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Referrals\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Interviews\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Departments\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Analytics\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Metrics\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Dashboards\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Reports\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Campaigns\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Assessments\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"To-Dos\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Vendors\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Notes\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Recruiter Inbox\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"My Actions\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Emails\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Documents\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Submissions\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Offers\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            }\n        ],\n        \"socialPermissions\": {\n            \"socialAdmin\": true,\n            \"managePosts\": true,\n            \"viewAnalytics\": true\n        }\n    }\n}"
 						},
-						"url": "{{baseUrl}}/api/profiles"
+						"url": {
+							"raw": "{{baseUrl}}/api/profiles",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"profiles"
+							]
+						}
 					},
 					"response": []
 				},
@@ -387,7 +518,16 @@
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"Employee \",\n  \"description\": \"Employee permissions for a user\",\n    \"permissions\": {\n        \"modulePermissions\": [\n            {\n                \"entity\": \"Home\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Job Openings\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Applications\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Candidates\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Referrals\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Interviews\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Departments\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Analytics\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Metrics\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Dashboards\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Reports\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Campaigns\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Assessments\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"To-Dos\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Vendors\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Notes\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Recruiter Inbox\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"My Actions\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Emails\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Documents\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Submissions\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Offers\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            }\n        ],\n        \"socialPermissions\": {\n            \"socialAdmin\": true,\n            \"managePosts\": true,\n            \"viewAnalytics\": true\n        }\n    }\n}"
 						},
-						"url": "{{baseUrl}}/api/profiles"
+						"url": {
+							"raw": "{{baseUrl}}/api/profiles",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"profiles"
+							]
+						}
 					},
 					"response": []
 				},
@@ -412,7 +552,16 @@
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"Employee \",\n  \"description\": \"Employee permissions for a user\",\n    \"permissions\": {\n        \"modulePermissions\": [\n            {\n                \"entity\": \"Home\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Job Openings\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Applications\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Candidates\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Referrals\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Interviews\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Departments\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Analytics\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Metrics\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Dashboards\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Reports\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Campaigns\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Assessments\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"To-Dos\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Vendors\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Notes\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Recruiter Inbox\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"My Actions\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Emails\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Documents\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Submissions\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            },\n            {\n                \"entity\": \"Offers\",\n                \"tabVisible\": true,\n                \"view\": true,\n                \"create\": true,\n                \"edit\": true,\n                \"delete\": true\n            }\n        ],\n        \"socialPermissions\": {\n            \"socialAdmin\": true,\n            \"managePosts\": true,\n            \"viewAnalytics\": true\n        }\n    }\n}"
 						},
-						"url": "{{baseUrl}}/api/profiles"
+						"url": {
+							"raw": "{{baseUrl}}/api/profiles",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"profiles"
+							]
+						}
 					},
 					"response": []
 				},
@@ -430,7 +579,17 @@
 								}
 							}
 						},
-						"url": "{{baseUrl}}/api/profiles/1"
+						"url": {
+							"raw": "{{baseUrl}}/api/profiles/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"profiles",
+								"1"
+							]
+						}
 					},
 					"response": []
 				}
@@ -460,7 +619,16 @@
 									"mode": "raw",
 									"raw": "{\n    \"firstName\": \"Sarah\",\n    \"lastName\": \"Taylor\",\n    \"email\": \"user1@example.com\",\n    \"password\": \"password\",\n    \"role\": {\n        \"id\": 2,\n        \"name\": \"Recruiter\"\n    },\n    \"profile\": {\n        \"id\": 4,\n        \"name\": \"Coordinator Profile\"\n    },\n    \"phone\": \"6285105230\",\n    \"address\": \"575 Main St\",\n    \"territory\": \"South\"\n}"
 								},
-								"url": "{{baseUrl}}/api/users"
+								"url": {
+									"raw": "{{baseUrl}}/api/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"users"
+									]
+								}
 							},
 							"response": []
 						},
@@ -482,7 +650,16 @@
 									"mode": "raw",
 									"raw": "{\n    \"firstName\": \"Sarah\",\n    \"lastName\": \"Taylor\",\n    \"email\": \"user1@example.com\",\n        \"password\": \"password\",\n\n    \"role\": {\n        \"id\": 2,\n        \"name\": \"Recruiter\"\n    },\n    \"profile\": {\n        \"id\": 4,\n        \"name\": \"Coordinator Profile\"\n    },\n    \"phone\": \"6285105230\",\n    \"address\": \"575 Main St\",\n    \"territory\": \"South\"\n}"
 								},
-								"url": "{{baseUrl}}/api/users"
+								"url": {
+									"raw": "{{baseUrl}}/api/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"users"
+									]
+								}
 							},
 							"response": []
 						},
@@ -504,7 +681,16 @@
 									"mode": "raw",
 									"raw": "{\n    \"firstName\": \"Emily\",\n    \"lastName\": \"Martin\",\n    \"email\": \"user2@example.com\",\n    \"password\": \"password\",\n    \"role\": {\n        \"id\": 2,\n        \"name\": \"Recruiter\"\n    },\n    \"profile\": {\n        \"id\": 3,\n        \"name\": \"Recruiter Profile\"\n    },\n    \"phone\": \"7342504060\",\n    \"address\": \"849 Main St\",\n    \"territory\": \"East\"\n}"
 								},
-								"url": "{{baseUrl}}/api/users"
+								"url": {
+									"raw": "{{baseUrl}}/api/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"users"
+									]
+								}
 							},
 							"response": []
 						},
@@ -526,7 +712,16 @@
 									"mode": "raw",
 									"raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"role\": {\n    \"id\": 1,\n    \"name\": \"Hiring Manager\"\n  },\n  \"profile\": {\n    \"id\": 1,\n    \"name\": \"Standard Profile\"\n  },\n  \"phone\": \"1234567890\",\n  \"address\": \"123 Main St\",\n  \"territory\": \"East\"\n}"
 								},
-								"url": "{{baseUrl}}/api/users"
+								"url": {
+									"raw": "{{baseUrl}}/api/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"users"
+									]
+								}
 							},
 							"response": []
 						},
@@ -548,7 +743,16 @@
 									"mode": "raw",
 									"raw": "{\n    \"firstName\": \"James\",\n    \"lastName\": \"Smith\",\n    \"email\": \"user4@example.com\",\n    \"password\": \"password\",\n    \"role\": {\n        \"id\": 4,\n        \"name\": \"Team Lead\"\n    },\n    \"profile\": {\n        \"id\": 3,\n        \"name\": \"Recruiter Profile\"\n    },\n    \"phone\": \"2987647708\",\n    \"address\": \"353 Main St\",\n    \"territory\": \"Central\"\n}"
 								},
-								"url": "{{baseUrl}}/api/users"
+								"url": {
+									"raw": "{{baseUrl}}/api/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"users"
+									]
+								}
 							},
 							"response": []
 						},
@@ -570,7 +774,16 @@
 									"mode": "raw",
 									"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"user5@example.com\",\n    \"password\": \"password\",\n    \"role\": {\n        \"id\": 4,\n        \"name\": \"Coordinator\"\n    },\n    \"profile\": {\n        \"id\": 1,\n        \"name\": \"Standard Profile\"\n    },\n    \"phone\": \"9133447252\",\n    \"address\": \"971 Main St\",\n    \"territory\": \"North\"\n}"
 								},
-								"url": "{{baseUrl}}/api/users"
+								"url": {
+									"raw": "{{baseUrl}}/api/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"users"
+									]
+								}
 							},
 							"response": []
 						},
@@ -592,7 +805,16 @@
 									"mode": "raw",
 									"raw": "{\n    \"firstName\": \"Sarah\",\n    \"lastName\": \"Martin\",\n    \"email\": \"user6@example.com\",\n    \"password\": \"password\",\n    \"role\": {\n        \"id\": 2,\n        \"name\": \"Recruiter\"\n    },\n    \"profile\": {\n        \"id\": 1,\n        \"name\": \"Standard Profile\"\n    },\n    \"phone\": \"9475907538\",\n    \"address\": \"515 Main St\",\n    \"territory\": \"East\"\n}"
 								},
-								"url": "{{baseUrl}}/api/users"
+								"url": {
+									"raw": "{{baseUrl}}/api/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"users"
+									]
+								}
 							},
 							"response": []
 						},
@@ -614,7 +836,16 @@
 									"mode": "raw",
 									"raw": "{\n    \"firstName\": \"David\",\n    \"lastName\": \"Taylor\",\n    \"email\": \"user7@example.com\",\n    \"password\": \"password\",\n    \"role\": {\n        \"id\": 3,\n        \"name\": \"Administrator\"\n    },\n    \"profile\": {\n        \"id\": 5,\n        \"name\": \"Team Lead Profile\"\n    },\n    \"phone\": \"4937860263\",\n    \"address\": \"676 Main St\",\n    \"territory\": \"South\"\n}"
 								},
-								"url": "{{baseUrl}}/api/users"
+								"url": {
+									"raw": "{{baseUrl}}/api/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"users"
+									]
+								}
 							},
 							"response": []
 						},
@@ -636,7 +867,16 @@
 									"mode": "raw",
 									"raw": "{\n    \"firstName\": \"Emily\",\n    \"lastName\": \"White\",\n    \"email\": \"user8@example.com\",\n    \"password\": \"password\",\n    \"role\": {\n        \"id\": 2,\n        \"name\": \"Recruiter\"\n    },\n    \"profile\": {\n        \"id\": 1,\n        \"name\": \"Standard Profile\"\n    },\n    \"phone\": \"7188737487\",\n    \"address\": \"813 Main St\",\n    \"territory\": \"West\"\n}"
 								},
-								"url": "{{baseUrl}}/api/users"
+								"url": {
+									"raw": "{{baseUrl}}/api/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"users"
+									]
+								}
 							},
 							"response": []
 						},
@@ -658,7 +898,16 @@
 									"mode": "raw",
 									"raw": "{\n    \"firstName\": \"Sarah\",\n    \"lastName\": \"Brown\",\n    \"email\": \"user9@example.com\",\n    \"password\": \"password\",\n    \"role\": {\n        \"id\": 3,\n        \"name\": \"Administrator\"\n    },\n    \"profile\": {\n        \"id\": 5,\n        \"name\": \"Team Lead Profile\"\n    },\n    \"phone\": \"2462003587\",\n    \"address\": \"123 Main St\",\n    \"territory\": \"West\"\n}"
 								},
-								"url": "{{baseUrl}}/api/users"
+								"url": {
+									"raw": "{{baseUrl}}/api/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"users"
+									]
+								}
 							},
 							"response": []
 						},
@@ -680,7 +929,16 @@
 									"mode": "raw",
 									"raw": "{\n    \"firstName\": \"Emma\",\n    \"lastName\": \"Hall\",\n    \"email\": \"user10@example.com\",\n    \"password\": \"password\",\n    \"role\": {\n        \"id\": 3,\n        \"name\": \"Administrator\"\n    },\n    \"profile\": {\n        \"id\": 4,\n        \"name\": \"Coordinator Profile\"\n    },\n    \"phone\": \"1305234071\",\n    \"address\": \"623 Main St\",\n    \"territory\": \"Central\"\n}"
 								},
-								"url": "{{baseUrl}}/api/users"
+								"url": {
+									"raw": "{{baseUrl}}/api/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"users"
+									]
+								}
 							},
 							"response": []
 						},
@@ -702,7 +960,16 @@
 									"mode": "raw",
 									"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"password\": \"password\",\n    \"role\": {\n        \"id\": 1,\n        \"name\": \"Hiring Manager\"\n    },\n    \"profile\": {\n        \"id\": 1,\n        \"name\": \"Standard Profile\"\n    },\n    \"phone\": \"9086754895\",\n    \"address\": \"Mahabodhi clinic, Gitanjali Metro Station, Sreeguru Sangha Ashram, Durga Prasanna Paramahansha Rd, Naktala, Garia, Kolkata, West Bengal 700047\",\n    \"territory\": \"East\"\n}"
 								},
-								"url": "{{baseUrl}}/api/users"
+								"url": {
+									"raw": "{{baseUrl}}/api/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"users"
+									]
+								}
 							},
 							"response": []
 						},
@@ -724,7 +991,16 @@
 									"mode": "raw",
 									"raw": "{\n    \"firstName\": \"James\",\n    \"lastName\": \"Smith\",\n    \"email\": \"jamessmith@gmail.com\",\n    \"password\": \"admin123\",\n    \"role\": {\n        \"id\": 2,\n        \"name\": \"Manager\"\n    },\n    \"profile\": {\n        \"id\": 1,\n        \"name\": \"Executive Profile\"\n    },\n    \"phone\": \"9123456780\",\n    \"address\": \"120 Elm St\",\n    \"territory\": \"North\"\n}"
 								},
-								"url": "{{baseUrl}}/api/users"
+								"url": {
+									"raw": "{{baseUrl}}/api/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"users"
+									]
+								}
 							},
 							"response": []
 						}
@@ -740,7 +1016,16 @@
 								"value": "Bearer {{token}}"
 							}
 						],
-						"url": "{{baseUrl}}/api/users"
+						"url": {
+							"raw": "{{baseUrl}}/api/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
 					},
 					"response": []
 				},
@@ -758,7 +1043,17 @@
 								}
 							}
 						},
-						"url": "{{baseUrl}}/api/users/1"
+						"url": {
+							"raw": "{{baseUrl}}/api/users/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"1"
+							]
+						}
 					},
 					"response": []
 				}
@@ -785,7 +1080,17 @@
 							"mode": "raw",
 							"raw": "{\n    // \"to\": \"dsdebnath4663@gmail.com\",\n    \"to\": \"meghnadsaha422@gmail.com\",\n    \"userName\": \"Debnath Saha\",\n    \"userId\": \"admin@example.com\",\n    \"password\": \"admin@123\",\n    \"loginUrl\": \"http://localhost:3000/authentication/card/sign-in\"\n}"
 						},
-						"url": "{{baseUrl}}/api/email/send"
+						"url": {
+							"raw": "{{baseUrl}}/api/email/send",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"email",
+								"send"
+							]
+						}
 					},
 					"response": []
 				}
@@ -904,7 +1209,16 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/departments"
+								"url": {
+									"raw": "{{baseUrl}}/api/departments",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"departments"
+									]
+								}
 							},
 							"response": []
 						},
@@ -933,7 +1247,16 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/departments"
+								"url": {
+									"raw": "{{baseUrl}}/api/departments",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"departments"
+									]
+								}
 							},
 							"response": []
 						},
@@ -962,7 +1285,16 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/departments"
+								"url": {
+									"raw": "{{baseUrl}}/api/departments",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"departments"
+									]
+								}
 							},
 							"response": []
 						},
@@ -991,7 +1323,16 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/departments"
+								"url": {
+									"raw": "{{baseUrl}}/api/departments",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"departments"
+									]
+								}
 							},
 							"response": []
 						},
@@ -1020,7 +1361,16 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/departments"
+								"url": {
+									"raw": "{{baseUrl}}/api/departments",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"departments"
+									]
+								}
 							},
 							"response": []
 						},
@@ -1049,7 +1399,16 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/departments"
+								"url": {
+									"raw": "{{baseUrl}}/api/departments",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"departments"
+									]
+								}
 							},
 							"response": []
 						},
@@ -1078,7 +1437,16 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/departments"
+								"url": {
+									"raw": "{{baseUrl}}/api/departments",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"departments"
+									]
+								}
 							},
 							"response": []
 						},
@@ -1107,7 +1475,16 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/departments"
+								"url": {
+									"raw": "{{baseUrl}}/api/departments",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"departments"
+									]
+								}
 							},
 							"response": []
 						},
@@ -1136,7 +1513,16 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/departments"
+								"url": {
+									"raw": "{{baseUrl}}/api/departments",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"departments"
+									]
+								}
 							},
 							"response": []
 						},
@@ -1165,7 +1551,16 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/departments"
+								"url": {
+									"raw": "{{baseUrl}}/api/departments",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"departments"
+									]
+								}
 							},
 							"response": []
 						}
@@ -1187,7 +1582,16 @@
 								"type": "text"
 							}
 						],
-						"url": "{{baseUrl}}/api/departments"
+						"url": {
+							"raw": "{{baseUrl}}/api/departments",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"departments"
+							]
+						}
 					},
 					"response": []
 				},
@@ -1207,7 +1611,17 @@
 								"type": "text"
 							}
 						],
-						"url": "{{baseUrl}}/api/departments/1"
+						"url": {
+							"raw": "{{baseUrl}}/api/departments/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"departments",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
@@ -1236,7 +1650,17 @@
 								}
 							}
 						},
-						"url": "{{baseUrl}}/api/departments/1"
+						"url": {
+							"raw": "{{baseUrl}}/api/departments/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"departments",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
@@ -1256,7 +1680,17 @@
 								"type": "text"
 							}
 						],
-						"url": "{{baseUrl}}/api/departments/1"
+						"url": {
+							"raw": "{{baseUrl}}/api/departments/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"departments",
+								"1"
+							]
+						}
 					},
 					"response": []
 				}
@@ -1266,7 +1700,7 @@
 			"name": "JobOpening",
 			"item": [
 				{
-					"name": "Create",
+					"name": "Create: ✨",
 					"item": [
 						{
 							"name": "Create  Java Developer Job Opening",
@@ -1293,7 +1727,16 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/job-openings"
+								"url": {
+									"raw": "{{baseUrl}}/api/job-openings",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"job-openings"
+									]
+								}
 							},
 							"response": []
 						},
@@ -1322,7 +1765,16 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/job-openings"
+								"url": {
+									"raw": "{{baseUrl}}/api/job-openings",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"job-openings"
+									]
+								}
 							},
 							"response": []
 						},
@@ -1351,7 +1803,16 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/job-openings"
+								"url": {
+									"raw": "{{baseUrl}}/api/job-openings",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"job-openings"
+									]
+								}
 							},
 							"response": []
 						},
@@ -1380,7 +1841,16 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/job-openings"
+								"url": {
+									"raw": "{{baseUrl}}/api/job-openings",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"job-openings"
+									]
+								}
 							},
 							"response": []
 						},
@@ -1409,7 +1879,16 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/job-openings"
+								"url": {
+									"raw": "{{baseUrl}}/api/job-openings",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"job-openings"
+									]
+								}
 							},
 							"response": []
 						},
@@ -1438,7 +1917,16 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/job-openings"
+								"url": {
+									"raw": "{{baseUrl}}/api/job-openings",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"job-openings"
+									]
+								}
 							},
 							"response": []
 						},
@@ -1467,7 +1955,16 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/job-openings"
+								"url": {
+									"raw": "{{baseUrl}}/api/job-openings",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"job-openings"
+									]
+								}
 							},
 							"response": []
 						},
@@ -1496,7 +1993,16 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/job-openings"
+								"url": {
+									"raw": "{{baseUrl}}/api/job-openings",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"job-openings"
+									]
+								}
 							},
 							"response": []
 						},
@@ -1525,7 +2031,16 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/job-openings"
+								"url": {
+									"raw": "{{baseUrl}}/api/job-openings",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"job-openings"
+									]
+								}
 							},
 							"response": []
 						},
@@ -1554,7 +2069,16 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/job-openings"
+								"url": {
+									"raw": "{{baseUrl}}/api/job-openings",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"job-openings"
+									]
+								}
 							},
 							"response": []
 						},
@@ -1583,7 +2107,16 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/job-openings"
+								"url": {
+									"raw": "{{baseUrl}}/api/job-openings",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"job-openings"
+									]
+								}
 							},
 							"response": []
 						},
@@ -1612,175 +2145,1531 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/job-openings"
+								"url": {
+									"raw": "{{baseUrl}}/api/job-openings",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"job-openings"
+									]
+								}
 							},
 							"response": []
 						}
 					]
 				},
 				{
-					"name": "Get All Job Openings",
-					"event": [
+					"name": "Delete: ❌",
+					"item": [
 						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"var template = `",
-									"<style type=\"text/css\">",
-									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
-									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
-									"    .tftable tr {background-color:#ffffff;}",
-									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
-									"    .tftable tr:hover {background-color:#e0ffff;}",
-									"</style>",
-									"",
-									"<table class=\"tftable\" border=\"1\">",
-									"    <tr>",
-									"        <th>ID</th>",
-									"        <th>Posting Title</th>",
-									"        <th>Title</th>",
-									"        <th>Target Date</th>",
-									"        <th>Status</th>",
-									"        <th>Industry</th>",
-									"        <th>Salary</th>",
-									"        <th>Department</th>",
-									"        <th>Hiring Manager</th>",
-									"        <th>Date Opened</th>",
-									"        <th>Job Type</th>",
-									"    </tr>",
-									"    ",
-									"    {{#each response}}",
-									"        <tr>",
-									"            <td>{{id}}</td>",
-									"            <td>{{postingTitle}}</td>",
-									"            <td>{{title}}</td>",
-									"            <td>{{targetDate}}</td>",
-									"            <td>{{status}}</td>",
-									"            <td>{{industry}}</td>",
-									"            <td>{{salary}}</td>",
-									"            <td>{{department.departmentName}}</td>",
-									"            <td>{{hiringManager.firstName}} {{hiringManager.lastName}}</td>",
-									"            <td>{{dateOpened}}</td>",
-									"            <td>{{jobType}}</td>",
-									"        </tr>",
-									"    {{/each}}",
-									"</table>",
-									"`;",
-									"",
-									"function constructVisualizerPayload() {",
-									"    return {response: pm.response.json()}",
-									"}",
-									"",
-									"pm.visualizer.set(template, constructVisualizerPayload());"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"type": "text"
+							"name": "Delete All",
+							"request": {
+								"method": "GET",
+								"header": []
 							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"url": "{{baseUrl}}/api/job-openings"
-					},
-					"response": []
+							"response": []
+						},
+						{
+							"name": "Delete a Job Opening",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/job-openings/3",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"job-openings",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				},
 				{
-					"name": "Get Job Opening by ID",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"type": "text"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/api/job-openings/3",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"job-openings",
-								"3"
-							],
-							"query": [
+					"name": "Fetch: 📥",
+					"item": [
+						{
+							"name": "Get Job Openings by Status",
+							"item": [
 								{
-									"key": "",
-									"value": "",
-									"disabled": true
+									"name": "🔄 In Progress (🚧 Ongoing)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var template = `",
+													"<style type=\"text/css\">",
+													"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+													"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+													"    .tftable tr {background-color:#ffffff;}",
+													"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+													"    .tftable tr:hover {background-color:#e0ffff;}",
+													"</style>",
+													"",
+													"<table class=\"tftable\" border=\"1\">",
+													"    <tr>",
+													"        <th>ID</th>",
+													"        <th>Posting Title</th>",
+													"        <th>Title</th>",
+													"        <th>Target Date</th>",
+													"        <th>Status</th>",
+													"        <th>Industry</th>",
+													"        <th>Salary</th>",
+													"        <th>Department</th>",
+													"        <th>Hiring Manager</th>",
+													"        <th>Date Opened</th>",
+													"        <th>Job Type</th>",
+													"    </tr>",
+													"    ",
+													"    {{#each response}}",
+													"        <tr>",
+													"            <td>{{id}}</td>",
+													"            <td>{{postingTitle}}</td>",
+													"            <td>{{title}}</td>",
+													"            <td>{{targetDate}}</td>",
+													"            <td>{{status}}</td>",
+													"            <td>{{industry}}</td>",
+													"            <td>{{salary}}</td>",
+													"            <td>{{department.departmentName}}</td>",
+													"            <td>{{hiringManager.firstName}} {{hiringManager.lastName}}</td>",
+													"            <td>{{dateOpened}}</td>",
+													"            <td>{{jobType}}</td>",
+													"        </tr>",
+													"    {{/each}}",
+													"</table>",
+													"`;",
+													"",
+													"function constructVisualizerPayload() {",
+													"    return {response: pm.response.json()}",
+													"}",
+													"",
+													"pm.visualizer.set(template, constructVisualizerPayload());"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{token}}",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/job-openings?status=IN_PROGRESS",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"job-openings"
+											],
+											"query": [
+												{
+													"key": "status",
+													"value": "IN_PROGRESS"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "⏳ Waiting for Approval (🕒 Pending)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var template = `",
+													"<style type=\"text/css\">",
+													"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+													"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+													"    .tftable tr {background-color:#ffffff;}",
+													"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+													"    .tftable tr:hover {background-color:#e0ffff;}",
+													"</style>",
+													"",
+													"<table class=\"tftable\" border=\"1\">",
+													"    <tr>",
+													"        <th>ID</th>",
+													"        <th>Posting Title</th>",
+													"        <th>Title</th>",
+													"        <th>Target Date</th>",
+													"        <th>Status</th>",
+													"        <th>Industry</th>",
+													"        <th>Salary</th>",
+													"        <th>Department</th>",
+													"        <th>Hiring Manager</th>",
+													"        <th>Date Opened</th>",
+													"        <th>Job Type</th>",
+													"    </tr>",
+													"    ",
+													"    {{#each response}}",
+													"        <tr>",
+													"            <td>{{id}}</td>",
+													"            <td>{{postingTitle}}</td>",
+													"            <td>{{title}}</td>",
+													"            <td>{{targetDate}}</td>",
+													"            <td>{{status}}</td>",
+													"            <td>{{industry}}</td>",
+													"            <td>{{salary}}</td>",
+													"            <td>{{department.departmentName}}</td>",
+													"            <td>{{hiringManager.firstName}} {{hiringManager.lastName}}</td>",
+													"            <td>{{dateOpened}}</td>",
+													"            <td>{{jobType}}</td>",
+													"        </tr>",
+													"    {{/each}}",
+													"</table>",
+													"`;",
+													"",
+													"function constructVisualizerPayload() {",
+													"    return {response: pm.response.json()}",
+													"}",
+													"",
+													"pm.visualizer.set(template, constructVisualizerPayload());"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{token}}",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/job-openings?status=WAITING_FOR_APPROVAL",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"job-openings"
+											],
+											"query": [
+												{
+													"key": "status",
+													"value": "WAITING_FOR_APPROVAL"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "⏸️ On Hold (⏸️ Paused)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var template = `",
+													"<style type=\"text/css\">",
+													"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+													"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+													"    .tftable tr {background-color:#ffffff;}",
+													"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+													"    .tftable tr:hover {background-color:#e0ffff;}",
+													"</style>",
+													"",
+													"<table class=\"tftable\" border=\"1\">",
+													"    <tr>",
+													"        <th>ID</th>",
+													"        <th>Posting Title</th>",
+													"        <th>Title</th>",
+													"        <th>Target Date</th>",
+													"        <th>Status</th>",
+													"        <th>Industry</th>",
+													"        <th>Salary</th>",
+													"        <th>Department</th>",
+													"        <th>Hiring Manager</th>",
+													"        <th>Date Opened</th>",
+													"        <th>Job Type</th>",
+													"    </tr>",
+													"    ",
+													"    {{#each response}}",
+													"        <tr>",
+													"            <td>{{id}}</td>",
+													"            <td>{{postingTitle}}</td>",
+													"            <td>{{title}}</td>",
+													"            <td>{{targetDate}}</td>",
+													"            <td>{{status}}</td>",
+													"            <td>{{industry}}</td>",
+													"            <td>{{salary}}</td>",
+													"            <td>{{department.departmentName}}</td>",
+													"            <td>{{hiringManager.firstName}} {{hiringManager.lastName}}</td>",
+													"            <td>{{dateOpened}}</td>",
+													"            <td>{{jobType}}</td>",
+													"        </tr>",
+													"    {{/each}}",
+													"</table>",
+													"`;",
+													"",
+													"function constructVisualizerPayload() {",
+													"    return {response: pm.response.json()}",
+													"}",
+													"",
+													"pm.visualizer.set(template, constructVisualizerPayload());"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{token}}",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/job-openings?status=WAITING_FOR_APPROVAL",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"job-openings"
+											],
+											"query": [
+												{
+													"key": "status",
+													"value": "WAITING_FOR_APPROVAL"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "✅ Filled (🏆 Completed)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var template = `",
+													"<style type=\"text/css\">",
+													"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+													"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+													"    .tftable tr {background-color:#ffffff;}",
+													"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+													"    .tftable tr:hover {background-color:#e0ffff;}",
+													"</style>",
+													"",
+													"<table class=\"tftable\" border=\"1\">",
+													"    <tr>",
+													"        <th>ID</th>",
+													"        <th>Posting Title</th>",
+													"        <th>Title</th>",
+													"        <th>Target Date</th>",
+													"        <th>Status</th>",
+													"        <th>Industry</th>",
+													"        <th>Salary</th>",
+													"        <th>Department</th>",
+													"        <th>Hiring Manager</th>",
+													"        <th>Date Opened</th>",
+													"        <th>Job Type</th>",
+													"    </tr>",
+													"    ",
+													"    {{#each response}}",
+													"        <tr>",
+													"            <td>{{id}}</td>",
+													"            <td>{{postingTitle}}</td>",
+													"            <td>{{title}}</td>",
+													"            <td>{{targetDate}}</td>",
+													"            <td>{{status}}</td>",
+													"            <td>{{industry}}</td>",
+													"            <td>{{salary}}</td>",
+													"            <td>{{department.departmentName}}</td>",
+													"            <td>{{hiringManager.firstName}} {{hiringManager.lastName}}</td>",
+													"            <td>{{dateOpened}}</td>",
+													"            <td>{{jobType}}</td>",
+													"        </tr>",
+													"    {{/each}}",
+													"</table>",
+													"`;",
+													"",
+													"function constructVisualizerPayload() {",
+													"    return {response: pm.response.json()}",
+													"}",
+													"",
+													"pm.visualizer.set(template, constructVisualizerPayload());"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{token}}",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/job-openings?status=FILLED",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"job-openings"
+											],
+											"query": [
+												{
+													"key": "status",
+													"value": "FILLED"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "❌ Cancelled (🚫 Terminated)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var template = `",
+													"<style type=\"text/css\">",
+													"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+													"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+													"    .tftable tr {background-color:#ffffff;}",
+													"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+													"    .tftable tr:hover {background-color:#e0ffff;}",
+													"</style>",
+													"",
+													"<table class=\"tftable\" border=\"1\">",
+													"    <tr>",
+													"        <th>ID</th>",
+													"        <th>Posting Title</th>",
+													"        <th>Title</th>",
+													"        <th>Target Date</th>",
+													"        <th>Status</th>",
+													"        <th>Industry</th>",
+													"        <th>Salary</th>",
+													"        <th>Department</th>",
+													"        <th>Hiring Manager</th>",
+													"        <th>Date Opened</th>",
+													"        <th>Job Type</th>",
+													"    </tr>",
+													"    ",
+													"    {{#each response}}",
+													"        <tr>",
+													"            <td>{{id}}</td>",
+													"            <td>{{postingTitle}}</td>",
+													"            <td>{{title}}</td>",
+													"            <td>{{targetDate}}</td>",
+													"            <td>{{status}}</td>",
+													"            <td>{{industry}}</td>",
+													"            <td>{{salary}}</td>",
+													"            <td>{{department.departmentName}}</td>",
+													"            <td>{{hiringManager.firstName}} {{hiringManager.lastName}}</td>",
+													"            <td>{{dateOpened}}</td>",
+													"            <td>{{jobType}}</td>",
+													"        </tr>",
+													"    {{/each}}",
+													"</table>",
+													"`;",
+													"",
+													"function constructVisualizerPayload() {",
+													"    return {response: pm.response.json()}",
+													"}",
+													"",
+													"pm.visualizer.set(template, constructVisualizerPayload());"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{token}}",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/job-openings?status=CANCELLED",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"job-openings"
+											],
+											"query": [
+												{
+													"key": "status",
+													"value": "CANCELLED"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "📝 Draft (✏️ Drafting)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var template = `",
+													"<style type=\"text/css\">",
+													"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+													"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+													"    .tftable tr {background-color:#ffffff;}",
+													"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+													"    .tftable tr:hover {background-color:#e0ffff;}",
+													"</style>",
+													"",
+													"<table class=\"tftable\" border=\"1\">",
+													"    <tr>",
+													"        <th>ID</th>",
+													"        <th>Posting Title</th>",
+													"        <th>Title</th>",
+													"        <th>Target Date</th>",
+													"        <th>Status</th>",
+													"        <th>Industry</th>",
+													"        <th>Salary</th>",
+													"        <th>Department</th>",
+													"        <th>Hiring Manager</th>",
+													"        <th>Date Opened</th>",
+													"        <th>Job Type</th>",
+													"    </tr>",
+													"    ",
+													"    {{#each response}}",
+													"        <tr>",
+													"            <td>{{id}}</td>",
+													"            <td>{{postingTitle}}</td>",
+													"            <td>{{title}}</td>",
+													"            <td>{{targetDate}}</td>",
+													"            <td>{{status}}</td>",
+													"            <td>{{industry}}</td>",
+													"            <td>{{salary}}</td>",
+													"            <td>{{department.departmentName}}</td>",
+													"            <td>{{hiringManager.firstName}} {{hiringManager.lastName}}</td>",
+													"            <td>{{dateOpened}}</td>",
+													"            <td>{{jobType}}</td>",
+													"        </tr>",
+													"    {{/each}}",
+													"</table>",
+													"`;",
+													"",
+													"function constructVisualizerPayload() {",
+													"    return {response: pm.response.json()}",
+													"}",
+													"",
+													"pm.visualizer.set(template, constructVisualizerPayload());"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{token}}",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/job-openings?status=DRAFT",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"job-openings"
+											],
+											"query": [
+												{
+													"key": "status",
+													"value": "DRAFT"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "🔓 Open (🟢 Live)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var template = `",
+													"<style type=\"text/css\">",
+													"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+													"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+													"    .tftable tr {background-color:#ffffff;}",
+													"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+													"    .tftable tr:hover {background-color:#e0ffff;}",
+													"</style>",
+													"",
+													"<table class=\"tftable\" border=\"1\">",
+													"    <tr>",
+													"        <th>ID</th>",
+													"        <th>Posting Title</th>",
+													"        <th>Title</th>",
+													"        <th>Target Date</th>",
+													"        <th>Status</th>",
+													"        <th>Industry</th>",
+													"        <th>Salary</th>",
+													"        <th>Department</th>",
+													"        <th>Hiring Manager</th>",
+													"        <th>Date Opened</th>",
+													"        <th>Job Type</th>",
+													"    </tr>",
+													"    ",
+													"    {{#each response}}",
+													"        <tr>",
+													"            <td>{{id}}</td>",
+													"            <td>{{postingTitle}}</td>",
+													"            <td>{{title}}</td>",
+													"            <td>{{targetDate}}</td>",
+													"            <td>{{status}}</td>",
+													"            <td>{{industry}}</td>",
+													"            <td>{{salary}}</td>",
+													"            <td>{{department.departmentName}}</td>",
+													"            <td>{{hiringManager.firstName}} {{hiringManager.lastName}}</td>",
+													"            <td>{{dateOpened}}</td>",
+													"            <td>{{jobType}}</td>",
+													"        </tr>",
+													"    {{/each}}",
+													"</table>",
+													"`;",
+													"",
+													"function constructVisualizerPayload() {",
+													"    return {response: pm.response.json()}",
+													"}",
+													"",
+													"pm.visualizer.set(template, constructVisualizerPayload());"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{token}}",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/job-openings?status=OPEN",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"job-openings"
+											],
+											"query": [
+												{
+													"key": "status",
+													"value": "OPEN"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "📊 Screening Candidates (📝 Screening)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var template = `",
+													"<style type=\"text/css\">",
+													"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+													"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+													"    .tftable tr {background-color:#ffffff;}",
+													"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+													"    .tftable tr:hover {background-color:#e0ffff;}",
+													"</style>",
+													"",
+													"<table class=\"tftable\" border=\"1\">",
+													"    <tr>",
+													"        <th>ID</th>",
+													"        <th>Posting Title</th>",
+													"        <th>Title</th>",
+													"        <th>Target Date</th>",
+													"        <th>Status</th>",
+													"        <th>Industry</th>",
+													"        <th>Salary</th>",
+													"        <th>Department</th>",
+													"        <th>Hiring Manager</th>",
+													"        <th>Date Opened</th>",
+													"        <th>Job Type</th>",
+													"    </tr>",
+													"    ",
+													"    {{#each response}}",
+													"        <tr>",
+													"            <td>{{id}}</td>",
+													"            <td>{{postingTitle}}</td>",
+													"            <td>{{title}}</td>",
+													"            <td>{{targetDate}}</td>",
+													"            <td>{{status}}</td>",
+													"            <td>{{industry}}</td>",
+													"            <td>{{salary}}</td>",
+													"            <td>{{department.departmentName}}</td>",
+													"            <td>{{hiringManager.firstName}} {{hiringManager.lastName}}</td>",
+													"            <td>{{dateOpened}}</td>",
+													"            <td>{{jobType}}</td>",
+													"        </tr>",
+													"    {{/each}}",
+													"</table>",
+													"`;",
+													"",
+													"function constructVisualizerPayload() {",
+													"    return {response: pm.response.json()}",
+													"}",
+													"",
+													"pm.visualizer.set(template, constructVisualizerPayload());"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{token}}",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/job-openings",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"job-openings"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "📥 Submissions (📄 Review)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var template = `",
+													"<style type=\"text/css\">",
+													"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+													"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+													"    .tftable tr {background-color:#ffffff;}",
+													"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+													"    .tftable tr:hover {background-color:#e0ffff;}",
+													"</style>",
+													"",
+													"<table class=\"tftable\" border=\"1\">",
+													"    <tr>",
+													"        <th>ID</th>",
+													"        <th>Posting Title</th>",
+													"        <th>Title</th>",
+													"        <th>Target Date</th>",
+													"        <th>Status</th>",
+													"        <th>Industry</th>",
+													"        <th>Salary</th>",
+													"        <th>Department</th>",
+													"        <th>Hiring Manager</th>",
+													"        <th>Date Opened</th>",
+													"        <th>Job Type</th>",
+													"    </tr>",
+													"    ",
+													"    {{#each response}}",
+													"        <tr>",
+													"            <td>{{id}}</td>",
+													"            <td>{{postingTitle}}</td>",
+													"            <td>{{title}}</td>",
+													"            <td>{{targetDate}}</td>",
+													"            <td>{{status}}</td>",
+													"            <td>{{industry}}</td>",
+													"            <td>{{salary}}</td>",
+													"            <td>{{department.departmentName}}</td>",
+													"            <td>{{hiringManager.firstName}} {{hiringManager.lastName}}</td>",
+													"            <td>{{dateOpened}}</td>",
+													"            <td>{{jobType}}</td>",
+													"        </tr>",
+													"    {{/each}}",
+													"</table>",
+													"`;",
+													"",
+													"function constructVisualizerPayload() {",
+													"    return {response: pm.response.json()}",
+													"}",
+													"",
+													"pm.visualizer.set(template, constructVisualizerPayload());"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{token}}",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/job-openings",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"job-openings"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "🤝 Interview (💬 Interviewing)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var template = `",
+													"<style type=\"text/css\">",
+													"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+													"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+													"    .tftable tr {background-color:#ffffff;}",
+													"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+													"    .tftable tr:hover {background-color:#e0ffff;}",
+													"</style>",
+													"",
+													"<table class=\"tftable\" border=\"1\">",
+													"    <tr>",
+													"        <th>ID</th>",
+													"        <th>Posting Title</th>",
+													"        <th>Title</th>",
+													"        <th>Target Date</th>",
+													"        <th>Status</th>",
+													"        <th>Industry</th>",
+													"        <th>Salary</th>",
+													"        <th>Department</th>",
+													"        <th>Hiring Manager</th>",
+													"        <th>Date Opened</th>",
+													"        <th>Job Type</th>",
+													"    </tr>",
+													"    ",
+													"    {{#each response}}",
+													"        <tr>",
+													"            <td>{{id}}</td>",
+													"            <td>{{postingTitle}}</td>",
+													"            <td>{{title}}</td>",
+													"            <td>{{targetDate}}</td>",
+													"            <td>{{status}}</td>",
+													"            <td>{{industry}}</td>",
+													"            <td>{{salary}}</td>",
+													"            <td>{{department.departmentName}}</td>",
+													"            <td>{{hiringManager.firstName}} {{hiringManager.lastName}}</td>",
+													"            <td>{{dateOpened}}</td>",
+													"            <td>{{jobType}}</td>",
+													"        </tr>",
+													"    {{/each}}",
+													"</table>",
+													"`;",
+													"",
+													"function constructVisualizerPayload() {",
+													"    return {response: pm.response.json()}",
+													"}",
+													"",
+													"pm.visualizer.set(template, constructVisualizerPayload());"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{token}}",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/job-openings?status=INTERVIEW",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"job-openings"
+											],
+											"query": [
+												{
+													"key": "status",
+													"value": "INTERVIEW"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "🎉 Offered (📨 Offer Extended)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var template = `",
+													"<style type=\"text/css\">",
+													"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+													"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+													"    .tftable tr {background-color:#ffffff;}",
+													"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+													"    .tftable tr:hover {background-color:#e0ffff;}",
+													"</style>",
+													"",
+													"<table class=\"tftable\" border=\"1\">",
+													"    <tr>",
+													"        <th>ID</th>",
+													"        <th>Posting Title</th>",
+													"        <th>Title</th>",
+													"        <th>Target Date</th>",
+													"        <th>Status</th>",
+													"        <th>Industry</th>",
+													"        <th>Salary</th>",
+													"        <th>Department</th>",
+													"        <th>Hiring Manager</th>",
+													"        <th>Date Opened</th>",
+													"        <th>Job Type</th>",
+													"    </tr>",
+													"    ",
+													"    {{#each response}}",
+													"        <tr>",
+													"            <td>{{id}}</td>",
+													"            <td>{{postingTitle}}</td>",
+													"            <td>{{title}}</td>",
+													"            <td>{{targetDate}}</td>",
+													"            <td>{{status}}</td>",
+													"            <td>{{industry}}</td>",
+													"            <td>{{salary}}</td>",
+													"            <td>{{department.departmentName}}</td>",
+													"            <td>{{hiringManager.firstName}} {{hiringManager.lastName}}</td>",
+													"            <td>{{dateOpened}}</td>",
+													"            <td>{{jobType}}</td>",
+													"        </tr>",
+													"    {{/each}}",
+													"</table>",
+													"`;",
+													"",
+													"function constructVisualizerPayload() {",
+													"    return {response: pm.response.json()}",
+													"}",
+													"",
+													"pm.visualizer.set(template, constructVisualizerPayload());"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{token}}",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/job-openings?status=OFFERED",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"job-openings"
+											],
+											"query": [
+												{
+													"key": "status",
+													"value": "OFFERED"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "🎊 Hired (👥 Onboarded)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var template = `",
+													"<style type=\"text/css\">",
+													"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+													"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+													"    .tftable tr {background-color:#ffffff;}",
+													"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+													"    .tftable tr:hover {background-color:#e0ffff;}",
+													"</style>",
+													"",
+													"<table class=\"tftable\" border=\"1\">",
+													"    <tr>",
+													"        <th>ID</th>",
+													"        <th>Posting Title</th>",
+													"        <th>Title</th>",
+													"        <th>Target Date</th>",
+													"        <th>Status</th>",
+													"        <th>Industry</th>",
+													"        <th>Salary</th>",
+													"        <th>Department</th>",
+													"        <th>Hiring Manager</th>",
+													"        <th>Date Opened</th>",
+													"        <th>Job Type</th>",
+													"    </tr>",
+													"    ",
+													"    {{#each response}}",
+													"        <tr>",
+													"            <td>{{id}}</td>",
+													"            <td>{{postingTitle}}</td>",
+													"            <td>{{title}}</td>",
+													"            <td>{{targetDate}}</td>",
+													"            <td>{{status}}</td>",
+													"            <td>{{industry}}</td>",
+													"            <td>{{salary}}</td>",
+													"            <td>{{department.departmentName}}</td>",
+													"            <td>{{hiringManager.firstName}} {{hiringManager.lastName}}</td>",
+													"            <td>{{dateOpened}}</td>",
+													"            <td>{{jobType}}</td>",
+													"        </tr>",
+													"    {{/each}}",
+													"</table>",
+													"`;",
+													"",
+													"function constructVisualizerPayload() {",
+													"    return {response: pm.response.json()}",
+													"}",
+													"",
+													"pm.visualizer.set(template, constructVisualizerPayload());"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{token}}",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/job-openings?status=HIRED",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"job-openings"
+											],
+											"query": [
+												{
+													"key": "status",
+													"value": "HIRED"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "🚫 Rejected (❌ Not Selected)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var template = `",
+													"<style type=\"text/css\">",
+													"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+													"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+													"    .tftable tr {background-color:#ffffff;}",
+													"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+													"    .tftable tr:hover {background-color:#e0ffff;}",
+													"</style>",
+													"",
+													"<table class=\"tftable\" border=\"1\">",
+													"    <tr>",
+													"        <th>ID</th>",
+													"        <th>Posting Title</th>",
+													"        <th>Title</th>",
+													"        <th>Target Date</th>",
+													"        <th>Status</th>",
+													"        <th>Industry</th>",
+													"        <th>Salary</th>",
+													"        <th>Department</th>",
+													"        <th>Hiring Manager</th>",
+													"        <th>Date Opened</th>",
+													"        <th>Job Type</th>",
+													"    </tr>",
+													"    ",
+													"    {{#each response}}",
+													"        <tr>",
+													"            <td>{{id}}</td>",
+													"            <td>{{postingTitle}}</td>",
+													"            <td>{{title}}</td>",
+													"            <td>{{targetDate}}</td>",
+													"            <td>{{status}}</td>",
+													"            <td>{{industry}}</td>",
+													"            <td>{{salary}}</td>",
+													"            <td>{{department.departmentName}}</td>",
+													"            <td>{{hiringManager.firstName}} {{hiringManager.lastName}}</td>",
+													"            <td>{{dateOpened}}</td>",
+													"            <td>{{jobType}}</td>",
+													"        </tr>",
+													"    {{/each}}",
+													"</table>",
+													"`;",
+													"",
+													"function constructVisualizerPayload() {",
+													"    return {response: pm.response.json()}",
+													"}",
+													"",
+													"pm.visualizer.set(template, constructVisualizerPayload());"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{token}}",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/job-openings?status=REJECTED",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"job-openings"
+											],
+											"query": [
+												{
+													"key": "status",
+													"value": "REJECTED"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "🔒 Closed (🔐 Finalized)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var template = `",
+													"<style type=\"text/css\">",
+													"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+													"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+													"    .tftable tr {background-color:#ffffff;}",
+													"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+													"    .tftable tr:hover {background-color:#e0ffff;}",
+													"</style>",
+													"",
+													"<table class=\"tftable\" border=\"1\">",
+													"    <tr>",
+													"        <th>ID</th>",
+													"        <th>Posting Title</th>",
+													"        <th>Title</th>",
+													"        <th>Target Date</th>",
+													"        <th>Status</th>",
+													"        <th>Industry</th>",
+													"        <th>Salary</th>",
+													"        <th>Department</th>",
+													"        <th>Hiring Manager</th>",
+													"        <th>Date Opened</th>",
+													"        <th>Job Type</th>",
+													"    </tr>",
+													"    ",
+													"    {{#each response}}",
+													"        <tr>",
+													"            <td>{{id}}</td>",
+													"            <td>{{postingTitle}}</td>",
+													"            <td>{{title}}</td>",
+													"            <td>{{targetDate}}</td>",
+													"            <td>{{status}}</td>",
+													"            <td>{{industry}}</td>",
+													"            <td>{{salary}}</td>",
+													"            <td>{{department.departmentName}}</td>",
+													"            <td>{{hiringManager.firstName}} {{hiringManager.lastName}}</td>",
+													"            <td>{{dateOpened}}</td>",
+													"            <td>{{jobType}}</td>",
+													"        </tr>",
+													"    {{/each}}",
+													"</table>",
+													"`;",
+													"",
+													"function constructVisualizerPayload() {",
+													"    return {response: pm.response.json()}",
+													"}",
+													"",
+													"pm.visualizer.set(template, constructVisualizerPayload());"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{token}}",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/job-openings?status=CLOSED",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"job-openings"
+											],
+											"query": [
+												{
+													"key": "status",
+													"value": "CLOSED"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get All Job Openings  (ℹ️ Not status)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var template = `",
+													"<style type=\"text/css\">",
+													"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+													"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+													"    .tftable tr {background-color:#ffffff;}",
+													"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+													"    .tftable tr:hover {background-color:#e0ffff;}",
+													"</style>",
+													"",
+													"<table class=\"tftable\" border=\"1\">",
+													"    <tr>",
+													"        <th>ID</th>",
+													"        <th>Posting Title</th>",
+													"        <th>Title</th>",
+													"        <th>Target Date</th>",
+													"        <th>Status</th>",
+													"        <th>Industry</th>",
+													"        <th>Salary</th>",
+													"        <th>Department</th>",
+													"        <th>Hiring Manager</th>",
+													"        <th>Date Opened</th>",
+													"        <th>Job Type</th>",
+													"    </tr>",
+													"    ",
+													"    {{#each response}}",
+													"        <tr>",
+													"            <td>{{id}}</td>",
+													"            <td>{{postingTitle}}</td>",
+													"            <td>{{title}}</td>",
+													"            <td>{{targetDate}}</td>",
+													"            <td>{{status}}</td>",
+													"            <td>{{industry}}</td>",
+													"            <td>{{salary}}</td>",
+													"            <td>{{department.departmentName}}</td>",
+													"            <td>{{hiringManager.firstName}} {{hiringManager.lastName}}</td>",
+													"            <td>{{dateOpened}}</td>",
+													"            <td>{{jobType}}</td>",
+													"        </tr>",
+													"    {{/each}}",
+													"</table>",
+													"`;",
+													"",
+													"function constructVisualizerPayload() {",
+													"    return {response: pm.response.json()}",
+													"}",
+													"",
+													"pm.visualizer.set(template, constructVisualizerPayload());"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{token}}",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/job-openings",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"job-openings"
+											]
+										}
+									},
+									"response": []
 								}
 							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update a Job Opening",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"type": "text"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"postingTitle\": \"Senior Developer\",\n    \"title\": \"Senior Java Developer\",\n    \"assignedRecruiter\": {\n        \"id\": 1\n    },\n    \"targetDate\": \"2025-01-30\",\n    \"status\": \"IN_PROGRESS\",\n    \"industry\": \"IT Services\",\n    \"salary\": \"120000\",\n    \"department\": {\n        \"id\": 1\n    },\n    \"hiringManager\": {\n        \"id\": 4\n    },\n    \"dateOpened\": \"2025-01-01\",\n    \"jobType\": \"FULL_TIME\",\n    \"requiredSkills\": [\"Java\", \"Spring Boot\", \"Microservices\"],\n    \"addressInformation\": {\n        \"isRemoteJob\": true,\n        \"city\": \"New York\",\n        \"province\": \"NY\",\n        \"country\": \"USA\",\n        \"postalCode\": \"10001\"\n    },\n    \"descriptionInformation\": {\n        \"jobDescription\": \"Develop and maintain Java-based applications.\",\n        \"requirements\": \"5+ years of experience in Java development.\",\n        \"benefits\": \"Health insurance, 401(k), and remote work flexibility.\"\n    },\n    \"attachments\": [],\n    \"workExperience\": \"FIVE_PLUS_YEARS\"\n}\n",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
 						},
-						"url": "{{baseUrl}}/api/job-openings/3"
-					},
-					"response": []
+						{
+							"name": "Get Job Opening by ID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/job-openings/3",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"job-openings",
+										"3"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				},
 				{
-					"name": "Update a Job Opening Copy",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"type": "text"
+					"name": "Update: 🔄",
+					"item": [
+						{
+							"name": "Update a Job Opening",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"postingTitle\": \"Senior Developer\",\n    \"title\": \"Senior Java Developer\",\n    \"assignedRecruiter\": {\n        \"id\": 1\n    },\n    \"targetDate\": \"2025-01-30\",\n    \"status\": \"IN_PROGRESS\",\n    \"industry\": \"IT Services\",\n    \"salary\": \"120000\",\n    \"department\": {\n        \"id\": 1\n    },\n    \"hiringManager\": {\n        \"id\": 4\n    },\n    \"dateOpened\": \"2025-01-01\",\n    \"jobType\": \"FULL_TIME\",\n    \"requiredSkills\": [\"Java\", \"Spring Boot\", \"Microservices\"],\n    \"addressInformation\": {\n        \"isRemoteJob\": true,\n        \"city\": \"New York\",\n        \"province\": \"NY\",\n        \"country\": \"USA\",\n        \"postalCode\": \"10001\"\n    },\n    \"descriptionInformation\": {\n        \"jobDescription\": \"Develop and maintain Java-based applications.\",\n        \"requirements\": \"5+ years of experience in Java development.\",\n        \"benefits\": \"Health insurance, 401(k), and remote work flexibility.\"\n    },\n    \"attachments\": [],\n    \"workExperience\": \"FIVE_PLUS_YEARS\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/job-openings/3",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"job-openings",
+										"3"
+									]
+								}
 							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"url": "{{baseUrl}}/api/job-openings/3"
-					},
-					"response": []
+							"response": []
+						}
+					]
 				}
 			]
 		},
@@ -1788,7 +3677,7 @@
 			"name": "Candidate",
 			"item": [
 				{
-					"name": "Create",
+					"name": "Create: ✨",
 					"item": [
 						{
 							"name": "Create a New Candidate",
@@ -1815,7 +3704,16 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/candidates"
+								"url": {
+									"raw": "{{baseUrl}}/api/candidates",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"candidates"
+									]
+								}
 							},
 							"response": []
 						},
@@ -1844,7 +3742,16 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/candidates"
+								"url": {
+									"raw": "{{baseUrl}}/api/candidates",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"candidates"
+									]
+								}
 							},
 							"response": []
 						},
@@ -1873,7 +3780,16 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/candidates"
+								"url": {
+									"raw": "{{baseUrl}}/api/candidates",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"candidates"
+									]
+								}
 							},
 							"response": []
 						},
@@ -1902,7 +3818,16 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/candidates"
+								"url": {
+									"raw": "{{baseUrl}}/api/candidates",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"candidates"
+									]
+								}
 							},
 							"response": []
 						},
@@ -1931,7 +3856,16 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/candidates"
+								"url": {
+									"raw": "{{baseUrl}}/api/candidates",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"candidates"
+									]
+								}
 							},
 							"response": []
 						},
@@ -1960,7 +3894,16 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/candidates"
+								"url": {
+									"raw": "{{baseUrl}}/api/candidates",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"candidates"
+									]
+								}
 							},
 							"response": []
 						},
@@ -1989,7 +3932,16 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/candidates"
+								"url": {
+									"raw": "{{baseUrl}}/api/candidates",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"candidates"
+									]
+								}
 							},
 							"response": []
 						},
@@ -2018,7 +3970,16 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/candidates"
+								"url": {
+									"raw": "{{baseUrl}}/api/candidates",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"candidates"
+									]
+								}
 							},
 							"response": []
 						},
@@ -2047,7 +4008,16 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/candidates"
+								"url": {
+									"raw": "{{baseUrl}}/api/candidates",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"candidates"
+									]
+								}
 							},
 							"response": []
 						},
@@ -2076,7 +4046,16 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/candidates"
+								"url": {
+									"raw": "{{baseUrl}}/api/candidates",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"candidates"
+									]
+								}
 							},
 							"response": []
 						},
@@ -2105,7 +4084,16 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/candidates"
+								"url": {
+									"raw": "{{baseUrl}}/api/candidates",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"candidates"
+									]
+								}
 							},
 							"response": []
 						},
@@ -2134,7 +4122,16 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/candidates"
+								"url": {
+									"raw": "{{baseUrl}}/api/candidates",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"candidates"
+									]
+								}
 							},
 							"response": []
 						},
@@ -2163,108 +4160,196 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/candidates"
+								"url": {
+									"raw": "{{baseUrl}}/api/candidates",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"candidates"
+									]
+								}
 							},
 							"response": []
 						}
 					]
 				},
 				{
-					"name": "Get Candidate by ID",
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
-				},
-				{
-					"name": "Get All Candidates",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"type": "text"
-							}
-						],
-						"url": "{{baseUrl}}/api/candidates"
-					},
-					"response": []
-				},
-				{
-					"name": "Get Candidates by Source",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"type": "text"
-							}
-						],
-						"url": "{{baseUrl}}/api/candidates/source/ADVERTISEMENT"
-					},
-					"response": []
-				},
-				{
-					"name": "Get All Sources for Dropdown",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"type": "text"
-							}
-						],
-						"url": "{{baseUrl}}/api/candidates/sources"
-					},
-					"response": []
-				},
-				{
-					"name": "Get Candidate by Email",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/api/candidates/email/john.doe@example.com",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"candidates",
-								"email",
-								"john.doe@example.com"
-							],
-							"query": [
-								{
-									"key": null,
-									"value": "Bearer {{token}}",
-									"disabled": true
+					"name": "Fetch: 📥",
+					"item": [
+						{
+							"name": "Get Candidate by ID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/candidates/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"candidates",
+										"1"
+									]
 								}
-							]
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Candidates",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var template = `",
+											"<style type=\"text/css\">",
+											"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+											"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+											"    .tftable tr {background-color:#ffffff;}",
+											"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+											"    .tftable tr:hover {background-color:#e0ffff;}",
+											"</style>",
+											"",
+											"<table class=\"tftable\" border=\"1\">",
+											"    <tr>",
+											"        <th>ID</th>",
+											"        <th>First Name</th>",
+											"        <th>Last Name</th>",
+											"        <th>Email</th>",
+											"        <th>Phone</th>",
+											"        <th>Mobile</th>",
+											"        <th>Experience (Years)</th>",
+											"        <th>Job Title</th>",
+											"        <th>Expected Salary</th>",
+											"        <th>Employer</th>",
+											"        <th>Qualification</th>",
+											"        <th>Status</th>",
+											"    </tr>",
+											"    ",
+											"    {{#each response}}",
+											"        <tr>",
+											"            <td>{{id}}</td>",
+											"            <td>{{firstName}}</td>",
+											"            <td>{{lastName}}</td>",
+											"            <td>{{email}}</td>",
+											"            <td>{{phone}}</td>",
+											"            <td>{{mobile}}</td>",
+											"            <td>{{experienceInYears}}</td>",
+											"            <td>{{currentJobTitle}}</td>",
+											"            <td>{{expectedSalary}}</td>",
+											"            <td>{{currentEmployer}}</td>",
+											"            <td>{{highestQualificationHeld}}</td>",
+											"            <td>{{candidateStatus}}</td>",
+											"        </tr>",
+											"    {{/each}}",
+											"</table>",
+											"`;",
+											"",
+											"function constructVisualizerPayload() {",
+											"    return {response: pm.response.json()}",
+											"}",
+											"",
+											"pm.visualizer.set(template, constructVisualizerPayload());"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/candidates",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"candidates"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Candidates by Source",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/candidates/source/ADVERTISEMENT",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"candidates",
+										"source",
+										"ADVERTISEMENT"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Sources for Dropdown",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/candidates/sources",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"candidates",
+										"sources"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				}
 			]
 		},
 		{
-			"name": "Job Application",
+			"name": "Associate Candidate For   - Job Application",
 			"item": [
 				{
-					"name": "Create",
+					"name": "Create: ✨",
 					"item": [
 						{
-							"name": "Create a New Job Application",
+							"name": "Create New Single/Bulk Job Application's",
 							"event": [
 								{
 									"listen": "test",
@@ -2324,64 +4409,189 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"candidateId\": 1,\n    \"jobOpeningId\": 1,\n    \"status\": \"SCREENING\",\n    \"comments\": \"Candidate has been shortlisted for initial review.\"\n}",
+									"raw": "{\n    \"candidateIds\": [1, 2, 3,4],\n    \"jobOpeningId\": 5,\n    \"status\": \"SCREENING\",\n    \"comments\": \"Candidates shortlisted for review.\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/job-applications"
+								"url": {
+									"raw": "{{baseUrl}}/api/job-applications",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"job-applications"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Now you can apply multiple candidates to a job in **one API call**.\n\nSupports **multiple candidate IDs**."
+				},
+				{
+					"name": "Fetch: 📥",
+					"item": [
+						{
+							"name": "Get All Application Statuses",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Applications by Job Opening",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/job-applications/job/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"job-applications",
+										"job",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Job Applications",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/job-applications/job",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"job-applications",
+										"job"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Applications by Candidate",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/job-applications/job/2",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"job-applications",
+										"job",
+										"2"
+									]
+								}
 							},
 							"response": []
 						}
 					]
 				},
 				{
-					"name": "Get All Application Statuses",
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
+					"name": "Delete: ❌",
+					"item": [
+						{
+							"name": "Delete a Job Application by ID",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/job-applications/job/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"job-applications",
+										"job",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete All Job Applications",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/job-applications/all",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"job-applications",
+										"all"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				},
 				{
-					"name": "Get Applications by Job Opening",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"type": "text"
-							}
-						],
-						"url": "{{baseUrl}}/api/job-applications/job/1"
-					},
-					"response": []
-				},
-				{
-					"name": "Get Applications by Candidate",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"type": "text"
-							}
-						],
-						"url": "{{baseUrl}}/api/job-applications/job/2"
-					},
-					"response": []
+					"name": "Update: 🔄",
+					"item": []
 				}
 			]
 		},
 		{
-			"name": "Create Questions",
+			"name": "Create Assessment-Questions",
 			"item": [
 				{
-					"name": "Bulk",
+					"name": "In Bulk",
 					"item": [
 						{
 							"name": "Create  Bulk Questions",
@@ -2404,13 +4614,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl}}/api/question-reviews/bulk",
+									"raw": "{{baseUrl}}/api/question-bank/bulk",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"api",
-										"question-reviews",
+										"question-bank",
 										"bulk"
 									],
 									"query": [
@@ -2427,9 +4637,22 @@
 					]
 				},
 				{
-					"name": "Create Questions",
+					"name": "Delete",
+					"item": [
+						{
+							"name": "Delete all questions",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get Question By Id",
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
@@ -2437,23 +4660,15 @@
 								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"question\": \"How do you handle conflict?\",\n    \"rating\": 4,\n    \"comments\": \"Provided a detailed and effective resolution approach.\",\n    \"competencyType\": \"Conflict Management\",\n    \"candidateEvaluationId\": 1\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "{{baseUrl}}/api/question-reviews",
+							"raw": "{{baseUrl}}/api/question-bank/1",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"api",
-								"question-reviews"
+								"question-bank",
+								"1"
 							],
 							"query": [
 								{
@@ -2467,10 +4682,7 @@
 					"response": []
 				},
 				{
-					"name": "Get Question By Id",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"name": "Get All Questions",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2480,29 +4692,56 @@
 								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"generalReview\": {\n        \"rating\": 4,\n        \"candidateStatus\": \"Qualified\",\n        \"overallComments\": \"Strong technical and communication skills.\"\n    },\n    \"screeningReviews\": [\n        {\n            \"reviewType\": \"Behavioral\",\n            \"overallRating\": 5,\n            \"status\": \"Passed\",\n            \"overallComments\": \"Excellent problem-solving abilities.\",\n            \"questionReviews\": [\n                {\n                    \"question\": \"How do you handle conflict?\",\n                    \"rating\": 4,\n                    \"comments\": \"Provided a detailed and effective resolution approach.\"\n                }\n            ]\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "{{baseUrl}}/api/candidate-evaluations",
+							"raw": "{{baseUrl}}/api/question-bank",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"api",
-								"candidate-evaluations"
+								"question-bank"
 							],
 							"query": [
 								{
 									"key": "",
 									"value": "",
 									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Questions By Competency Type",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/question-bank/by-competency?competencyType=General",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"question-bank",
+								"by-competency"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "competencyType",
+									"value": "General"
 								}
 							]
 						}
@@ -2527,7 +4766,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"generalReview\": {\n    \"rating\": 4,\n    \"candidateStatus\": \"Qualified\",\n    \"overallComments\": \"Strong technical background.\"\n  },\n  \"screeningReviews\": [\n    {\n      \"reviewType\": \"Pre-Screening\",\n      \"overallRating\": 5,\n      \"status\": \"Passed\",\n      \"overallComments\": \"Solid communication skills.\",\n      \"questionReviews\": [\n        {\n          \"questionBankTemplateId\": 3,\n          \"rating\": 4,\n          \"comments\": \"Candidate provided a concise approach.\"\n        },\n        {\n          \"questionBankTemplateId\": 5,\n          \"rating\": 4,\n          \"comments\": \"Answered well with relevant experience.\"\n        }\n      ]\n    },\n    {\n      \"reviewType\": \"Behavioral Screening\",\n      \"overallRating\": 4,\n      \"status\": \"In Progress\",\n      \"overallComments\": \"Needs more examples for conflict resolution.\",\n      \"questionReviews\": [\n        {\n          \"questionBankTemplateId\": 21,\n          \"rating\": 3,\n          \"comments\": \"Candidate was slightly unclear at first but clarified.\"\n        },\n        {\n          \"questionBankTemplateId\": 24,\n          \"rating\": 4,\n          \"comments\": \"Demonstrated a good approach to pressure management.\"\n        }\n      ]\n    }\n  ]\n}",
+							"raw": "{\n  \"generalReview\": {\n    \"rating\": 4,\n    \"candidateStatus\": \"Qualified\",\n    \"overallComments\": \"Strong technical background.\"\n  },\n  \"screeningReviews\": {\n    \"overallRating\": 5,\n    \"status\": \"Passed\",\n    \"overallComments\": \"Solid communication skills.\",\n    \"CandidateGeneralAssessment\": [\n      {\n        \"competencyType\": \"Pre-Screening\",\n        \"questionReviews\": [\n          {\n            \"questionBankTemplateId\": 3,\n            \"rating\": 4,\n            \"comments\": \"Candidate provided a concise approach.\"\n          },\n          {\n            \"questionBankTemplateId\": 5,\n            \"rating\": 4,\n            \"comments\": \"Answered well with relevant experience.\"\n          }\n        ]\n      },\n      {\n        \"competencyType\": \"Behavioral Screening\",\n        \"questionReviews\": [\n          {\n            \"questionBankTemplateId\": 1,\n            \"rating\": 3,\n            \"comments\": \"Candidate was slightly unclear at first but clarified.\"\n          },\n          {\n            \"questionBankTemplateId\": 2,\n            \"rating\": 4,\n            \"comments\": \"Demonstrated a good approach to pressure management.\"\n          }\n        ]\n      }\n    ]\n  }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2535,13 +4774,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/api/candidate-evaluations",
+							"raw": "{{baseUrl}}/api/candidate-evaluations/1",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"api",
-								"candidate-evaluations"
+								"candidate-evaluations",
+								"1"
 							],
 							"query": [
 								{
@@ -2726,7 +4966,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"generalReview\": {\n        \"rating\": 4,\n        \"candidateStatus\": \"Qualified\",\n        \"overallComments\": \"Strong technical and communication skills.\"\n    },\n    \"screeningReviews\": [\n        {\n            \"reviewType\": \"Behavioral\",\n            \"overallRating\": 5,\n            \"status\": \"Passed\",\n            \"overallComments\": \"Excellent problem-solving abilities.\",\n            \"questionReviews\": [\n                {\n                    \"question\": \"How do you handle conflict?\",\n                    \"rating\": 4,\n                    \"comments\": \"Provided a detailed and effective resolution approach.\"\n                }\n            ]\n        }\n    ]\n}",
+									"raw": "{\n    \"interviewName\": \"Level 1 Interview\",\n    \"departmentName\": \"Engineering\",\n    \"fromDateTime\": \"2025-01-25T10:00:00\",\n    \"toDateTime\": \"2025-01-25T11:00:00\",\n    \"candidateId\": 1,\n    \"postingTitle\": \"Software Engineer\",\n    \"interviewers\": [\n        {\n            \"id\": 2,\n            \"name\": \"John Doe\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Jane Smith\"\n        }\n    ],\n    \"location\": \"Remote - Zoom\",\n    \"interviewOwner\": {\n        \"id\": 4,\n        \"email\": \"owner@example.com\"\n    },\n    \"scheduleComments\": \"Initial technical interview.\",\n    \"assessmentName\": \"Technical Skills Assessment\",\n    \"reminder\": \"1 hour before\",\n    \"attachments\": [\n        {\n            \"attachmentType\": \"Others\",\n            \"filePath\": \"/attachments/interview_notes.pdf\"\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2766,7 +5006,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"generalReview\": {\n        \"rating\": 4,\n        \"candidateStatus\": \"Qualified\",\n        \"overallComments\": \"Strong technical and communication skills.\"\n    },\n    \"screeningReviews\": [\n        {\n            \"reviewType\": \"Behavioral\",\n            \"overallRating\": 5,\n            \"status\": \"Passed\",\n            \"overallComments\": \"Excellent problem-solving abilities.\",\n            \"questionReviews\": [\n                {\n                    \"question\": \"How do you handle conflict?\",\n                    \"rating\": 4,\n                    \"comments\": \"Provided a detailed and effective resolution approach.\"\n                }\n            ]\n        }\n    ]\n}",
+									"raw": "{\n    \"interviewName\": \"Level 1 Technical Interview\",\n    \"departmentName\": \"Engineering\",\n    \"fromDateTime\": \"2025-02-15T14:00:00\",\n    \"toDateTime\": \"2025-02-15T15:30:00\",\n    \"interviewerIds\": [1, 2],\n    \"location\": \"Conference Room B\",\n    \"candidateId\": 3,\n    \"postingTitle\": \"Software Engineer\",\n    \"interviewOwnerId\": 4,\n    \"scheduleComments\": \"Discuss algorithms, system design, and problem-solving.\",\n    \"assessmentName\": \"Technical Assessment - Level 1\",\n    \"reminder\": \"30 minutes before\",\n    \"attachments\": [\n        {\n            \"attachmentType\": \"Interview Guide\",\n            \"filePath\": \"/attachments/technical_interview_guide.pdf\",\n            \"interviewId\": 5\n        }\n    ]\n}\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2806,7 +5046,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"generalReview\": {\n        \"rating\": 4,\n        \"candidateStatus\": \"Qualified\",\n        \"overallComments\": \"Strong technical and communication skills.\"\n    },\n    \"screeningReviews\": [\n        {\n            \"reviewType\": \"Behavioral\",\n            \"overallRating\": 5,\n            \"status\": \"Passed\",\n            \"overallComments\": \"Excellent problem-solving abilities.\",\n            \"questionReviews\": [\n                {\n                    \"question\": \"How do you handle conflict?\",\n                    \"rating\": 4,\n                    \"comments\": \"Provided a detailed and effective resolution approach.\"\n                }\n            ]\n        }\n    ]\n}",
+									"raw": "{\n    \"interviewName\": \"Phone Interview\",\n    \"departmentName\": \"HR\",\n    \"fromDateTime\": \"2025-02-16T10:00:00\",\n    \"toDateTime\": \"2025-02-16T10:30:00\",\n    \"interviewerIds\": [3],\n    \"location\": \"Remote (Phone Call)\",\n    \"candidateId\": 6,\n    \"postingTitle\": \"Marketing Manager\",\n    \"interviewOwnerId\": 5,\n    \"scheduleComments\": \"General discussion about experience and career goals.\",\n    \"assessmentName\": \"HR Screening Assessment\",\n    \"reminder\": \"15 minutes before\"\n}\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2846,7 +5086,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"generalReview\": {\n        \"rating\": 4,\n        \"candidateStatus\": \"Qualified\",\n        \"overallComments\": \"Strong technical and communication skills.\"\n    },\n    \"screeningReviews\": [\n        {\n            \"reviewType\": \"Behavioral\",\n            \"overallRating\": 5,\n            \"status\": \"Passed\",\n            \"overallComments\": \"Excellent problem-solving abilities.\",\n            \"questionReviews\": [\n                {\n                    \"question\": \"How do you handle conflict?\",\n                    \"rating\": 4,\n                    \"comments\": \"Provided a detailed and effective resolution approach.\"\n                }\n            ]\n        }\n    ]\n}",
+									"raw": "{\n    \"interviewName\": \"Online Interview\",\n    \"departmentName\": \"Operations\",\n    \"fromDateTime\": \"2025-02-17T11:00:00\",\n    \"toDateTime\": \"2025-02-17T12:00:00\",\n    \"interviewerIds\": [7, 8],\n    \"location\": \"Google Meet (link will be sent via email)\",\n    \"candidateId\": 9,\n    \"postingTitle\": \"Operations Manager\",\n    \"interviewOwnerId\": 10,\n    \"scheduleComments\": \"Assess management skills and operational knowledge.\",\n    \"assessmentName\": \"Operations Assessment\",\n    \"reminder\": \"1 hour before\"\n}\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2926,7 +5166,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"generalReview\": {\n        \"rating\": 4,\n        \"candidateStatus\": \"Qualified\",\n        \"overallComments\": \"Strong technical and communication skills.\"\n    },\n    \"screeningReviews\": [\n        {\n            \"reviewType\": \"Behavioral\",\n            \"overallRating\": 5,\n            \"status\": \"Passed\",\n            \"overallComments\": \"Excellent problem-solving abilities.\",\n            \"questionReviews\": [\n                {\n                    \"question\": \"How do you handle conflict?\",\n                    \"rating\": 4,\n                    \"comments\": \"Provided a detailed and effective resolution approach.\"\n                }\n            ]\n        }\n    ]\n}",
+									"raw": "{\n    \"interviewName\": \"Phone Interview\",\n    \"departmentName\": \"HR\",\n    \"fromDateTime\": \"2025-02-16T10:00:00\",\n    \"toDateTime\": \"2025-02-16T10:30:00\",\n    \"interviewerIds\": [\n        7\n    ],\n    \"location\": \"Remote (Phone Call)\",\n    \"candidateId\": 12,\n    \"postingTitle\": \"Software Developer\",\n    \"interviewOwnerId\": 11,\n    \"scheduleComments\": \"Candidate must submit answers to predefined technical questions.\",\n    \"assessmentName\": \"Recorded Technical Assessment\",\n    \"reminder\": \"Deadline: 48 hours\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2971,7 +5211,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"interviewName\": \"Technical Interview Level 1 - Updated\",\n    \"departmentName\": \"Engineering\",\n    \"fromDateTime\": \"2025-01-25T10:30:00\",\n    \"toDateTime\": \"2025-01-25T11:30:00\",\n    \"location\": \"Conference Room 2\",\n    \"postingTitle\": \"Software Engineer\",\n    \"interviewOwnerId\": 2,\n    \"candidateId\": 1,\n    \"interviewerIds\": [3, 4],\n    \"scheduleComments\": \"Updated technical interview details.\",\n    \"assessmentName\": \"Updated Algorithm Assessment\",\n    \"reminder\": \"2 hours before\"\n}",
+									"raw": "{\n    \"interviewName\": \"Online Interview\",\n    \"departmentName\": \"Operations\",\n    \"fromDateTime\": \"2025-02-17T11:00:00\",\n    \"toDateTime\": \"2025-02-17T12:00:00\",\n    \"interviewerIds\": [7, 8],\n    \"location\": \"Google Meet (link will be sent via email)\",\n    \"candidateId\": 9,\n    \"postingTitle\": \"Operations Manager\",\n    \"interviewOwnerId\": 10,\n    \"scheduleComments\": \"Assess management skills and operational knowledge.\",\n    \"assessmentName\": \"Operations Assessment\",\n    \"reminder\": \"1 hour before\",\n    \"attachments\": [\n        {\n            \"attachmentType\": \"Interview Guide\",\n            \"filePath\": \"/attachments/operations_interview_guide.pdf\",\n            \"interviewId\": 11\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3015,15 +5255,6 @@
 										"type": "text"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"generalReview\": {\n        \"rating\": 4,\n        \"candidateStatus\": \"Qualified\",\n        \"overallComments\": \"Strong technical and communication skills.\"\n    },\n    \"screeningReviews\": [\n        {\n            \"reviewType\": \"Behavioral\",\n            \"overallRating\": 5,\n            \"status\": \"Passed\",\n            \"overallComments\": \"Excellent problem-solving abilities.\",\n            \"questionReviews\": [\n                {\n                    \"question\": \"How do you handle conflict?\",\n                    \"rating\": 4,\n                    \"comments\": \"Provided a detailed and effective resolution approach.\"\n                }\n            ]\n        }\n    ]\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
 								"url": {
 									"raw": "{{baseUrl}}/api/interviews/1",
 									"host": [
@@ -3050,7 +5281,7 @@
 				{
 					"name": "Get All Interviews",
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
@@ -3058,24 +5289,14 @@
 								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"generalReview\": {\n        \"rating\": 4,\n        \"candidateStatus\": \"Qualified\",\n        \"overallComments\": \"Strong technical and communication skills.\"\n    },\n    \"screeningReviews\": [\n        {\n            \"reviewType\": \"Behavioral\",\n            \"overallRating\": 5,\n            \"status\": \"Passed\",\n            \"overallComments\": \"Excellent problem-solving abilities.\",\n            \"questionReviews\": [\n                {\n                    \"question\": \"How do you handle conflict?\",\n                    \"rating\": 4,\n                    \"comments\": \"Provided a detailed and effective resolution approach.\"\n                }\n            ]\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "{{baseUrl}}/api/candidate-evaluations/1",
+							"raw": "{{baseUrl}}/api/interviews",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"api",
-								"candidate-evaluations",
-								"1"
+								"interviews"
 							],
 							"query": [
 								{
@@ -3091,7 +5312,7 @@
 				{
 					"name": "Get Interview by ID",
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
@@ -3099,24 +5320,15 @@
 								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"generalReview\": {\n        \"rating\": 4,\n        \"candidateStatus\": \"Qualified\",\n        \"overallComments\": \"Strong technical and communication skills.\"\n    },\n    \"screeningReviews\": [\n        {\n            \"reviewType\": \"Behavioral\",\n            \"overallRating\": 5,\n            \"status\": \"Passed\",\n            \"overallComments\": \"Excellent problem-solving abilities.\",\n            \"questionReviews\": [\n                {\n                    \"question\": \"How do you handle conflict?\",\n                    \"rating\": 4,\n                    \"comments\": \"Provided a detailed and effective resolution approach.\"\n                }\n            ]\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "{{baseUrl}}/api/candidate-evaluations/1",
+							"raw": "{{baseUrl}}/api/interviews/3",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"api",
-								"candidate-evaluations",
-								"1"
+								"interviews",
+								"3"
 							],
 							"query": [
 								{
@@ -3152,7 +5364,16 @@
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"Recruitment Team\",\n  \"description\": \"Team for managing recruitment process\",\n  \"members\": [\n    {\n      \"id\": 1,\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\"\n    }\n  ]\n}"
 						},
-						"url": "{{baseUrl}}/api/groups"
+						"url": {
+							"raw": "{{baseUrl}}/api/groups",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"groups"
+							]
+						}
 					},
 					"response": []
 				},
@@ -3176,7 +5397,17 @@
 								}
 							}
 						},
-						"url": "{{baseUrl}}/api/groups/1"
+						"url": {
+							"raw": "{{baseUrl}}/api/groups/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"groups",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
@@ -3190,7 +5421,16 @@
 								"value": "Bearer {{token}}"
 							}
 						],
-						"url": "{{baseUrl}}/api/groups"
+						"url": {
+							"raw": "{{baseUrl}}/api/groups",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"groups"
+							]
+						}
 					},
 					"response": []
 				},
@@ -3244,7 +5484,10 @@
 					"name": "New Request",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				}
@@ -3257,7 +5500,10 @@
 					"name": "Get All job-types",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				},
@@ -3272,7 +5518,16 @@
 								"type": "text"
 							}
 						],
-						"url": "{{baseUrl}}/api/work-experience"
+						"url": {
+							"raw": "{{baseUrl}}/api/work-experience",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"work-experience"
+							]
+						}
 					},
 					"response": []
 				}
@@ -3292,7 +5547,19 @@
 								"type": "text"
 							}
 						],
-						"url": "http://localhost:8080/api/job-applications/statuses"
+						"url": {
+							"raw": "http://localhost:8080/api/job-applications/statuses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"job-applications",
+								"statuses"
+							]
+						}
 					},
 					"response": []
 				}
@@ -3311,7 +5578,141 @@
 								"value": "Bearer {{token}}"
 							}
 						],
-						"url": "{{baseUrl}}/api/all-job-references"
+						"url": {
+							"raw": "{{baseUrl}}/api/all-job-references",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"all-job-references"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Offer Letter Generation",
+			"item": [
+				{
+					"name": "Offer Letter Generation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"companyAddress\": \"123 Tech Street\",\n    \"companyCity\": \"Bangalore\",\n    \"companyState\": \"Karnataka\",\n    \"companyZip\": \"560001\",\n    \"companyName\": \"Google\",\n    \"candidateName\": \"Ravi Kumar\",\n    \"candidateAddress\": \"456 Candidate Road\",\n    \"candidateCity\": \"Chennai\",\n    \"candidateState\": \"Tamil Nadu\",\n    \"candidateZip\": \"600001\",\n    \"jobTitle\": \"Software Engineer\",\n    \"startDate\": \"2025-02-01\",\n    \"employmentType\": \"Full-Time\",\n    \"salary\": \"750000\",\n    \"salaryType\": \"Yearly\",\n    \"equity\": \"2%\",\n    \"benefits\": \"Health Insurance, 401(k)\",\n    \"deadlineDate\": \"2025-02-15\",\n    \"hiringManagerName\": \"Alice Johnson\",\n    \"hiringManagerPosition\": \"Hiring Manager\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/offer-letter/generate",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"offer-letter",
+								"generate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "kafka connect",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"jdbc-sink-connector\",\n    \"config\": {\n        \"connector.class\": \"io.confluent.connect.jdbc.JdbcSinkConnector\",\n        \"tasks.max\": \"1\",\n        \"topics\": \"jdbc-sink-demo\",\n        \"connection.url\": \"jdbc:mysql://mysql:3306/mydb?user=myuser&password=mypassword\",\n        \"auto.create\": \"true\",\n        \"insert.mode\": \"insert\",\n        \"pk.mode\": \"none\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/connectors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"connectors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request Copy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"jdbc-sink-connector\",\n    \"config\": {\n      \"connector.class\": \"io.confluent.connect.jdbc.JdbcSinkConnector\",\n      \"tasks.max\": \"1\",\n      \"topics\": \"purchase-events\",\n      \"connection.url\": \"jdbc:postgresql://localhost:5432/hospital-management-db\", \n      \"connection.user\": \"postgres\", \n      \"connection.password\": \"mysecretpassword\", \n      \"insert.mode\": \"insert\",\n      \"auto.create\": \"true\",\n      \"auto.evolve\": \"true\"\n    }\n  }\n  ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/connectors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"connectors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a key to data ingested through Kafka Connect",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Check that the connector is running:",
+					"request": {
+						"method": "GET",
+						"header": []
 					},
 					"response": []
 				}
